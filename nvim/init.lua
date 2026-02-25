@@ -5,8 +5,8 @@ local opt = vim.o
 
 -- <leader> key. Defaults to `\`. Some people prefer space.
 -- The default leader is '\'. Some people prefer <space>. Uncomment this if you do, too.
--- vim.g.mapleader = ' '
--- vim.g.maplocalleader = ' '
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- See :h <option> to see what the options do
 
@@ -20,14 +20,15 @@ opt.lazyredraw = true
 opt.showmatch = true -- Highlight matching parentheses, etc
 opt.incsearch = true
 opt.hlsearch = true
+opt.confirm = true
 
 opt.spell = true
-opt.spelllang = 'en'
+opt.spelllang = 'en_nz,en_gb,en'
 
 opt.expandtab = true
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
 opt.foldenable = true
 opt.history = 2000
 opt.nrformats = 'bin,hex' -- 'octal'
@@ -35,6 +36,11 @@ opt.undofile = true
 opt.splitright = true
 opt.splitbelow = true
 opt.cmdheight = 0
+opt.winborder = 'single'
+
+opt.scrolloff = 4
+opt.sidescrolloff = 8
+opt.mouse = 'a'
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'
@@ -67,7 +73,6 @@ vim.diagnostic.config {
   },
   signs = {
     text = {
-      -- Requires Nerd fonts
       [vim.diagnostic.severity.ERROR] = '󰅚',
       [vim.diagnostic.severity.WARN] = '⚠',
       [vim.diagnostic.severity.INFO] = 'ⓘ',
@@ -80,11 +85,14 @@ vim.diagnostic.config {
   float = {
     focusable = false,
     style = 'minimal',
-    border = 'rounded',
+    border = vim.o.winborder,
     source = 'if_many',
     header = '',
     prefix = '',
   },
+
+  -- virtual_text = false,
+  -- virtual_lines = { current_line = true },
 }
 
 -- Native plugins
