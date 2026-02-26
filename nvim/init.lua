@@ -95,6 +95,8 @@ vim.diagnostic.config {
   -- virtual_lines = { current_line = true },
 }
 
+vim.cmd.colorscheme('rose-pine')
+
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
 cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo

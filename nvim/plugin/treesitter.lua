@@ -8,27 +8,27 @@ vim.g.did_load_treesitter_plugin = true
 -- select
 vim.keymap.set({ 'x', 'o' }, 'af', function()
   require('nvim-treesitter-textobjects.select').select_textobject('@function.outer', 'textobjects')
-end, {  })
+end, {})
 vim.keymap.set({ 'x', 'o' }, 'if', function()
   require('nvim-treesitter-textobjects.select').select_textobject('@function.inner', 'textobjects')
-end, {  })
+end, {})
 vim.keymap.set({ 'x', 'o' }, 'ac', function()
   require('nvim-treesitter-textobjects.select').select_textobject('@class.outer', 'textobjects')
-end, {  })
+end, {})
 vim.keymap.set({ 'x', 'o' }, 'ic', function()
   require('nvim-treesitter-textobjects.select').select_textobject('@class.inner', 'textobjects')
-end, {  })
+end, {})
 vim.keymap.set({ 'x', 'o' }, 'as', function()
   require('nvim-treesitter-textobjects.select').select_textobject('@local.scope', 'locals')
-end, {  })
+end, {})
 
 -- swap
 vim.keymap.set('n', '<leader>a', function()
   require('nvim-treesitter-textobjects.swap').swap_next('@parameter.inner')
-end, {  })
+end, {})
 vim.keymap.set('n', '<leader>A', function()
   require('nvim-treesitter-textobjects.swap').swap_previous('@parameter.outer')
-end, {  })
+end, {})
 
 -- move
 vim.keymap.set({ 'n', 'x', 'o' }, ']m', function()
@@ -55,13 +55,6 @@ end, { desc = 'previous [p]arameter (start)' })
 vim.keymap.set({ 'n', 'x', 'o' }, '[P', function()
   require('nvim-treesitter-textobjects.move').goto_previous_end('@parameter.outer', 'textobjects')
 end, { desc = 'previous [P]arameter (end)' })
-
-
-require('treesitter-context').setup {
-  max_lines = 3,
-}
-
-require('ts_context_commentstring').setup()
 
 -- Tree-sitter based folding
 -- vim.opt.foldmethod = 'expr'

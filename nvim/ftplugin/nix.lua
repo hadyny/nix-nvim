@@ -3,6 +3,10 @@ if vim.fn.executable('nil') ~= 1 then
   return
 end
 
+vim.opt_local.expandtab = true
+vim.opt_local.shiftwidth = 2
+vim.opt_local.softtabstop = 2
+
 local root_files = {
   'flake.nix',
   'default.nix',
