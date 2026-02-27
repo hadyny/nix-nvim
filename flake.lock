@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "csharp-explorer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771750881,
+        "narHash": "sha256-Pif3jJJyTm35XAfMFrldsnqH/0/M+dC7igAi+Upf0q8=",
+        "owner": "dtrh95",
+        "repo": "csharp-explorer.nvim",
+        "rev": "885eb0f375792b7d5645256a87edcefc290ea9b9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dtrh95",
+        "repo": "csharp-explorer.nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -197,6 +213,7 @@
     },
     "root": {
       "inputs": {
+        "csharp-explorer": "csharp-explorer",
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
         "nixpkgs": "nixpkgs_2"

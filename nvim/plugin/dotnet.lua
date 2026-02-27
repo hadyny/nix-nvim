@@ -71,3 +71,5 @@ require('nvim-dap-virtual-text').setup {
 require('easy-dotnet').setup {
   picker = 'snacks',
 }
+
+require('csharp-explorer').setup {}

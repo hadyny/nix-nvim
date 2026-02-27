@@ -6,6 +6,11 @@
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
 
+    csharp-explorer = {
+      url = "github:dtrh95/csharp-explorer.nvim";
+      flake = false;
+    };
+
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
     # wf-nvim = {
