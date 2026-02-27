@@ -3,36 +3,6 @@ if vim.g.did_load_plugins_plugin then
 end
 vim.g.did_load_plugins_plugin = true
 
--- many plugins annoyingly require a call to a 'setup' function to be loaded,
--- even with default config
-
--- gitsigns
-require('gitsigns').setup {
-  on_attach = function(_)
-    local gs = package.loaded.gitsigns
-    -- Navigation
-    vim.keymap.set({ 'n', 'v' }, ']c', function()
-      if vim.wo.diff then
-        return ']c'
-      end
-      vim.schedule(function()
-        gs.next_hunk()
-      end)
-      return '<Ignore>'
-    end, { expr = true, desc = 'Jump to next hunk' })
-
-    vim.keymap.set({ 'n', 'v' }, '[c', function()
-      if vim.wo.diff then
-        return '[c'
-      end
-      vim.schedule(function()
-        gs.prev_hunk()
-      end)
-      return '<Ignore>'
-    end, { expr = true, desc = 'Jump to previous hunk' })
-  end,
-}
-
 -- conform
 local conform = require('conform')
 

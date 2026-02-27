@@ -53,9 +53,7 @@ let
     checkmate-nvim
     # general
     mini-nvim
-    # nvim-lspconfig
     nvim-treesitter.withAllGrammars
-    gitsigns-nvim
     conform-nvim
     snacks-nvim
     yazi-nvim
