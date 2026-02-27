@@ -65,6 +65,9 @@ require('render-markdown').setup {
   checkbox = { enabled = false },
 }
 
+-- treesitter
+require('nvim-treesitter').setup {}
+
 -- checkmate
 
 require('checkmate').setup {
