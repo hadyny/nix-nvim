@@ -68,7 +68,7 @@ let
     mini-nvim
     nvim-treesitter.withAllGrammars
     conform-nvim
-    snacks-nvim
+    fzf-lua
     yazi-nvim
     # ai
     opencode-nvim

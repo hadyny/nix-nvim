@@ -69,7 +69,7 @@ require('nvim-dap-virtual-text').setup {
 }
 
 require('easy-dotnet').setup {
-  picker = 'snacks',
+  picker = 'fzf-lua',
 }
 
 require('nvim-tree').setup {
