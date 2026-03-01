@@ -196,6 +196,12 @@ local tailwind_root_files = {
   '.git',
 }
 
+local tailwind_capabilities = require('user.lsp').make_client_capabilities()
+tailwind_capabilities.workspace = tailwind_capabilities.workspace or {}
+tailwind_capabilities.workspace.didChangeWatchedFiles = {
+  dynamicRegistration = true,
+}
+
 vim.lsp.start {
   cmd = { 'tailwindcss-language-server', '--stdio' },
   filetypes = {
@@ -254,13 +260,7 @@ vim.lsp.start {
     'svelte',
     'templ',
   },
-  capabilities = {
-    workspace = {
-      didChangeWatchedFiles = {
-        dynamicRegistration = true,
-      },
-    },
-  },
+  capabilities = tailwind_capabilities,
   settings = {
     tailwindCSS = {
       validate = true,
@@ -313,4 +313,5 @@ vim.lsp.start {
   cmd = { 'graphql-lsp', 'server', '-m', 'stream' },
   filetypes = { 'graphql', 'typescriptreact', 'javascriptreact' },
   root_dir = vim.fs.dirname(vim.fs.find(graphql_root_files, { upward = true })[1]),
+  capabilities = require('user.lsp').make_client_capabilities(),
 }
