@@ -29,6 +29,7 @@ vim.lsp.start {
     'typescriptreact',
   },
   root_dir = vim.fs.dirname(vim.fs.find(vtsls_root_files, { upward = true })[1]),
+  capabilities = require('user.lsp').make_client_capabilities(),
 }
 
 -- eslint

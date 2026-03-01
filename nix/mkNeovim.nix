@@ -78,7 +78,7 @@ with lib;
       lib.cleanSourceWith {
         inherit src;
         name = "nvim-rtp-src";
-        filter = path: tyoe: let
+        filter = path: type: let
           srcPrefix = toString src + "/";
           relPath = lib.removePrefix srcPrefix (toString path);
         in
@@ -152,7 +152,7 @@ with lib;
       # We prepend to ensure that user ftplugins are sourced before builtin ftplugins.
       + ''
         vim.opt.rtp:prepend('${nvimRtp}/nvim')
-        vim.opt.rtp:prepend('${nvimRtp}/after')
+        vim.opt.rtp:append('${nvimRtp}/after')
       '';
 
     # Add arguments to the Neovim wrapper script

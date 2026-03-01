@@ -127,7 +127,7 @@ keymap.set('n', ']e', function()
   diagnostic.goto_next {
     severity = severity.ERROR,
   }
-end)
+end, { noremap = true, silent = true, desc = 'next error diagnostic' })
 local function buf_toggle_diagnostics()
   local filter = { bufnr = api.nvim_get_current_buf() }
   diagnostic.enable(not diagnostic.is_enabled(filter), filter)
@@ -139,6 +139,8 @@ local function toggle_spell_check()
   ---@diagnostic disable-next-line: param-type-mismatch
   vim.opt.spell = not (vim.opt.spell:get())
 end
+
+keymap.set('n', '<leader>S', toggle_spell_check, { noremap = true, silent = true, desc = 'Toggle spellcheck' })
 
 keymap.set({ 'v', 'x', 'n' }, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Yank to clipboard' })
 keymap.set({ 'n', 'v', 'x' }, '<leader>Y', '"+yy', { noremap = true, silent = true, desc = 'Yank line to clipboard' })

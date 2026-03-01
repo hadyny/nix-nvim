@@ -13,6 +13,17 @@ let
       version = src.lastModifiedDate;
     };
 
+  # Use this to create a plugin that skips the require check
+  # Useful for plugins with complex dependencies
+  mkNvimPluginNoCheck =
+    src: pname:
+    pkgs.vimUtils.buildVimPlugin {
+      inherit pname src;
+      version = src.lastModifiedDate;
+      doCheck = false;
+      nvimRequireCheck = "off";
+    };
+
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
@@ -44,7 +55,8 @@ let
     # csharp
     easy-dotnet-nvim
     (mkNvimPlugin inputs.csharp-explorer "csharp-explorer.nvim")
-    (mkNvimPlugin inputs.csharp-explorer "hopcsharp.nvim")
+    sqlite-lua
+    (mkNvimPluginNoCheck inputs.hopcsharp "hopcsharp.nvim")
     nvim-tree-lua
     nvim-dap
     nvim-dap-ui
