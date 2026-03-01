@@ -72,4 +72,32 @@ require('easy-dotnet').setup {
   picker = 'snacks',
 }
 
+require('nvim-tree').setup {
+  view = {
+    side = 'right',
+  },
+}
+
 require('csharp-explorer').setup {}
+
+local hopcsharp = require('hopcsharp')
+
+hopcsharp.setup {
+  hop = {
+    jump_on_quickfix = false,
+    filter_entry_under_cursor = true,
+  },
+  database = {
+    folder_path = vim.fn.stdpath('state'),
+    buffer_size = 10000,
+  },
+}
+
+-- database
+vim.keymap.set('n', '<leader>hD', hopcsharp.init_database, { desc = 'hopcsharp: init database' })
+
+-- navigation
+vim.keymap.set('n', '<leader>hd', hopcsharp.hop_to_definition, { desc = 'hopcsharp: go to definition' })
+vim.keymap.set('n', '<leader>hi', hopcsharp.hop_to_implementation, { desc = 'hopcsharp: go to implementation' })
+vim.keymap.set('n', '<leader>hr', hopcsharp.hop_to_reference, { desc = 'hopcsharp: go to reference' })
+vim.keymap.set('n', '<leader>ht', hopcsharp.get_type_hierarchy, { desc = 'hopcsharp: type hierarchy' })

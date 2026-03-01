@@ -135,6 +135,22 @@
         "type": "github"
       }
     },
+    "hopcsharp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772111697,
+        "narHash": "sha256-oeuvLNPJp0qsLwiSkmdr8tdMi60QxzYm+RW6ibaRh5A=",
+        "owner": "leblocks",
+        "repo": "hopcsharp.nvim",
+        "rev": "4a3298d920052487a07d00211b4bec097988742d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leblocks",
+        "repo": "hopcsharp.nvim",
+        "type": "github"
+      }
+    },
     "luvit-meta": {
       "flake": false,
       "locked": {
@@ -216,6 +232,7 @@
         "csharp-explorer": "csharp-explorer",
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
+        "hopcsharp": "hopcsharp",
         "nixpkgs": "nixpkgs_2"
       }
     },

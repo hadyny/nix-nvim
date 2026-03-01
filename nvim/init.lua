@@ -21,6 +21,7 @@ opt.showmatch = true -- Highlight matching parentheses, etc
 opt.incsearch = true
 opt.hlsearch = true
 opt.confirm = true
+opt.termguicolors = true
 
 opt.spell = true
 opt.spelllang = 'en_nz,en_gb,en'
@@ -30,6 +31,7 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.foldenable = true
+opt.foldlevel = 99
 opt.history = 2000
 opt.nrformats = 'bin,hex' -- 'octal'
 opt.undofile = true

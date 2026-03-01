@@ -44,6 +44,7 @@ let
     # csharp
     easy-dotnet-nvim
     (mkNvimPlugin inputs.csharp-explorer "csharp-explorer.nvim")
+    (mkNvimPlugin inputs.csharp-explorer "hopcsharp.nvim")
     nvim-tree-lua
     nvim-dap
     nvim-dap-ui
