@@ -25,7 +25,18 @@ api.nvim_create_user_command('LspInfo', function()
 
     for _, client in ipairs(clients) do
       table.insert(lines, string.format('• %s (id: %d)', client.name or 'unknown', client.id))
-      table.insert(lines, string.format('  cmd: %s', table.concat(client.config and client.config.cmd or {}, ' ')))
+
+      -- Handle cmd which can be a table or a function
+      local cmd_str = 'N/A'
+      if client.config and client.config.cmd then
+        if type(client.config.cmd) == 'table' then
+          cmd_str = table.concat(client.config.cmd, ' ')
+        elseif type(client.config.cmd) == 'function' then
+          cmd_str = '<function>'
+        end
+      end
+      table.insert(lines, string.format('  cmd: %s', cmd_str))
+
       table.insert(lines, string.format('  root_dir: %s', client.config and client.config.root_dir or 'N/A'))
       table.insert(
         lines,
