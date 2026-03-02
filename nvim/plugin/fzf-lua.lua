@@ -18,9 +18,6 @@ require('fzf-lua').setup {
   },
 }
 
--- Register fzf-lua as the handler for vim.ui.select
-require('fzf-lua').register_ui_select()
-
 -- Smart file picker (files or git files if in a git repo)
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader><leader>', function()
   require('fzf-lua').files()
