@@ -9,10 +9,10 @@ local keymap = vim.keymap
 local diagnostic = vim.diagnostic
 
 -- Buffer list navigation
-keymap.set('n', '[b', vim.cmd.bprevious, { silent = true, desc = 'previous [b]uffer' })
-keymap.set('n', ']b', vim.cmd.bnext, { silent = true, desc = 'next [b]uffer' })
-keymap.set('n', '[B', vim.cmd.bfirst, { silent = true, desc = 'first [B]uffer' })
-keymap.set('n', ']B', vim.cmd.blast, { silent = true, desc = 'last [B]uffer' })
+keymap.set('n', '[b', vim.cmd.bprevious, { silent = true, desc = 'previous buffer' })
+keymap.set('n', ']b', vim.cmd.bnext, { silent = true, desc = 'next buffer' })
+keymap.set('n', '[B', vim.cmd.bfirst, { silent = true, desc = 'first buffer' })
+keymap.set('n', ']B', vim.cmd.blast, { silent = true, desc = 'last buffer' })
 
 -- Toggle the quickfix list (only opens if it is populated)
 local function toggle_qf_list()
@@ -62,8 +62,8 @@ local function cright()
   }
 end
 
-keymap.set('n', '[c', cleft, { silent = true, desc = '[c]ycle quickfix left' })
-keymap.set('n', ']c', cright, { silent = true, desc = '[c]ycle quickfix right' })
+keymap.set('n', '[c', cleft, { silent = true, desc = 'cycle quickfix left' })
+keymap.set('n', ']c', cright, { silent = true, desc = 'cycle quickfix right' })
 keymap.set('n', '[C', vim.cmd.cfirst, { silent = true, desc = 'first quickfix entry' })
 keymap.set('n', ']C', vim.cmd.clast, { silent = true, desc = 'last quickfix entry' })
 
@@ -83,15 +83,15 @@ local function lright()
   }
 end
 
-keymap.set('n', '[l', lleft, { silent = true, desc = 'cycle [l]oclist left' })
-keymap.set('n', ']l', lright, { silent = true, desc = 'cycle [l]oclist right' })
-keymap.set('n', '[L', vim.cmd.lfirst, { silent = true, desc = 'first [L]oclist entry' })
-keymap.set('n', ']L', vim.cmd.llast, { silent = true, desc = 'last [L]oclist entry' })
+keymap.set('n', '[l', lleft, { silent = true, desc = 'cycle [loclist left' })
+keymap.set('n', ']l', lright, { silent = true, desc = 'cycle loclist right' })
+keymap.set('n', '[L', vim.cmd.lfirst, { silent = true, desc = 'first loclist entry' })
+keymap.set('n', ']L', vim.cmd.llast, { silent = true, desc = 'last loclist entry' })
 
 -- Close floating windows
 keymap.set('n', '<leader>fq', function()
   vim.cmd('fclose!')
-end, { silent = true, desc = '[f]loating windows: [q]uit/close all' })
+end, { silent = true, desc = 'floating windows quit' })
 
 -- Remap Esc to switch to normal mode and Ctrl-Esc to pass Esc to terminal
 keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'switch to normal mode' })
@@ -109,35 +109,43 @@ end, { expr = true, desc = "expand to current buffer's directory" })
 local severity = diagnostic.severity
 
 keymap.set('n', '<space>k', function()
-  local _, winid = diagnostic.open_float(nil, { scope = 'line' })
+  local _, winid = diagnostic.open_float { scope = 'line' }
   if not winid then
     vim.notify('no diagnostics found', vim.log.levels.INFO)
     return
   end
   vim.api.nvim_win_set_config(winid or 0, { focusable = true })
 end, { noremap = true, silent = true, desc = 'diagnostics floating window' })
-keymap.set('n', '[d', diagnostic.goto_prev, { noremap = true, silent = true, desc = 'previous diagnostic' })
-keymap.set('n', ']d', diagnostic.goto_next, { noremap = true, silent = true, desc = 'next diagnostic' })
+
+keymap.set('n', '<space>ds', function()
+  diagnostic.setqflist()
+end, { noremap = true, silent = true, desc = 'show all buffer diagnostics in quickfix' })
+
+keymap.set('n', '[d', function()
+  diagnostic.jump { count = -1 }
+end, { noremap = true, silent = true, desc = 'previous diagnostic' })
+keymap.set('n', ']d', function()
+  diagnostic.jump { count = 1 }
+end, { noremap = true, silent = true, desc = 'next diagnostic' })
 keymap.set('n', '[e', function()
-  diagnostic.goto_prev {
-    severity = severity.ERROR,
-  }
+  diagnostic.jump { count = -1, severity = severity.ERROR }
 end, { noremap = true, silent = true, desc = 'previous error diagnostic' })
 keymap.set('n', ']e', function()
-  diagnostic.goto_next {
-    severity = severity.ERROR,
-  }
+  diagnostic.jump { count = 1, severity = severity.ERROR }
 end, { noremap = true, silent = true, desc = 'next error diagnostic' })
 local function buf_toggle_diagnostics()
-  local filter = { bufnr = api.nvim_get_current_buf() }
-  diagnostic.enable(not diagnostic.is_enabled(filter), filter)
+  local bufnr = api.nvim_get_current_buf()
+  if diagnostic.is_enabled { bufnr = bufnr } then
+    diagnostic.enable(false, { bufnr = bufnr })
+  else
+    diagnostic.enable(true, { bufnr = bufnr })
+  end
 end
 
-keymap.set('n', '<space>dt', buf_toggle_diagnostics)
+keymap.set('n', '<space>dt', buf_toggle_diagnostics, { desc = 'toggle buffer diagnostics' })
 
 local function toggle_spell_check()
-  ---@diagnostic disable-next-line: param-type-mismatch
-  vim.opt.spell = not (vim.opt.spell:get())
+  vim.opt.spell = not vim.o.spell
 end
 
 keymap.set('n', '<leader>S', toggle_spell_check, { noremap = true, silent = true, desc = 'Toggle spellcheck' })
@@ -151,16 +159,3 @@ keymap.set(
   '<C-r><C-p>+',
   { noremap = true, silent = true, desc = 'Paste from clipboard from within insert mode' }
 )
-
---- Disabled keymaps [enable at your own risk]
-
--- Automatic management of search highlight
--- XXX: This is not so nice if you use j/k for navigation
--- (you should be using <C-d>/<C-u> and relative line numbers instead ;)
---
--- local auto_hlsearch_namespace = vim.api.nvim_create_namespace('auto_hlsearch')
--- vim.on_key(function(char)
---   if vim.fn.mode() == 'n' then
---     vim.opt.hlsearch = vim.tbl_contains({ '<CR>', 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char))
---   end
--- end, auto_hlsearch_namespace)
