@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
     end
   end,
 })
-require('mini.cmdline').setup()
+
 local miniclue = require('mini.clue')
 miniclue.setup {
   triggers = {
