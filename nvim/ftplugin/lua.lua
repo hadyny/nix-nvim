@@ -7,6 +7,10 @@ if vim.fn.executable(lua_ls_cmd) ~= 1 then
   return
 end
 
+vim.opt_local.expandtab = true
+vim.opt_local.shiftwidth = 2
+vim.opt_local.softtabstop = 2
+
 local root_files = {
   '.luarc.json',
   '.luarc.jsonc',
