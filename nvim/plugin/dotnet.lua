@@ -69,7 +69,7 @@ require('nvim-dap-virtual-text').setup {
 }
 
 require('easy-dotnet').setup {
-  picker = 'fzf-lua',
+  picker = 'fzf',
 }
 
 require('nvim-tree').setup {
