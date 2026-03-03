@@ -110,6 +110,27 @@ end
 
 keymap.set('n', '<leader>S', toggle_spell_check, { noremap = true, silent = true, desc = 'Toggle spellcheck' })
 
+local function toggle_treesitter_folding()
+  if vim.wo.foldmethod == 'expr' and vim.wo.foldexpr:match('treesitter') then
+    -- Disable treesitter folding
+    vim.wo.foldmethod = 'manual'
+    vim.wo.foldexpr = ''
+    vim.wo.foldcolumn = '0'
+    vim.notify('Treesitter folding disabled', vim.log.levels.INFO)
+  else
+    -- Enable treesitter folding
+    vim.wo.foldmethod = 'expr'
+    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo.foldcolumn = 'auto:9'
+    vim.wo.foldtext = 'v:lua.vim.treesitter.foldtext()'
+    vim.wo.foldlevel = 99
+    vim.notify('Treesitter folding enabled', vim.log.levels.INFO)
+  end
+end
+
+keymap.set('n', '<leader>F', toggle_treesitter_folding, { noremap = true, silent = true, desc = 'Toggle treesitter folding' })
+
+
 keymap.set({ 'v', 'x', 'n' }, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Yank to clipboard' })
 keymap.set({ 'n', 'v', 'x' }, '<leader>Y', '"+yy', { noremap = true, silent = true, desc = 'Yank line to clipboard' })
 keymap.set({ 'n', 'v', 'x' }, '<leader>p', '"+p', { noremap = true, silent = true, desc = 'Paste from clipboard' })

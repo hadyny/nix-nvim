@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end,
 })
 
--- Enable treesitter highlighting when a file is opened
+-- Enable treesitter highlighting and indenting when a file is opened
 vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter' }, {
   group = vim.api.nvim_create_augroup('TreesitterStart', { clear = true }),
   callback = function(args)
@@ -74,6 +74,9 @@ vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter' }, {
     -- Only start treesitter for normal buffers with a filetype
     if vim.bo[buf].buftype == '' and vim.bo[buf].filetype ~= '' then
       vim.treesitter.start(buf)
+      
+      -- Enable treesitter indenting
+      vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end
   end,
 })
