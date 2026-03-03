@@ -14,25 +14,6 @@ keymap.set('n', ']b', vim.cmd.bnext, { silent = true, desc = 'next buffer' })
 keymap.set('n', '[B', vim.cmd.bfirst, { silent = true, desc = 'first buffer' })
 keymap.set('n', ']B', vim.cmd.blast, { silent = true, desc = 'last buffer' })
 
--- Toggle the quickfix list (only opens if it is populated)
-local function toggle_qf_list()
-  local qf_exists = false
-  for _, win in pairs(fn.getwininfo() or {}) do
-    if win['quickfix'] == 1 then
-      qf_exists = true
-    end
-  end
-  if qf_exists == true then
-    vim.cmd.cclose()
-    return
-  end
-  if not vim.tbl_isempty(vim.fn.getqflist()) then
-    vim.cmd.copen()
-  end
-end
-
-keymap.set('n', '<leader>q', toggle_qf_list, { desc = 'toggle quickfix list' })
-
 local function try_fallback_notify(opts)
   local success, _ = pcall(opts.try)
   if success then
@@ -45,28 +26,7 @@ local function try_fallback_notify(opts)
   vim.notify(opts.notify, vim.log.levels.INFO)
 end
 
--- Cycle the quickfix and location lists
-local function cleft()
-  try_fallback_notify {
-    try = vim.cmd.cprev,
-    fallback = vim.cmd.clast,
-    notify = 'Quickfix list is empty!',
-  }
-end
-
-local function cright()
-  try_fallback_notify {
-    try = vim.cmd.cnext,
-    fallback = vim.cmd.cfirst,
-    notify = 'Quickfix list is empty!',
-  }
-end
-
-keymap.set('n', '[c', cleft, { silent = true, desc = 'cycle quickfix left' })
-keymap.set('n', ']c', cright, { silent = true, desc = 'cycle quickfix right' })
-keymap.set('n', '[C', vim.cmd.cfirst, { silent = true, desc = 'first quickfix entry' })
-keymap.set('n', ']C', vim.cmd.clast, { silent = true, desc = 'last quickfix entry' })
-
+-- Cycle the location list
 local function lleft()
   try_fallback_notify {
     try = vim.cmd.lprev,

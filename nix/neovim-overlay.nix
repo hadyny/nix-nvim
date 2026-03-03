@@ -65,6 +65,7 @@ let
     render-markdown-nvim
     checkmate-nvim
     # general
+    quicker-nvim
     mini-nvim
     nvim-treesitter.withAllGrammars
     conform-nvim
