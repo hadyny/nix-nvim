@@ -64,6 +64,9 @@ let
     # docs
     render-markdown-nvim
     checkmate-nvim
+    # completion
+    blink-cmp
+    lspkind-nvim
     # general
     quicker-nvim
     mini-nvim

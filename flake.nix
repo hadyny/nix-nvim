@@ -15,13 +15,6 @@
       url = "github:leblocks/hopcsharp.nvim";
       flake = false;
     };
-
-    # Add bleeding-edge plugins here.
-    # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    # wf-nvim = {
-    #   url = "github:Cassin01/wf.nvim";
-    #   flake = false;
-    # };
   };
 
   outputs =

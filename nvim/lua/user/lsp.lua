@@ -11,9 +11,9 @@ local M = {}
 ---@return lsp.ClientCapabilities
 function M.make_client_capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  -- Add com_nvim_lsp capabilities
-  local mini_lsp = require('mini.completion').get_lsp_capabilities()
-  capabilities = vim.tbl_deep_extend('keep', capabilities, mini_lsp)
+  -- Add blink.cmp capabilities
+  local blink_cmp = require('blink.cmp')
+  capabilities = vim.tbl_deep_extend('keep', capabilities, blink_cmp.get_lsp_capabilities())
   -- Add any additional plugin capabilities here.
   -- Make sure to follow the instructions provided in the plugin's docs.
   return capabilities

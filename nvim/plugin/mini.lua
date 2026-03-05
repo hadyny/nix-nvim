@@ -42,20 +42,6 @@ require('mini.statusline').setup {
   },
 }
 
-vim.o.completeopt = 'menu,preview,noselect,popup'
-
-require('mini.completion').setup {
-  set_vim_settings = false,
-}
-vim.api.nvim_create_autocmd('BufEnter', {
-  callback = function()
-    local buftype = vim.bo.buftype
-    if buftype == 'prompt' or buftype == 'nofile' then
-      vim.b.minicompletion_disable = true
-    end
-  end,
-})
-
 local miniclue = require('mini.clue')
 miniclue.setup {
   triggers = {
