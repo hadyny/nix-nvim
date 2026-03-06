@@ -20,27 +20,6 @@ local MiniIcons = require('mini.icons')
 MiniIcons.setup()
 MiniIcons.mock_nvim_web_devicons()
 MiniIcons.tweak_lsp_kind()
-require('mini.statusline').setup {
-  content = {
-    active = function()
-      local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
-      local git = MiniStatusline.section_git { trunc_width = 40 }
-      local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
-      local filename = MiniStatusline.section_filename { trunc_width = 140 }
-      local location = MiniStatusline.section_location { trunc_width = 75 }
-      local search = MiniStatusline.section_searchcount { trunc_width = 75 }
-
-      return MiniStatusline.combine_groups {
-        { hl = mode_hl, strings = { mode } },
-        '%<', -- Mark general truncate point
-        { hl = 'MiniStatuslineFilename', strings = { filename } },
-        '%=', -- End left alignment
-        { hl = 'MiniStatuslineDevinfo', strings = { git, diagnostics } },
-        { hl = mode_hl, strings = { search, location } },
-      }
-    end,
-  },
-}
 
 local miniclue = require('mini.clue')
 miniclue.setup {

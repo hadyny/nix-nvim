@@ -69,6 +69,7 @@ let
     lspkind-nvim
     # general
     bufferline-nvim
+    lualine-nvim
     quicker-nvim
     mini-nvim
     nvim-treesitter.withAllGrammars
