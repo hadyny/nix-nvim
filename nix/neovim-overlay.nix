@@ -68,6 +68,7 @@ let
     blink-cmp
     lspkind-nvim
     # general
+    bufferline-nvim
     quicker-nvim
     mini-nvim
     nvim-treesitter.withAllGrammars

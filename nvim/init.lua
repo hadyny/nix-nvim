@@ -36,7 +36,7 @@ opt.undofile = true
 opt.splitright = true
 opt.splitbelow = true
 opt.cmdheight = 0
-opt.winborder = 'single'
+opt.winborder = 'solid'
 
 opt.scrolloff = 4
 opt.sidescrolloff = 8
