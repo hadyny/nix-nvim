@@ -71,6 +71,7 @@ let
     bufferline-nvim
     lualine-nvim
     quicker-nvim
+    snacks-nvim
     mini-nvim
     nvim-treesitter.withAllGrammars
     conform-nvim
