@@ -106,7 +106,6 @@ keymap.set('n', '<leader>ds', function()
   diagnostic.setqflist()
 end, { desc = 'Diagnostics to quickfix' })
 
-keymap.set('n', '<leader>dt', toggle_diagnostics, { desc = 'Toggle buffer diagnostics' })
 
 keymap.set('n', '[d', function()
   diagnostic.jump { count = -1 }
@@ -157,6 +156,7 @@ keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = 'Save file' })
 
 -- ── Toggle (t) ──────────────────────────────────────────────────────
 
+keymap.set('n', '<leader>tD', toggle_diagnostics, { desc = 'Toggle buffer diagnostics' })
 keymap.set('n', '<leader>tf', toggle_treesitter_folding, { desc = 'Toggle treesitter folding' })
 keymap.set('n', '<leader>ts', toggle_spell_check, { desc = 'Toggle spellcheck' })
 

@@ -98,6 +98,21 @@ map('n', '<leader>cst', function()
   require('hopcsharp').get_type_hierarchy()
 end, { desc = 'Hopcsharp type hierarchy' })
 
+-- C# explorer
+map('n', '<leader>cse', '<cmd>CSharpExplorer<CR>', { desc = 'C# explorer toggle' })
+map('n', '<leader>csf', '<cmd>CSharpExplorerFindFile<CR>', { desc = 'C# explorer find file' })
+map('n', '<leader>csR', '<cmd>CSharpExplorerRefresh<CR>', { desc = 'C# explorer refresh' })
+
+-- Dotnet
+map('n', '<leader>dn', '<cmd>Dotnet<CR>', { desc = 'Dotnet commands' })
+map('n', '<leader>dr', '<cmd>Dotnet run<CR>', { desc = 'Dotnet run' })
+map('n', '<leader>db', '<cmd>Dotnet build<CR>', { desc = 'Dotnet build' })
+map('n', '<leader>dt', '<cmd>Dotnet test<CR>', { desc = 'Dotnet test' })
+map('n', '<leader>dw', '<cmd>Dotnet watch<CR>', { desc = 'Dotnet watch' })
+map('n', '<leader>dp', '<cmd>Dotnet project view<CR>', { desc = 'Dotnet project view' })
+map('n', '<leader>do', '<cmd>Dotnet outdated<CR>', { desc = 'Dotnet outdated packages' })
+map('n', '<leader>dT', '<cmd>Dotnet testrunner<CR>', { desc = 'Dotnet test runner' })
+
 -- Debug
 map('n', '<F5>', dap.continue, { desc = 'Debug: start/continue' })
 map('n', '<F7>', dapui.toggle, { desc = 'Debug: toggle UI' })
