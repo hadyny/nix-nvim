@@ -51,7 +51,6 @@ let
     lazydev-nvim
     # nix
     # typescript
-    nvim-highlight-colors
     # csharp
     easy-dotnet-nvim
     (mkNvimPlugin inputs.csharp-explorer "csharp-explorer.nvim")
@@ -66,17 +65,22 @@ let
     checkmate-nvim
     # completion
     blink-cmp
-    lspkind-nvim
+    # colours
+    nvim-highlight-colors
     # general
     bufferline-nvim
     lualine-nvim
     quicker-nvim
     snacks-nvim
     mini-nvim
+    which-key-nvim
     nvim-treesitter.withAllGrammars
     conform-nvim
     fzf-lua
-    yazi-nvim
+    gitsigns-nvim
+    neogit
+    nvim-scrollbar
+    nvim-hlslens
     # ai
     opencode-nvim
 

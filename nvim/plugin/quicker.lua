@@ -25,23 +25,20 @@ require('quicker').setup {
   },
 }
 
-local keymap = vim.keymap
+local map = vim.keymap.set
 
--- Toggle the quickfix list after populating
-keymap.set('n', '<leader>q', function()
+map('n', '<leader>q', function()
   require('quicker').toggle()
-end, { desc = 'toggle quickfix list' })
+end, { desc = 'Toggle quickfix' })
 
--- Expand/collapse quickfix context from normal mode
-keymap.set('n', '<leader>Qe', function()
-  require('quicker').expand { before = 2, after = 2, add_to_existing = true }
-end, { desc = 'expand quickfix context' })
-
-keymap.set('n', '<leader>Qc', function()
+map('n', '<leader>qc', function()
   require('quicker').collapse()
-end, { desc = 'collapse quickfix context' })
+end, { desc = 'Collapse quickfix context' })
 
--- Refresh the quickfix list
-keymap.set('n', '<leader>Qr', function()
+map('n', '<leader>qe', function()
+  require('quicker').expand { before = 2, after = 2, add_to_existing = true }
+end, { desc = 'Expand quickfix context' })
+
+map('n', '<leader>qr', function()
   require('quicker').refresh()
-end, { desc = 'refresh quickfix list' })
+end, { desc = 'Refresh quickfix' })

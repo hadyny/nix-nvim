@@ -5,35 +5,67 @@ vim.g.did_load_snacks_plugin = true
 
 require('snacks').setup {
   animate = { enabled = true },
-  gitbrowse = { enabled = true },
-  input = { enabled = true },
-  rename = { enabled = true },
+  explorer = {
+    enabled = true,
+    replace_netrw = true,
+  },
   git = { enabled = true },
-  statuscolumn = { enabled = true },
-  picker = { enabled = true },
+  gitbrowse = { enabled = true },
   indent = {
     enabled = true,
     only_scope = true,
     animate = { enabled = true },
   },
+  input = { enabled = true },
+  picker = {
+    enabled = true,
+    sources = {
+      explorer = {
+        layout = {
+          layout = {
+            position = 'right',
+          },
+        },
+      },
+    },
+  },
+  rename = { enabled = true },
+  statuscolumn = { enabled = true },
 }
 
--- Command history
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>:', function()
-  Snacks.picker.command_history()
-end, { desc = 'Commans history' })
+local map = vim.keymap.set
 
--- Search buffer
-vim.keymap.set({ 'n', 'v', 'x' }, '<C-f>', function()
+-- Explorer
+map('n', '<leader>e', function()
+  Snacks.explorer()
+end, { desc = 'Explorer' })
+
+-- Find
+map('n', '<leader><leader>', function()
+  Snacks.picker.files()
+end, { desc = 'Find files' })
+
+map({ 'n', 'v', 'x' }, '<leader>,', function()
+  Snacks.picker.buffers()
+end, { desc = 'Find buffers' })
+
+map({ 'n', 'v', 'x' }, '<leader>/', function()
+  Snacks.picker.grep()
+end, { desc = 'Grep' })
+
+map({ 'n', 'v', 'x' }, '<leader>:', function()
+  Snacks.picker.command_history()
+end, { desc = 'Command history' })
+
+map({ 'n', 'v', 'x' }, '<C-f>', function()
   Snacks.picker.lines()
 end, { desc = 'Search buffer' })
 
--- Git blame line
-vim.keymap.set('n', '<leader>gb', function()
+-- Git
+map('n', '<leader>gb', function()
   Snacks.git.blame_line()
 end, { desc = 'Git blame line' })
 
--- Browse git repository online
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>go', function()
+map({ 'n', 'v', 'x' }, '<leader>go', function()
   Snacks.gitBrowse()
-end, { desc = 'View git online' })
+end, { desc = 'Git browse online' })

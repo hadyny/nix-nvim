@@ -17,18 +17,3 @@ require('fzf-lua').setup {
     },
   },
 }
-
--- Smart file picker (files or git files if in a git repo)
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader><leader>', function()
-  require('fzf-lua').files()
-end, { desc = 'Files' })
-
--- Buffer picker
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>b', function()
-  require('fzf-lua').buffers()
-end, { desc = 'Buffers' })
-
--- Live grep/search
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>/', function()
-  require('fzf-lua').live_grep()
-end, { desc = 'Search' })

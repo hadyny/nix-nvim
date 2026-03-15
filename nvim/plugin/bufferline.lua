@@ -13,58 +13,50 @@ vim.opt.termguicolors = true
 
 require('bufferline').setup {
   options = {
-    mode = 'buffers', -- set to "tabs" to only show tabpages instead
+    mode = 'buffers',
     style_preset = require('bufferline').style_preset.default,
     themable = true,
-    numbers = 'none', -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string
-    close_command = 'bdelete! %d', -- can be a string | function, see "Mouse actions"
-    right_mouse_command = 'bdelete! %d', -- can be a string | function, see "Mouse actions"
-    left_mouse_command = 'buffer %d', -- can be a string | function, see "Mouse actions"
-    middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
+    numbers = 'none',
+    close_command = 'bdelete! %d',
+    right_mouse_command = 'bdelete! %d',
+    left_mouse_command = 'buffer %d',
+    middle_mouse_command = nil,
     indicator = {
-      icon = '▎', -- this should be omitted if indicator style is not 'icon'
-      style = 'icon', -- | 'underline' | 'none',
+      icon = '▎',
+      style = 'icon',
     },
     buffer_close_icon = '󰅖',
     modified_icon = '●',
     close_icon = '',
     left_trunc_marker = '',
     right_trunc_marker = '',
-    --- name_formatter can be used to change the buffer's label in the bufferline.
-    --- Please note some names can/will break the
-    --- bufferline so use this at your discretion knowing that it has
-    --- some limitations that will *NOT* be fixed.
     max_name_length = 18,
-    max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-    truncate_names = true, -- whether or not tab names should be truncated
+    max_prefix_length = 15,
+    truncate_names = true,
     tab_size = 18,
-    diagnostics = 'nvim_lsp', -- | "nvim_lsp" | "coc",
+    diagnostics = 'nvim_lsp',
     diagnostics_update_in_insert = false,
-    -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       local icon = level:match('error') and ' ' or ' '
       return ' ' .. icon .. count
     end,
-    -- NOTE: this will be called a lot so don't do any heavy processing here
     offsets = {
       {
         filetype = 'NvimTree',
         text = 'File Explorer',
-        text_align = 'center', -- | "left" | "right"
+        text_align = 'center',
         separator = true,
       },
     },
-    color_icons = true, -- whether or not to add the filetype icon highlights
-    show_buffer_icons = true, -- disable filetype icons for buffers
+    color_icons = true,
+    show_buffer_icons = true,
     show_buffer_close_icons = true,
     show_close_icon = true,
     show_tab_indicators = true,
-    show_duplicate_prefix = true, -- whether to show duplicate buffer prefix
-    persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-    move_wraps_at_ends = false, -- whether or not the move command "wraps" at the first or last position
-    -- can also be a table containing 2 custom separators
-    -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = 'slope', -- | "slant" | "thick" | "thin" | { 'any', 'any' },
+    show_duplicate_prefix = true,
+    persist_buffer_sort = true,
+    move_wraps_at_ends = false,
+    separator_style = 'slope',
     enforce_regular_tabs = false,
     always_show_bufferline = false,
     hover = {
@@ -72,7 +64,7 @@ require('bufferline').setup {
       delay = 200,
       reveal = { 'close' },
     },
-    sort_by = 'insert_after_current', -- | 'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs'
+    sort_by = 'insert_after_current',
   },
   highlights = {
     fill = {
@@ -105,9 +97,6 @@ require('bufferline').setup {
     close_button_selected = {
       bg = { attribute = 'bg', highlight = 'TabLineSel' },
     },
-    -- buffer_visible = {
-    --   bg = { attribute = 'bg', highlight = 'TabLine' },
-    -- },
     buffer_selected = {
       bold = true,
       italic = false,
@@ -302,38 +291,34 @@ require('bufferline').setup {
   },
 }
 
--- Keymaps for bufferline
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 -- Navigate buffers
-map('n', '<S-l>', '<Cmd>BufferLineCycleNext<CR>', opts)
-map('n', '<S-h>', '<Cmd>BufferLineCyclePrev<CR>', opts)
+map('n', '<S-h>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
+map('n', '<S-l>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+map('n', '<A-S-h>', '<cmd>BufferLineMovePrev<CR>', { desc = 'Move buffer left' })
+map('n', '<A-S-l>', '<cmd>BufferLineMoveNext<CR>', { desc = 'Move buffer right' })
 
--- Move buffers
-map('n', '<A-S-l>', '<Cmd>BufferLineMoveNext<CR>', opts)
-map('n', '<A-S-h>', '<Cmd>BufferLineMovePrev<CR>', opts)
-
--- Go to buffer in position
-map('n', '<leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>', opts)
-map('n', '<leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>', opts)
-map('n', '<leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>', opts)
-map('n', '<leader>4', '<Cmd>BufferLineGoToBuffer 4<CR>', opts)
-map('n', '<leader>5', '<Cmd>BufferLineGoToBuffer 5<CR>', opts)
-map('n', '<leader>6', '<Cmd>BufferLineGoToBuffer 6<CR>', opts)
-map('n', '<leader>7', '<Cmd>BufferLineGoToBuffer 7<CR>', opts)
-map('n', '<leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>', opts)
-map('n', '<leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>', opts)
-
--- Pick buffer
-map('n', '<leader>bp', '<Cmd>BufferLinePick<CR>', opts)
+-- Go to buffer by position
+map('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<CR>', { desc = 'Buffer 1' })
+map('n', '<leader>2', '<cmd>BufferLineGoToBuffer 2<CR>', { desc = 'Buffer 2' })
+map('n', '<leader>3', '<cmd>BufferLineGoToBuffer 3<CR>', { desc = 'Buffer 3' })
+map('n', '<leader>4', '<cmd>BufferLineGoToBuffer 4<CR>', { desc = 'Buffer 4' })
+map('n', '<leader>5', '<cmd>BufferLineGoToBuffer 5<CR>', { desc = 'Buffer 5' })
+map('n', '<leader>6', '<cmd>BufferLineGoToBuffer 6<CR>', { desc = 'Buffer 6' })
+map('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<CR>', { desc = 'Buffer 7' })
+map('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<CR>', { desc = 'Buffer 8' })
+map('n', '<leader>9', '<cmd>BufferLineGoToBuffer 9<CR>', { desc = 'Buffer 9' })
 
 -- Close buffers
-map('n', '<leader>bc', '<Cmd>BufferLinePickClose<CR>', opts)
-map('n', '<leader>bx', '<Cmd>BufferLineCloseOthers<CR>', opts)
-map('n', '<leader>bl', '<Cmd>BufferLineCloseLeft<CR>', opts)
-map('n', '<leader>br', '<Cmd>BufferLineCloseRight<CR>', opts)
+map('n', '<leader>bc', '<cmd>BufferLinePickClose<CR>', { desc = 'Close picked buffer' })
+map('n', '<leader>bl', '<cmd>BufferLineCloseLeft<CR>', { desc = 'Close buffers left' })
+map('n', '<leader>br', '<cmd>BufferLineCloseRight<CR>', { desc = 'Close buffers right' })
+map('n', '<leader>bx', '<cmd>BufferLineCloseOthers<CR>', { desc = 'Close other buffers' })
+
+-- Pick buffer
+map('n', '<leader>bp', '<cmd>BufferLinePick<CR>', { desc = 'Pick buffer' })
 
 -- Sort buffers
-map('n', '<leader>bs', '<Cmd>BufferLineSortByExtension<CR>', opts)
-map('n', '<leader>bd', '<Cmd>BufferLineSortByDirectory<CR>', opts)
+map('n', '<leader>bd', '<cmd>BufferLineSortByDirectory<CR>', { desc = 'Sort by directory' })
+map('n', '<leader>bs', '<cmd>BufferLineSortByExtension<CR>', { desc = 'Sort by extension' })

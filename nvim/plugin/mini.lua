@@ -3,62 +3,8 @@ if vim.g.did_load_mini_plugin then
 end
 vim.g.did_load_mini_plugin = true
 
-require('mini.git').setup()
-require('mini.diff').setup {
-  view = {
-    style = 'sign',
-    signs = {
-      add = '▎',
-      change = '▎',
-      delete = '_ ',
-    },
-  },
-}
 require('mini.pairs').setup()
 require('mini.cursorword').setup { delay = 1000 }
 local MiniIcons = require('mini.icons')
 MiniIcons.setup()
 MiniIcons.mock_nvim_web_devicons()
-
-local miniclue = require('mini.clue')
-miniclue.setup {
-  triggers = {
-    -- Leader triggers
-    { mode = { 'n', 'x' }, keys = '<Leader>' },
-
-    -- `[` and `]` keys
-    { mode = 'n', keys = '[' },
-    { mode = 'n', keys = ']' },
-
-    -- Built-in completion
-    { mode = 'i', keys = '<C-x>' },
-
-    -- `g` key
-    { mode = { 'n', 'x' }, keys = 'g' },
-
-    -- Marks
-    { mode = { 'n', 'x' }, keys = "'" },
-    { mode = { 'n', 'x' }, keys = '`' },
-
-    -- Registers
-    { mode = { 'n', 'x' }, keys = '"' },
-    { mode = { 'i', 'c' }, keys = '<C-r>' },
-
-    -- Window commands
-    { mode = 'n', keys = '<C-w>' },
-
-    -- `z` key
-    { mode = { 'n', 'x' }, keys = 'z' },
-  },
-
-  clues = {
-    -- Enhance this by adding descriptions for <Leader> mapping groups
-    miniclue.gen_clues.square_brackets(),
-    miniclue.gen_clues.builtin_completion(),
-    miniclue.gen_clues.g(),
-    miniclue.gen_clues.marks(),
-    miniclue.gen_clues.registers(),
-    miniclue.gen_clues.windows(),
-    miniclue.gen_clues.z(),
-  },
-}

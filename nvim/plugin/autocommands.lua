@@ -91,41 +91,60 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     vim.cmd.setlocal('signcolumn=yes')
     vim.bo[bufnr].bufhidden = 'hide'
-
-    -- Enable completion triggered by <c-x><c-o>
     vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
     local function desc(description)
       return { noremap = true, silent = true, buffer = bufnr, desc = description }
     end
-    keymap.set('n', 'gD', vim.lsp.buf.declaration, desc('lsp go to Declaration'))
-    keymap.set('n', 'gd', vim.lsp.buf.definition, desc('lsp go to definition'))
-    keymap.set('n', '<space>gt', vim.lsp.buf.type_definition, desc('lsp go to type definition'))
-    keymap.set('n', 'K', vim.lsp.buf.hover, desc('lsp hover'))
-    keymap.set('n', '<space>pd', peek_definition, desc('lsp peek definition'))
-    keymap.set('n', '<space>pt', peek_type_definition, desc('lsp peek type definition'))
-    keymap.set('n', 'gi', vim.lsp.buf.implementation, desc('lsp go to implementation'))
-    keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, desc('lsp signature help'))
-    keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, desc('lsp add workspace folder'))
-    keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, desc('lsp workspace folder remove'))
-    keymap.set('n', '<space>wl', function()
-      vim.print(vim.lsp.buf.list_workspace_folders())
-    end, desc('lsp workspace folders list'))
-    keymap.set('n', '<space>rn', vim.lsp.buf.rename, desc('lsp rename'))
-    keymap.set('n', '<space>wq', vim.lsp.buf.workspace_symbol, desc('lsp workspace symbol'))
-    keymap.set('n', '<space>dd', vim.lsp.buf.document_symbol, desc('lsp document symbol'))
-    keymap.set('n', '<M-CR>', vim.lsp.buf.code_action, desc('lsp code action'))
-    keymap.set('n', '<M-l>', vim.lsp.codelens.run, desc('lsp run code lens'))
-    keymap.set('n', '<space>cr', vim.lsp.codelens.refresh, desc('lsp code lenses refresh'))
-    keymap.set('n', 'gr', vim.lsp.buf.references, desc('lsp get references'))
-    keymap.set('n', '<space>f', function()
+
+    -- Code actions
+    keymap.set('n', '<M-CR>', vim.lsp.buf.code_action, desc('Code action'))
+
+    -- Code lens
+    keymap.set('n', '<leader>lc', vim.lsp.codelens.refresh, desc('Code lens refresh'))
+    keymap.set('n', '<leader>ll', vim.lsp.codelens.run, desc('Code lens run'))
+
+    -- Document symbols
+    keymap.set('n', '<leader>ld', vim.lsp.buf.document_symbol, desc('Document symbols'))
+
+    -- Format
+    keymap.set('n', '<leader>lf', function()
       vim.lsp.buf.format { async = true }
-    end, desc('lsp format buffer'))
+    end, desc('Format buffer'))
+
+    -- Go to
+    keymap.set('n', 'gD', vim.lsp.buf.declaration, desc('Go to declaration'))
+    keymap.set('n', 'gd', vim.lsp.buf.definition, desc('Go to definition'))
+    keymap.set('n', 'gi', vim.lsp.buf.implementation, desc('Go to implementation'))
+    keymap.set('n', 'gr', vim.lsp.buf.references, desc('References'))
+    keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, desc('Go to type definition'))
+
+    -- Hover and signature
+    keymap.set('n', 'K', vim.lsp.buf.hover, desc('Hover'))
+    keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, desc('Signature help'))
+
+    -- Inlay hints
     if client and client.server_capabilities.inlayHintProvider then
-      keymap.set('n', '<space>h', function()
+      keymap.set('n', '<leader>lh', function()
         local current_setting = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
         vim.lsp.inlay_hint.enable(not current_setting, { bufnr = bufnr })
-      end, desc('lsp toggle inlay hints'))
+      end, desc('Toggle inlay hints'))
     end
+
+    -- Peek
+    keymap.set('n', '<leader>lpd', peek_definition, desc('Peek definition'))
+    keymap.set('n', '<leader>lpt', peek_type_definition, desc('Peek type definition'))
+
+    -- Rename
+    keymap.set('n', '<leader>lr', vim.lsp.buf.rename, desc('Rename'))
+
+    -- Workspace
+    keymap.set('n', '<leader>lwa', vim.lsp.buf.add_workspace_folder, desc('Add workspace folder'))
+    keymap.set('n', '<leader>lwl', function()
+      vim.print(vim.lsp.buf.list_workspace_folders())
+    end, desc('List workspace folders'))
+    keymap.set('n', '<leader>lwr', vim.lsp.buf.remove_workspace_folder, desc('Remove workspace folder'))
+    keymap.set('n', '<leader>lws', vim.lsp.buf.workspace_symbol, desc('Workspace symbols'))
 
     -- Auto-refresh code lenses
     if not client then
