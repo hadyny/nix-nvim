@@ -15,6 +15,11 @@
       url = "github:leblocks/hopcsharp.nvim";
       flake = false;
     };
+
+    claudecode = {
+      url = "github:coder/claudecode.nvim";
+      flake = false;
+    };
   };
 
   outputs =

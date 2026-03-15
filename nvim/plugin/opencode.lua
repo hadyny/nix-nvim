@@ -1,7 +1,7 @@
-if vim.g.did_load_ai_plugin then
+if vim.g.did_load_opencode_plugin then
   return
 end
-vim.g.did_load_ai_plugin = true
+vim.g.did_load_opencode_plugin = true
 
 vim.o.autoread = true
 
