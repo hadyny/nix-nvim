@@ -160,6 +160,12 @@ keymap.set('n', '<leader>tD', toggle_diagnostics, { desc = 'Toggle buffer diagno
 keymap.set('n', '<leader>tf', toggle_treesitter_folding, { desc = 'Toggle treesitter folding' })
 keymap.set('n', '<leader>ts', toggle_spell_check, { desc = 'Toggle spellcheck' })
 
+-- ── Git (g) ──────────────────────────────────────────────────────────
+
+keymap.set('n', '<leader>gc', function()
+  vim.cmd('terminal koji')
+end, { desc = 'Commit with koji' })
+
 -- ── Close buffer (x) ───────────────────────────────────────────────
 
 keymap.set('n', '<leader>x', '<cmd>bdelete<CR>', { desc = 'Close buffer' })

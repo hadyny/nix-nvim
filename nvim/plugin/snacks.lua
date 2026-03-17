@@ -42,7 +42,7 @@ end, { desc = 'Explorer' })
 
 -- Find
 map('n', '<leader><leader>', function()
-  Snacks.picker.files()
+  Snacks.picker.smart()
 end, { desc = 'Find files' })
 
 map({ 'n', 'v', 'x' }, '<leader>,', function()

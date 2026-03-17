@@ -93,6 +93,7 @@ let
   extraPackages = with pkgs; [
     # git
     delta
+    koji
     # lua
     lua-language-server
     stylua
