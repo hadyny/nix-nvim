@@ -5,7 +5,7 @@ vim.g.did_load_neogit_plugin = true
 
 require('neogit').setup {
   integrations = {
-    diffview = false,
+    diffview = true,
     fzf_lua = true,
   },
 }

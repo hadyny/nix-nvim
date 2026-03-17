@@ -77,6 +77,7 @@ let
     nvim-treesitter.withAllGrammars
     conform-nvim
     fzf-lua
+    diffview-nvim
     gitsigns-nvim
     neogit
     nvim-scrollbar
