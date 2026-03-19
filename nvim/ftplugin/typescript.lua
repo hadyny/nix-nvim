@@ -18,6 +18,7 @@ end
 local vtsls_root_files = { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' }
 
 vim.lsp.start {
+  name = 'vtsls',
   cmd = { 'vtsls', '--stdio' },
   init_options = {
     hostInfo = 'neovim',
@@ -52,6 +53,7 @@ local eslint_config_files = {
 }
 
 vim.lsp.start {
+  name = 'eslint',
   cmd = { 'vscode-eslint-language-server', '--stdio' },
   filetypes = {
     'javascript',
@@ -62,6 +64,7 @@ vim.lsp.start {
     'svelte',
     'astro',
     'htmlangular',
+    'graphql',
   },
   workspace_required = true,
   on_attach = function(client, bufnr)
@@ -203,6 +206,7 @@ tailwind_capabilities.workspace.didChangeWatchedFiles = {
 }
 
 vim.lsp.start {
+  name = 'tailwindcss',
   cmd = { 'tailwindcss-language-server', '--stdio' },
   filetypes = {
     -- html
@@ -310,8 +314,9 @@ vim.lsp.start {
 local graphql_root_files = { '.graphqlrc*', '.graphql.config.*', 'graphql.config.*' }
 
 vim.lsp.start {
+  name = 'graphql',
   cmd = { 'graphql-lsp', 'server', '-m', 'stream' },
-  filetypes = { 'graphql', 'typescriptreact', 'javascriptreact' },
+  filetypes = { 'graphql' },
   root_dir = vim.fs.dirname(vim.fs.find(graphql_root_files, { upward = true })[1]),
   capabilities = require('user.lsp').make_client_capabilities(),
 }

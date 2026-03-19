@@ -10,6 +10,7 @@ end
 local root_files = { '.marksman.toml', '.git' }
 
 vim.lsp.start {
+  name = 'marksman',
   cmd = { 'marksman', 'server' },
   filetypes = { 'markdown', 'markdown.mdx' },
   root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
