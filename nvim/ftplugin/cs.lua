@@ -1,8 +1,3 @@
-if vim.g.did_load_dotnet_plugins then
-  return
-end
-vim.g.did_load_dotnet_plugins = true
-
 vim.treesitter.language.register('c_sharp', 'csharp')
 
 local dap = require('dap')
@@ -39,7 +34,7 @@ require('nvim-dap-virtual-text').setup {
   only_first_definition = true,
   all_references = false,
   clear_on_continue = false,
-  display_callback = function(variable, buf, stackframe, node, options)
+  display_callback = function(variable, _, _, _, options)
     if options.virt_text_pos == 'inline' then
       return ' = ' .. variable.value
     else
