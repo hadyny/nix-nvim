@@ -41,7 +41,10 @@ require('blink.cmp').setup {
   },
 
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer', 'easy-dotnet' },
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    per_filetype = {
+      cs = { 'lsp', 'path', 'snippets', 'buffer', 'easy-dotnet' },
+    },
     providers = {
       ['easy-dotnet'] = {
         name = 'easy-dotnet',

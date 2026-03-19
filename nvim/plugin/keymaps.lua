@@ -162,7 +162,7 @@ keymap.set('n', '<leader>ts', toggle_spell_check, { desc = 'Toggle spellcheck' }
 
 -- ── Git (g) ──────────────────────────────────────────────────────────
 
-keymap.set('n', '<leader>gc', function()
+keymap.set('n', '<leader>gC', function()
   vim.cmd('terminal koji')
 end, { desc = 'Commit with koji' })
 

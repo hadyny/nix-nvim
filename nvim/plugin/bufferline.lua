@@ -3,12 +3,6 @@ if vim.g.did_load_bufferline_plugin then
 end
 vim.g.did_load_bufferline_plugin = true
 
--- Ensure mini.icons is set up to provide file type icons
-local has_mini_icons = pcall(require, 'mini.icons')
-if has_mini_icons then
-  require('mini.icons').mock_nvim_web_devicons()
-end
-
 vim.opt.termguicolors = true
 
 require('bufferline').setup {

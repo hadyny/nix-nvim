@@ -48,7 +48,7 @@ require('nvim-dap-virtual-text').setup {
 }
 
 require('easy-dotnet').setup {
-  picker = 'fzf',
+  picker = 'snacks',
 }
 
 require('nvim-tree').setup {
