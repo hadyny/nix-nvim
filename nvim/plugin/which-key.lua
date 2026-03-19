@@ -13,6 +13,6 @@ require('which-key').setup {
     { '<leader>6', hidden = true },
     { '<leader>7', hidden = true },
     { '<leader>8', hidden = true },
-    { '<leader>9', hidden = true },
+    { '<leader>9', group = '99' },
   },
 }

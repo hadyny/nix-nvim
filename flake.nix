@@ -20,6 +20,11 @@
       url = "github:coder/claudecode.nvim";
       flake = false;
     };
+
+    ninetynine = {
+      url = "github:ThePrimeagen/99";
+      flake = false;
+    };
   };
 
   outputs =

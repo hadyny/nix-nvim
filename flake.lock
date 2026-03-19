@@ -183,6 +183,22 @@
         "type": "github"
       }
     },
+    "ninetynine": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772554340,
+        "narHash": "sha256-z8hafm8EWS7dXoDXnZ/1ddvtpWKVUtJfvQmWT4zXIdg=",
+        "owner": "ThePrimeagen",
+        "repo": "99",
+        "rev": "ec9872f7df7f4eb8b319719c1c253eb3ea8877ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ThePrimeagen",
+        "repo": "99",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1718714799,
@@ -250,6 +266,7 @@
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
         "hopcsharp": "hopcsharp",
+        "ninetynine": "ninetynine",
         "nixpkgs": "nixpkgs_2"
       }
     },

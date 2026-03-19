@@ -302,7 +302,7 @@ map('n', '<leader>5', '<cmd>BufferLineGoToBuffer 5<CR>', { desc = 'Buffer 5' })
 map('n', '<leader>6', '<cmd>BufferLineGoToBuffer 6<CR>', { desc = 'Buffer 6' })
 map('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<CR>', { desc = 'Buffer 7' })
 map('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<CR>', { desc = 'Buffer 8' })
-map('n', '<leader>9', '<cmd>BufferLineGoToBuffer 9<CR>', { desc = 'Buffer 9' })
+-- <leader>9 reserved for 99.nvim
 
 -- Close buffers
 map('n', '<leader>bc', '<cmd>BufferLinePickClose<CR>', { desc = 'Close picked buffer' })

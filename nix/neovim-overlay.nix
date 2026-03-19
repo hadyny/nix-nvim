@@ -65,6 +65,7 @@ let
     checkmate-nvim
     # completion
     blink-cmp
+    blink-compat
     # colours
     nvim-highlight-colors
     # general
@@ -85,6 +86,7 @@ let
     # ai
     opencode-nvim
     (mkNvimPlugin inputs.claudecode "claudecode.nvim")
+    (mkNvimPluginNoCheck inputs.ninetynine "99.nvim")
 
     # bleeding-edge plugins from flake inputs
     # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
