@@ -85,8 +85,6 @@ let
     diffview-nvim
     gitsigns-nvim
     neogit
-    nvim-scrollbar
-    nvim-hlslens
     # ai
     opencode-nvim
     (mkNvimPlugin inputs.claudecode "claudecode.nvim")
