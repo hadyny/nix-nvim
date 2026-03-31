@@ -186,11 +186,11 @@
     "ninetynine": {
       "flake": false,
       "locked": {
-        "lastModified": 1772554340,
-        "narHash": "sha256-z8hafm8EWS7dXoDXnZ/1ddvtpWKVUtJfvQmWT4zXIdg=",
+        "lastModified": 1774370878,
+        "narHash": "sha256-ppFQaLSie9tSm2nlTrZPU47QyOaeqNMQjJf4vaIXgFo=",
         "owner": "ThePrimeagen",
         "repo": "99",
-        "rev": "ec9872f7df7f4eb8b319719c1c253eb3ea8877ed",
+        "rev": "0172d3caae2d8b967c9d47aa7557295f1481e5df",
         "type": "github"
       },
       "original": {
@@ -245,11 +245,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1773389992,
-        "narHash": "sha256-wvfdLLWJ2I9oEpDd9PfMA8osfIZicoQ5MT1jIwNs9Tk=",
+        "lastModified": 1774709303,
+        "narHash": "sha256-D3Q07BbIA2KnTcSXIqqu9P586uWxN74zNoCH3h2ESHg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c06b4ae3d6599a672a6210b7021d699c351eebda",
+        "rev": "8110df5ad7abf5d4c0f6fb0f8f978390e77f9685",
         "type": "github"
       },
       "original": {
