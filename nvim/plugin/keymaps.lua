@@ -106,7 +106,6 @@ keymap.set('n', '<leader>ds', function()
   diagnostic.setqflist()
 end, { desc = 'Diagnostics to quickfix' })
 
-
 keymap.set('n', '[d', function()
   diagnostic.jump { count = -1 }
 end, { desc = 'Previous diagnostic' })

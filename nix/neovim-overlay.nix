@@ -43,9 +43,6 @@ let
   # }
   all-plugins = with pkgs.vimPlugins; [
     # themes
-    catppuccin-nvim
-    onenord-nvim
-    tokyonight-nvim
     rose-pine
     # lua
     lazydev-nvim
@@ -72,7 +69,7 @@ let
     bufferline-nvim
     lualine-nvim
     quicker-nvim
-    mini-nvim
+    nvim-web-devicons
     which-key-nvim
     nvim-treesitter.withAllGrammars
     conform-nvim
@@ -84,7 +81,6 @@ let
     fzf-lua
     diffview-nvim
     gitsigns-nvim
-    neogit
     # ai
     opencode-nvim
     (mkNvimPlugin inputs.claudecode "claudecode.nvim")

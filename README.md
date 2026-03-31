@@ -32,13 +32,14 @@ nvim-dev
 
 | Category | Plugins |
 |---|---|
-| Colorscheme | rose-pine, catppuccin, tokyonight, onenord |
+| Colorscheme | rose-pine |
 | UI | bufferline.nvim, lualine.nvim, which-key.nvim |
 | Search | telescope.nvim (fzf, frecency, ui-select), fzf-lua |
 | Files | nvim-tree |
-| Editing | mini.nvim (pairs, cursorword, icons), quicker.nvim |
+| Editing | quicker.nvim |
+| Icons | nvim-web-devicons |
 | Completion | blink.cmp |
-| Git | gitsigns.nvim, neogit, diffview.nvim |
+| Git | gitsigns.nvim, diffview.nvim |
 | Syntax | nvim-treesitter (all grammars) |
 | Formatting | conform.nvim |
 | Debugging | nvim-dap, nvim-dap-ui, nvim-dap-virtual-text |
@@ -93,8 +94,6 @@ Leader key: `<space>`
 
 | Keys | Action |
 |---|---|
-| `<leader>gg` | Neogit status |
-| `<leader>gc` | Git commit (neogit) |
 | `<leader>gC` | Commit with koji |
 | `<leader>gb` | Git blame line |
 | `<leader>gd` | Diffview open |
@@ -165,17 +164,16 @@ Leader key: `<space>`
     │   ├── plugins.lua        # conform, render-markdown, checkmate
     │   ├── telescope.lua      # Finder, grep, frecency
     │   ├── nvim-tree.lua      # File explorer
-    │   ├── mini.lua           # Pairs, cursorword, icons
     │   ├── blink-cmp.lua      # Completion
     │   ├── bufferline.lua
     │   ├── lualine.lua        # Statusline
     │   ├── lsp-progress.lua   # LSP progress notifications
     │   ├── fzf-lua.lua
     │   ├── gitsigns.lua
-    │   ├── neogit.lua
     │   ├── diffview.lua       # Diff viewer
     │   ├── treesitter.lua
     │   ├── which-key.lua
+    │   ├── lazydev.lua         # Lua dev setup
     │   ├── quicker.lua        # Quickfix enhancements
     │   ├── highlight-colors.lua
     │   ├── opencode.lua       # AI: OpenCode

@@ -41,11 +41,16 @@ require('blink.cmp').setup {
   },
 
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
     per_filetype = {
       cs = { 'lsp', 'path', 'snippets', 'buffer', 'easy-dotnet' },
     },
     providers = {
+      lazydev = {
+        name = 'LazyDev',
+        module = 'lazydev.integrations.blink',
+        score_offset = 100,
+      },
       ['easy-dotnet'] = {
         name = 'easy-dotnet',
         enabled = true,

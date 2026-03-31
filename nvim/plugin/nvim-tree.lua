@@ -6,6 +6,7 @@ vim.g.did_load_nvim_tree_plugin = true
 require('nvim-tree').setup {
   view = {
     side = 'right',
+    width = 40,
   },
 }
 

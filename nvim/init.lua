@@ -90,9 +90,6 @@ vim.diagnostic.config {
     header = '',
     prefix = '',
   },
-
-  -- virtual_text = false,
-  -- virtual_lines = { current_line = true },
 }
 
 vim.cmd.colorscheme('rose-pine')

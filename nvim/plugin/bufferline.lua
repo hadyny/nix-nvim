@@ -3,8 +3,6 @@ if vim.g.did_load_bufferline_plugin then
 end
 vim.g.did_load_bufferline_plugin = true
 
-vim.opt.termguicolors = true
-
 require('bufferline').setup {
   options = {
     mode = 'buffers',
