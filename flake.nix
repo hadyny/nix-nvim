@@ -90,6 +90,11 @@
     )
     // {
       # You can add this overlay to your NixOS configuration
-      overlays.default = neovim-overlay;
+      overlays.default = final: prev:
+        let
+          nightlyApplied = inputs.neovim-nightly-overlay.overlays.default final prev;
+          neovimApplied = neovim-overlay final (prev // nightlyApplied);
+        in
+        nightlyApplied // neovimApplied;
     };
 }
