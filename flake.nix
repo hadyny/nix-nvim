@@ -6,9 +6,9 @@
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+    neovim-src = {
+      url = "github:neovim/neovim/v0.12.0";
+      flake = false;
     };
 
     csharp-explorer = {
@@ -42,6 +42,13 @@
     let
       systems = builtins.attrNames nixpkgs.legacyPackages;
 
+      neovim-src-overlay = final: prev: {
+        neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs {
+          src = inputs.neovim-src;
+          version = "0.12.0";
+        };
+      };
+
       # This is where the Neovim derivation is built.
       neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
     in
@@ -51,7 +58,7 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
-            inputs.neovim-nightly-overlay.overlays.default
+            neovim-src-overlay
             # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
             neovim-overlay
             # This adds a function can be used to generate a .luarc.json
@@ -92,9 +99,9 @@
       # You can add this overlay to your NixOS configuration
       overlays.default = final: prev:
         let
-          nightlyApplied = inputs.neovim-nightly-overlay.overlays.default final prev;
-          neovimApplied = neovim-overlay final (prev // nightlyApplied);
+          srcApplied = neovim-src-overlay final prev;
+          neovimApplied = neovim-overlay final (prev // srcApplied);
         in
-        nightlyApplied // neovimApplied;
+        srcApplied // neovimApplied;
     };
 }
