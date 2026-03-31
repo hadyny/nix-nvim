@@ -33,18 +33,19 @@ nvim-dev
 | Category | Plugins |
 |---|---|
 | Colorscheme | rose-pine, catppuccin, tokyonight, onenord |
-| UI | snacks.nvim (explorer, picker, indent, git), bufferline.nvim, lualine.nvim, which-key.nvim, nvim-scrollbar, nvim-hlslens |
+| UI | bufferline.nvim, lualine.nvim, which-key.nvim |
+| Search | telescope.nvim (fzf, frecency, ui-select), fzf-lua |
+| Files | nvim-tree |
 | Editing | mini.nvim (pairs, cursorword, icons), quicker.nvim |
 | Completion | blink.cmp |
-| Files | nvim-tree, fzf-lua |
-| Git | gitsigns.nvim, neogit |
+| Git | gitsigns.nvim, neogit, diffview.nvim |
 | Syntax | nvim-treesitter (all grammars) |
 | Formatting | conform.nvim |
 | Debugging | nvim-dap, nvim-dap-ui, nvim-dap-virtual-text |
 | C# / .NET | easy-dotnet.nvim, csharp-explorer.nvim, hopcsharp.nvim |
 | Lua | lazydev.nvim |
 | Markdown | render-markdown.nvim, checkmate.nvim |
-| AI | opencode.nvim, claudecode.nvim |
+| AI | opencode.nvim, claudecode.nvim, 99.nvim |
 | Colours | nvim-highlight-colors |
 
 ## Language support
@@ -56,7 +57,7 @@ Managed by Nix — no manual installation needed.
 | TypeScript / JS | vtsls, ESLint, Tailwind CSS | prettierd, rustywind | graphql-language-service |
 | C# / F# | roslyn-ls, fsautocomplete | csharpier | netcoredbg (DAP) |
 | Lua | lua-language-server | stylua | — |
-| Nix | nil | nixfmt | nixd |
+| Nix | nixd | nixfmt | nil (optional) |
 | Markdown | marksman | multimarkdown | — |
 | HTML / CSS / JSON | vscode-langservers-extracted | prettierd | — |
 
@@ -68,12 +69,13 @@ Leader key: `<space>`
 
 | Keys | Action |
 |---|---|
-| `<leader><leader>` | Smart find files |
+| `<leader><leader>` | Frecent files (telescope) |
+| `<leader>ff` | Find files |
 | `<leader>,` | Find buffers |
 | `<leader>/` | Grep |
 | `<leader>:` | Command history |
 | `<C-f>` | Search in buffer |
-| `<leader>e` | Explorer |
+| `<leader>e` | Explorer (nvim-tree) |
 | `[b` / `]b` | Previous / next buffer |
 | `<C-h/j/k/l>` | Window navigation |
 
@@ -91,9 +93,26 @@ Leader key: `<space>`
 
 | Keys | Action |
 |---|---|
+| `<leader>gg` | Neogit status |
+| `<leader>gc` | Git commit (neogit) |
+| `<leader>gC` | Commit with koji |
 | `<leader>gb` | Git blame line |
-| `<leader>go` | Git browse online |
-| `<leader>gc` | Commit with koji |
+| `<leader>gd` | Diffview open |
+| `<leader>gh` | Diffview file history |
+| `<leader>gH` | Diffview branch history |
+
+### Hunks (gitsigns)
+
+| Keys | Action |
+|---|---|
+| `[h` / `]h` | Previous / next hunk |
+| `<leader>hp` | Preview hunk |
+| `<leader>hs` | Stage hunk |
+| `<leader>hS` | Stage buffer |
+| `<leader>hr` | Reset hunk |
+| `<leader>hR` | Reset buffer |
+| `<leader>hu` | Undo stage hunk |
+| `<leader>hd` | Diff this |
 
 ### Debugging (DAP)
 
@@ -110,8 +129,14 @@ Leader key: `<space>`
 |---|---|
 | `<C-a>` | OpenCode: ask with context |
 | `<C-.>` | OpenCode: toggle |
+| `<C-x>` | OpenCode: action menu |
 | `<leader>cc` | Claude Code: toggle |
+| `<leader>cf` | Claude Code: focus |
 | `<leader>cs` | Claude Code: send selection |
+| `<leader>cm` | Claude Code: select model |
+| `<leader>9v` | 99: visual send |
+| `<leader>9s` | 99: search |
+| `<leader>9o` | 99: open results |
 
 ### Toggles & misc
 
@@ -122,6 +147,7 @@ Leader key: `<space>`
 | `<leader>w` | Save file |
 | `<leader>x` | Close buffer |
 | `<A-j>` / `<A-k>` | Move line up / down |
+| `<leader>y` / `<leader>p` | Yank / paste clipboard |
 
 ## Directory structure
 
@@ -134,23 +160,31 @@ Leader key: `<space>`
     ├── init.lua               # Options, diagnostics, colorscheme
     ├── plugin/                # Auto-sourced at startup
     │   ├── keymaps.lua
-    │   ├── plugins.lua        # conform, treesitter, render-markdown, checkmate
     │   ├── autocommands.lua
     │   ├── commands.lua
-    │   ├── snacks.lua         # Explorer, picker, git, indent
+    │   ├── plugins.lua        # conform, render-markdown, checkmate
+    │   ├── telescope.lua      # Finder, grep, frecency
+    │   ├── nvim-tree.lua      # File explorer
     │   ├── mini.lua           # Pairs, cursorword, icons
     │   ├── blink-cmp.lua      # Completion
     │   ├── bufferline.lua
     │   ├── lualine.lua        # Statusline
+    │   ├── lsp-progress.lua   # LSP progress notifications
     │   ├── fzf-lua.lua
     │   ├── gitsigns.lua
     │   ├── neogit.lua
+    │   ├── diffview.lua       # Diff viewer
+    │   ├── treesitter.lua
     │   ├── which-key.lua
-    │   ├── dotnet.lua         # DAP + C# tooling
+    │   ├── quicker.lua        # Quickfix enhancements
+    │   ├── highlight-colors.lua
     │   ├── opencode.lua       # AI: OpenCode
-    │   └── claudecode.lua     # AI: Claude Code
+    │   ├── claudecode.lua     # AI: Claude Code
+    │   └── 99.lua             # AI: 99.nvim
     ├── ftplugin/              # Filetype-specific (LSP startup)
     │   ├── typescript.lua
+    │   ├── typescriptreact.lua
+    │   ├── cs.lua
     │   ├── lua.lua
     │   ├── markdown.lua
     │   └── nix.lua
