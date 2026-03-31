@@ -27,7 +27,7 @@ require('quicker').setup {
 
 local map = vim.keymap.set
 
-map('n', '<leader>q', function()
+map('n', '<leader>qq', function()
   require('quicker').toggle()
 end, { desc = 'Toggle quickfix' })
 

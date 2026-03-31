@@ -28,7 +28,7 @@ api.nvim_create_autocmd('TermOpen', {
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
   group = highlight_group,
   pattern = '*',
@@ -117,7 +117,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap.set('n', 'gD', vim.lsp.buf.declaration, desc('Go to declaration'))
     keymap.set('n', 'gd', vim.lsp.buf.definition, desc('Go to definition'))
     keymap.set('n', 'gi', vim.lsp.buf.implementation, desc('Go to implementation'))
-    keymap.set('n', 'gr', vim.lsp.buf.references, desc('References'))
     keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, desc('Go to type definition'))
 
     -- Hover and signature

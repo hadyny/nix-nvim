@@ -72,11 +72,15 @@ let
     bufferline-nvim
     lualine-nvim
     quicker-nvim
-    snacks-nvim
     mini-nvim
     which-key-nvim
     nvim-treesitter.withAllGrammars
     conform-nvim
+    telescope-nvim
+    telescope-fzf-native-nvim
+    telescope-frecency-nvim
+    telescope-ui-select-nvim
+    plenary-nvim
     fzf-lua
     diffview-nvim
     gitsigns-nvim

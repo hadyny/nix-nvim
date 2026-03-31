@@ -47,15 +47,12 @@ require('nvim-dap-virtual-text').setup {
   virt_text_win_col = nil,
 }
 
-require('easy-dotnet').setup {
-  picker = 'snacks',
+local easy_dotnet = require('easy-dotnet')
+easy_dotnet.setup {
+  picker = 'telescope',
 }
 
-require('nvim-tree').setup {
-  view = {
-    side = 'right',
-  },
-}
+dap.configurations.cs = easy_dotnet.get_debug_config()
 
 require('csharp-explorer').setup {}
 

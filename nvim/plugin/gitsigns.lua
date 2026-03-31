@@ -44,6 +44,11 @@ require('gitsigns').setup {
       gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') }
     end, { buffer = bufnr, desc = 'Stage hunk' })
 
+    -- Blame
+    map('n', '<leader>gb', function()
+      gs.blame_line { full = true }
+    end, { buffer = bufnr, desc = 'Git blame line' })
+
     -- Toggle
     map('n', '<leader>htd', gs.toggle_deleted, { buffer = bufnr, desc = 'Toggle deleted' })
 

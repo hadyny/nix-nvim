@@ -7,7 +7,7 @@ require('claudecode').setup {
   auto_start = true,
   terminal = {
     split_side = 'right',
-    provider = 'snacks',
+    provider = 'native',
   },
 }
 
