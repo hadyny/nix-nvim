@@ -60,8 +60,6 @@ let
     # colours
     nvim-highlight-colors
     # general
-    bufferline-nvim
-    lualine-nvim
     quicker-nvim
     nvim-web-devicons
     which-key-nvim
@@ -71,6 +69,7 @@ let
     telescope-fzf-native-nvim
     telescope-frecency-nvim
     telescope-ui-select-nvim
+    (mkNvimPluginNoCheck inputs.telescope-cmdline "telescope-cmdline.nvim")
     plenary-nvim
     fzf-lua
     diffview-nvim

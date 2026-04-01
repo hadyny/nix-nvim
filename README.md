@@ -33,8 +33,8 @@ nvim-dev
 | Category | Plugins |
 |---|---|
 | Colorscheme | rose-pine |
-| UI | bufferline.nvim, lualine.nvim, which-key.nvim |
-| Search | telescope.nvim (fzf, frecency, ui-select), fzf-lua |
+| UI | which-key.nvim |
+| Search | telescope.nvim (fzf, frecency, ui-select, cmdline), fzf-lua |
 | Files | nvim-tree |
 | Editing | quicker.nvim |
 | Icons | nvim-web-devicons |
@@ -70,11 +70,11 @@ Leader key: `<space>`
 
 | Keys | Action |
 |---|---|
-| `<leader><leader>` | Frecent files (telescope) |
+| `<leader><leader>` | Command line (telescope) |
 | `<leader>ff` | Find files |
-| `<leader>,` | Find buffers |
+| `<leader>fr` | Frecent files (telescope) |
+| `<leader>fb` | Find buffers (telescope) |
 | `<leader>/` | Grep |
-| `<leader>:` | Command history |
 | `<C-f>` | Search in buffer |
 | `<leader>e` | Explorer (nvim-tree) |
 | `[b` / `]b` | Previous / next buffer |
@@ -162,11 +162,9 @@ Leader key: `<space>`
     │   ├── autocommands.lua
     │   ├── commands.lua
     │   ├── plugins.lua        # conform, render-markdown, checkmate
-    │   ├── telescope.lua      # Finder, grep, frecency
+    │   ├── telescope.lua      # Finder, grep, frecency, cmdline
     │   ├── nvim-tree.lua      # File explorer
     │   ├── blink-cmp.lua      # Completion
-    │   ├── bufferline.lua
-    │   ├── lualine.lua        # Statusline
     │   ├── lsp-progress.lua   # LSP progress notifications
     │   ├── fzf-lua.lua
     │   ├── gitsigns.lua

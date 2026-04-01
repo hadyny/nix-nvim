@@ -5,14 +5,18 @@ vim.g.did_load_which_key_plugin = true
 
 require('which-key').setup {
   spec = {
-    { '<leader>1', hidden = true },
-    { '<leader>2', hidden = true },
-    { '<leader>3', hidden = true },
-    { '<leader>4', hidden = true },
-    { '<leader>5', hidden = true },
-    { '<leader>6', hidden = true },
-    { '<leader>7', hidden = true },
-    { '<leader>8', hidden = true },
     { '<leader>9', group = '99' },
+    { '<leader>c', group = 'Claude' },
+    { '<leader>cs', group = 'C#' },
+    { '<leader>d', group = 'Diagnostics' },
+    { '<leader>f', group = 'Find' },
+    { '<leader>g', group = 'Git' },
+    { '<leader>h', group = 'Hunks' },
+    { '<leader>ht', group = 'Toggle' },
+    { '<leader>l', group = 'LSP' },
+    { '<leader>lp', group = 'Peek' },
+    { '<leader>lw', group = 'Workspace' },
+    { '<leader>q', group = 'Quickfix' },
+    { '<leader>t', group = 'Toggle' },
   },
 }

@@ -30,6 +30,11 @@
       url = "github:ThePrimeagen/99";
       flake = false;
     };
+
+    telescope-cmdline = {
+      url = "github:jonarrien/telescope-cmdline.nvim";
+      flake = false;
+    };
   };
 
   outputs =

@@ -27,15 +27,16 @@ telescope.setup {
 telescope.load_extension('fzf')
 telescope.load_extension('frecency')
 telescope.load_extension('ui-select')
+telescope.load_extension('cmdline')
 
 local map = vim.keymap.set
 
 -- Find
-map('n', '<leader><leader>', '<cmd>Telescope frecency<CR>', { desc = 'Frecent files' })
+map('n', '<leader>fr', '<cmd>Telescope frecency<CR>', { desc = 'Frecent files' })
 map('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
-map({ 'n', 'v', 'x' }, '<leader>,', builtin.buffers, { desc = 'Find buffers' })
+map({ 'n', 'v', 'x' }, '<leader>fb', builtin.buffers, { desc = 'Find buffers' })
 map({ 'n', 'v', 'x' }, '<leader>/', builtin.live_grep, { desc = 'Grep' })
-map({ 'n', 'v', 'x' }, '<leader>:', builtin.command_history, { desc = 'Command history' })
+map({ 'n', 'v', 'x' }, '<leader><leader>', '<cmd>Telescope cmdline<CR>', { desc = 'Command line' })
 map({ 'n', 'v', 'x' }, '<C-f>', function()
   builtin.current_buffer_fuzzy_find(themes.get_ivy())
 end, { desc = 'Search buffer' })
