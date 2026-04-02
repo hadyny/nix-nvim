@@ -55,6 +55,9 @@ end
 -- Clear search highlight
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
 
+-- Undo tree
+keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<CR>', { desc = 'Toggle undotree' })
+
 -- Better visual indent (stay in visual mode)
 keymap.set('v', '<', '<gv', { desc = 'Indent left' })
 keymap.set('v', '>', '>gv', { desc = 'Indent right' })
