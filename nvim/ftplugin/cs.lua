@@ -1,9 +1,5 @@
 vim.treesitter.language.register('c_sharp', 'csharp')
 
-if vim.fn.executable('Microsoft.CodeAnalysis.LanguageServer') ~= 1 then
-  return
-end
-
 local dap = require('dap')
 local dapui = require('dapui')
 
