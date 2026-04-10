@@ -5,7 +5,6 @@ vim.g.did_load_which_key_plugin = true
 
 require('which-key').setup {
   spec = {
-    { '<leader>9', group = '99' },
     { '<leader>c', group = 'Claude' },
     { '<leader>cs', group = 'C#' },
     { '<leader>d', group = 'Diagnostics' },

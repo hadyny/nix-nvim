@@ -200,22 +200,6 @@
         "type": "github"
       }
     },
-    "ninetynine": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1774370878,
-        "narHash": "sha256-ppFQaLSie9tSm2nlTrZPU47QyOaeqNMQjJf4vaIXgFo=",
-        "owner": "ThePrimeagen",
-        "repo": "99",
-        "rev": "0172d3caae2d8b967c9d47aa7557295f1481e5df",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ThePrimeagen",
-        "repo": "99",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1718714799,
@@ -284,7 +268,6 @@
         "gen-luarc": "gen-luarc",
         "hopcsharp": "hopcsharp",
         "neovim-src": "neovim-src",
-        "ninetynine": "ninetynine",
         "nixpkgs": "nixpkgs_2",
         "telescope-cmdline": "telescope-cmdline"
       }

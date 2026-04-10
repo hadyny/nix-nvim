@@ -102,7 +102,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap.set('n', '<M-CR>', vim.lsp.buf.code_action, desc('Code action'))
 
     -- Code lens
-    keymap.set('n', '<leader>lc', vim.lsp.codelens.refresh, desc('Code lens refresh'))
     keymap.set('n', '<leader>ll', vim.lsp.codelens.run, desc('Code lens run'))
 
     -- Document symbols
@@ -145,21 +144,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, desc('List workspace folders'))
     keymap.set('n', '<leader>lwr', vim.lsp.buf.remove_workspace_folder, desc('Remove workspace folder'))
     keymap.set('n', '<leader>lws', vim.lsp.buf.workspace_symbol, desc('Workspace symbols'))
-
-    -- Auto-refresh code lenses
-    if not client then
-      return
-    end
-    local group = api.nvim_create_augroup(string.format('lsp-%s-%s', bufnr, client.id), {})
-    if client.server_capabilities.codeLensProvider then
-      vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePost', 'TextChanged' }, {
-        group = group,
-        callback = function()
-          vim.lsp.codelens.refresh { bufnr = bufnr }
-        end,
-        buffer = bufnr,
-      })
-      vim.lsp.codelens.refresh { bufnr = bufnr }
-    end
   end,
 })
