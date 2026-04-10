@@ -1,5 +1,8 @@
 vim.loader.enable()
 
+-- Enable experimental UI2 (Neovim 0.12+)
+require('vim._core.ui2').enable({})
+
 local cmd = vim.cmd
 local opt = vim.o
 
