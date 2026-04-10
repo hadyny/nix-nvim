@@ -99,6 +99,18 @@ let
     netcoredbg
     csharpier
     fsautocomplete
+    (pkgs.buildDotnetGlobalTool {
+      pname = "EasyDotnet";
+      version = "3.0.12";
+      executables = "dotnet-easydotnet";
+      nugetHash = "sha256-Qb65Isr0B6C63KrJrgx2Eed1KN3br0NdC82t2rX+wUI=";
+      meta = with lib; {
+        description = "C# JSON-RPC server powering the easy-dotnet.nvim Neovim plugin";
+        homepage = "https://github.com/GustavEikaas/easy-dotnet.nvim";
+        license = licenses.mit;
+        mainProgram = "dotnet-easydotnet";
+      };
+    })
     # docs
     multimarkdown
     marksman
