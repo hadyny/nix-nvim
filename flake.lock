@@ -268,8 +268,7 @@
         "gen-luarc": "gen-luarc",
         "hopcsharp": "hopcsharp",
         "neovim-src": "neovim-src",
-        "nixpkgs": "nixpkgs_2",
-        "telescope-cmdline": "telescope-cmdline"
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "systems": {
@@ -284,22 +283,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "telescope-cmdline": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1757874925,
-        "narHash": "sha256-UkbQkOK3vKtmwBgZltj17vqdhDL8UvC27vTAyQ2EGH0=",
-        "owner": "jonarrien",
-        "repo": "telescope-cmdline.nvim",
-        "rev": "b1c330835563c9628ce7c095cf20772f22f93f07",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jonarrien",
-        "repo": "telescope-cmdline.nvim",
         "type": "github"
       }
     }

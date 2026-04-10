@@ -49,7 +49,7 @@ require('nvim-dap-virtual-text').setup {
 
 local easy_dotnet = require('easy-dotnet')
 easy_dotnet.setup {
-  picker = 'telescope',
+  picker = 'fzf',
 }
 
 dap.configurations.cs = easy_dotnet.get_debug_config()

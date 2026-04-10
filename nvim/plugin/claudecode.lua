@@ -15,5 +15,5 @@ local map = vim.keymap.set
 
 map('n', '<leader>cc', '<cmd>ClaudeCode<CR>', { desc = 'Claude Code toggle' })
 map('n', '<leader>cf', '<cmd>ClaudeCodeFocus<CR>', { desc = 'Claude Code focus' })
-map('v', '<leader>cs', '<cmd>ClaudeCodeSend<CR>', { desc = 'Claude Code send selection' })
+map('v', '<leader>cS', '<cmd>ClaudeCodeSend<CR>', { desc = 'Claude Code send selection' })
 map('n', '<leader>cm', '<cmd>ClaudeCodeSelectModel<CR>', { desc = 'Claude Code select model' })

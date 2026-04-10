@@ -3,7 +3,9 @@ if vim.g.did_load_fzf_lua_plugin then
 end
 vim.g.did_load_fzf_lua_plugin = true
 
-require('fzf-lua').setup {
+local fzf = require('fzf-lua')
+
+fzf.setup {
   {
     'fzf-native',
     'borderless-full',
@@ -17,3 +19,13 @@ require('fzf-lua').setup {
     },
   },
 }
+
+fzf.register_ui_select()
+
+local map = vim.keymap.set
+
+map('n', '<leader>fr', fzf.oldfiles, { desc = 'Recent files' })
+map('n', '<leader>ff', fzf.files, { desc = 'Find files' })
+map({ 'n', 'v', 'x' }, '<leader>fb', fzf.buffers, { desc = 'Find buffers' })
+map({ 'n', 'v', 'x' }, '<leader>/', fzf.live_grep, { desc = 'Grep' })
+map({ 'n', 'v', 'x' }, '<leader><leader>', fzf.commands, { desc = 'Commands' })

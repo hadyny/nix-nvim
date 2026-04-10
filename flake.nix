@@ -26,10 +26,6 @@
       flake = false;
     };
 
-    telescope-cmdline = {
-      url = "github:jonarrien/telescope-cmdline.nvim";
-      flake = false;
-    };
   };
 
   outputs =

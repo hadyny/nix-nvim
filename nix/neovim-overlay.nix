@@ -65,12 +65,6 @@ let
     which-key-nvim
     nvim-treesitter.withAllGrammars
     conform-nvim
-    telescope-nvim
-    telescope-fzf-native-nvim
-    telescope-frecency-nvim
-    telescope-ui-select-nvim
-    (mkNvimPluginNoCheck inputs.telescope-cmdline "telescope-cmdline.nvim")
-    plenary-nvim
     fzf-lua
     diffview-nvim
     gitsigns-nvim
