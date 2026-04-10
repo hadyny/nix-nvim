@@ -89,11 +89,13 @@
         devShells = {
           default = shell;
         };
+        formatter = pkgs.nixfmt-tree;
       }
     )
     // {
       # You can add this overlay to your NixOS configuration
-      overlays.default = final: prev:
+      overlays.default =
+        final: prev:
         let
           srcApplied = neovim-src-overlay final prev;
           neovimApplied = neovim-overlay final (prev // srcApplied);
