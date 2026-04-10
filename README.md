@@ -34,7 +34,7 @@ nvim-dev
 |---|---|
 | Colorscheme | rose-pine |
 | UI | which-key.nvim |
-| Search | telescope.nvim (fzf, frecency, ui-select, cmdline), fzf-lua |
+| Search | fzf-lua |
 | Files | nvim-tree |
 | Editing | quicker.nvim |
 | Icons | nvim-web-devicons |
@@ -46,7 +46,7 @@ nvim-dev
 | C# / .NET | easy-dotnet.nvim, csharp-explorer.nvim, hopcsharp.nvim |
 | Lua | lazydev.nvim |
 | Markdown | render-markdown.nvim, checkmate.nvim |
-| AI | opencode.nvim, claudecode.nvim, 99.nvim |
+| AI | opencode.nvim, claudecode.nvim |
 | Colours | nvim-highlight-colors |
 
 ## Language support
@@ -70,10 +70,10 @@ Leader key: `<space>`
 
 | Keys | Action |
 |---|---|
-| `<leader><leader>` | Command line (telescope) |
+| `<leader><leader>` | Commands |
 | `<leader>ff` | Find files |
-| `<leader>fr` | Frecent files (telescope) |
-| `<leader>fb` | Find buffers (telescope) |
+| `<leader>fr` | Recent files |
+| `<leader>fb` | Find buffers |
 | `<leader>/` | Grep |
 | `<C-f>` | Search in buffer |
 | `<leader>e` | Explorer (nvim-tree) |
@@ -133,10 +133,6 @@ Leader key: `<space>`
 | `<leader>cf` | Claude Code: focus |
 | `<leader>cs` | Claude Code: send selection |
 | `<leader>cm` | Claude Code: select model |
-| `<leader>9v` | 99: visual send |
-| `<leader>9s` | 99: search |
-| `<leader>9o` | 99: open results |
-
 ### Toggles & misc
 
 | Keys | Action |
@@ -162,11 +158,9 @@ Leader key: `<space>`
     │   ├── autocommands.lua
     │   ├── commands.lua
     │   ├── plugins.lua        # conform, render-markdown, checkmate
-    │   ├── telescope.lua      # Finder, grep, frecency, cmdline
+    │   ├── fzf-lua.lua         # Finder, grep, recent files
     │   ├── nvim-tree.lua      # File explorer
     │   ├── blink-cmp.lua      # Completion
-    │   ├── lsp-progress.lua   # LSP progress notifications
-    │   ├── fzf-lua.lua
     │   ├── gitsigns.lua
     │   ├── diffview.lua       # Diff viewer
     │   ├── treesitter.lua
@@ -175,8 +169,7 @@ Leader key: `<space>`
     │   ├── quicker.lua        # Quickfix enhancements
     │   ├── highlight-colors.lua
     │   ├── opencode.lua       # AI: OpenCode
-    │   ├── claudecode.lua     # AI: Claude Code
-    │   └── 99.lua             # AI: 99.nvim
+    │   └── claudecode.lua     # AI: Claude Code
     ├── ftplugin/              # Filetype-specific (LSP startup)
     │   ├── typescript.lua
     │   ├── typescriptreact.lua
