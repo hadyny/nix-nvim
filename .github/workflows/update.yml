@@ -1,0 +1,23 @@
+name: Update Neovim Source
+on:
+  schedule:
+    - cron: '0 0 * * *' # Every day at midnight
+  workflow_dispatch: # Allow manual triggers
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/magic-nix-cache-action@v2
+      - name: Update Neovim Source
+        run: nix flake lock --update-input neovim-src
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update neovim-src"
+          title: "chore: update neovim-src"
+          body: "This PR updates the `neovim-src` input in `flake.lock` to the latest version on the tracked branch."
+          branch: "update-neovim-src"
+          delete-branch: true

@@ -7,7 +7,7 @@
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
 
     neovim-src = {
-      url = "github:neovim/neovim/v0.12.0";
+      url = "github:neovim/neovim/stable";
       flake = false;
     };
 
@@ -41,7 +41,7 @@
       neovim-src-overlay = final: prev: {
         neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs {
           src = inputs.neovim-src;
-          version = "0.12.0";
+          version = "stable-${inputs.neovim-src.shortRev or "dirty"}";
         };
       };
 
