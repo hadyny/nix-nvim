@@ -3,13 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Dedicated input for Neovim to allow independent, stable updates
+    nixpkgs-neovim.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
-
-    neovim-src = {
-      url = "github:neovim/neovim/stable";
-      flake = false;
-    };
 
     csharp-explorer = {
       url = "github:dtrh95/csharp-explorer.nvim";
@@ -25,56 +22,48 @@
       url = "github:coder/claudecode.nvim";
       flake = false;
     };
-
   };
 
   outputs =
-  inputs@{
-    self,
-    nixpkgs,
-    flake-utils,
-    ...
-  }:
-  let
-    supportedSystems = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-neovim,
+      flake-utils,
+      ...
+    }:
+    let
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
 
-    neovim-src-overlay = final: prev: {
-      neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (old: {
-        src = inputs.neovim-src;
-        version = "stable-${inputs.neovim-src.shortRev or "dirty"}";
-        # Ensure build dependencies are present if version mismatch occurs
-        buildInputs = old.buildInputs ++ [ final.pkgs.gettext ];
-      });
-    };
+      # This overlay ensures we use Neovim from the dedicated nixpkgs-neovim input
+      neovim-version-overlay = final: prev: {
+        neovim-unwrapped = nixpkgs-neovim.legacyPackages.${prev.system}.neovim-unwrapped;
+      };
 
-    # This is where the Neovim derivation is built.
-    neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
-  in
-  flake-utils.lib.eachSystem supportedSystems (
-    system:
-
+      # This is where the Neovim derivation is built.
+      neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
+    in
+    flake-utils.lib.eachSystem supportedSystems (
+      system:
       let
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
-            neovim-src-overlay
+            neovim-version-overlay
             # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
             neovim-overlay
             # This adds a function can be used to generate a .luarc.json
-            # containing the Neovim API all plugins in the workspace directory.
-            # The generated file can be symlinked in the devShell's shellHook.
             inputs.gen-luarc.overlays.default
           ];
         };
         shell = pkgs.mkShell {
           name = "nvim-devShell";
           buildInputs = with pkgs; [
-            # Tools for Lua and Nix development, useful for editing files in this repo
             lua-language-server
             nil
             stylua
@@ -82,9 +71,7 @@
             nvim-dev
           ];
           shellHook = ''
-            # symlink the .luarc.json generated in the overlay
             ln -fs ${pkgs.nvim-luarc-json} .luarc.json
-            # allow quick iteration of lua configs
             ln -Tfns $PWD/nvim ~/.config/nvim-dev
           '';
         };
@@ -101,13 +88,12 @@
       }
     )
     // {
-      # You can add this overlay to your NixOS configuration
       overlays.default =
         final: prev:
         let
-          srcApplied = neovim-src-overlay final prev;
-          neovimApplied = neovim-overlay final (prev // srcApplied);
+          versionApplied = neovim-version-overlay final prev;
+          neovimApplied = neovim-overlay final (prev // versionApplied);
         in
-        srcApplied // neovimApplied;
+        versionApplied // neovimApplied;
     };
 }

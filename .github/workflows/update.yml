@@ -12,13 +12,13 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v14
       - uses: DeterminateSystems/magic-nix-cache-action@v2
       - name: Update Neovim Source
-        run: nix flake lock --update-input neovim-src
+        run: nix flake lock --update-input nixpkgs-neovim
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: update neovim-src"
-          title: "chore: update neovim-src"
-          body: "This PR updates the `neovim-src` input in `flake.lock` to the latest version on the tracked branch."
+          commit-message: "chore: update neovim-version"
+          title: "chore: update neovim-version"
+          body: "This PR updates the `nixpkgs-neovim` input in `flake.lock` to the latest version on the nixos-unstable channel, providing the latest stable release of Neovim."
           branch: "update-neovim-src"
           delete-branch: true
