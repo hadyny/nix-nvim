@@ -29,27 +29,35 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      flake-utils,
-      ...
-    }:
-    let
-      systems = builtins.attrNames nixpkgs.legacyPackages;
+  inputs@{
+    self,
+    nixpkgs,
+    flake-utils,
+    ...
+  }:
+  let
+    supportedSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
 
-      neovim-src-overlay = final: prev: {
-        neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs {
-          src = inputs.neovim-src;
-          version = "stable-${inputs.neovim-src.shortRev or "dirty"}";
-        };
-      };
+    neovim-src-overlay = final: prev: {
+      neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (old: {
+        src = inputs.neovim-src;
+        version = "stable-${inputs.neovim-src.shortRev or "dirty"}";
+        # Ensure build dependencies are present if version mismatch occurs
+        buildInputs = old.buildInputs ++ [ final.pkgs.gettext ];
+      });
+    };
 
-      # This is where the Neovim derivation is built.
-      neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
-    in
-    flake-utils.lib.eachSystem systems (
-      system:
+    # This is where the Neovim derivation is built.
+    neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
+  in
+  flake-utils.lib.eachSystem supportedSystems (
+    system:
+
       let
         pkgs = import nixpkgs {
           inherit system;
