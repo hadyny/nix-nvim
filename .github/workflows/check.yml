@@ -14,5 +14,9 @@ jobs:
       run: nix flake check
     - name: Build Neovim
       run: nix build .#packages.x86_64-linux.nvim
+    - name: Lint Lua
+      run: nix develop .#devShells.x86_64-linux.default --command luacheck nvim/lua
+    - name: Headless Smoke Test
+      run: nix run .#packages.x86_64-linux.nvim -- --headless +qa
     - name: Check formatting
       run: nix fmt -- --ci
