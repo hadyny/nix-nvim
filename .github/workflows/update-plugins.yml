@@ -1,0 +1,29 @@
+name: Update Plugins
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Every Monday at midnight
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v14
+      - uses: DeterminateSystems/magic-nix-cache-action@v2
+      - name: Update all inputs except nixpkgs
+        # This updates every input that isn't one of the core nixpkgs ones
+        run: |
+          for input in $(nix flake metadata --json | jq -r '.inputs | keys[]' | grep -vE 'nixpkgs|nixpkgs-neovim'); do
+            echo "Updating $input..."
+            nix flake lock --update-input "$input"
+          done
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update plugins"
+          title: "chore: update plugins"
+          body: "This PR updates all Neovim plugin inputs in `flake.lock` to their latest versions."
+          branch: "update-plugins"
+          delete-branch: true
