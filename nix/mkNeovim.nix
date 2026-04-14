@@ -203,7 +203,7 @@ let
         + extraMakeWrapperLuaCArgs
         + " "
         + extraMakeWrapperLuaArgs;
-      wrapRc = wrapRc;
+      inherit wrapRc;
     }
   );
 

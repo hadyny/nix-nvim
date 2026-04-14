@@ -42,7 +42,7 @@
 
       # This overlay ensures we use Neovim from the dedicated nixpkgs-neovim input
       neovim-version-overlay = final: prev: {
-        neovim-unwrapped = nixpkgs-neovim.legacyPackages.${prev.system}.neovim-unwrapped;
+        inherit (nixpkgs-neovim.legacyPackages.${prev.system}) neovim-unwrapped;
       };
 
       # This is where the Neovim derivation is built.
