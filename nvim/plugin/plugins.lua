@@ -20,6 +20,7 @@ conform.setup {
     yaml = { 'prettierd' },
     markdown = { 'prettierd' },
     graphql = { 'prettierd' },
+    go = { 'goimports', 'gofmt' },
     nix = { 'nixfmt' },
   },
   format_on_save = {

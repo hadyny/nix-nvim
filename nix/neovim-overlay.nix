@@ -111,6 +111,10 @@ let
         mainProgram = "dotnet-easydotnet";
       };
     })
+    # go
+    gopls
+    gotools
+    go-tools # staticcheck
     # docs
     multimarkdown
     marksman
