@@ -1,5 +1,10 @@
 vim.treesitter.language.register('c_sharp', 'csharp')
 
+if vim.g.did_load_cs_ftplugin then
+  return
+end
+vim.g.did_load_cs_ftplugin = true
+
 local dap = require('dap')
 local dapui = require('dapui')
 
