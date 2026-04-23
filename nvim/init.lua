@@ -1,7 +1,7 @@
 vim.loader.enable()
 
 -- Enable experimental UI2 (Neovim 0.12+)
-require('vim._core.ui2').enable({})
+require('vim._core.ui2').enable {}
 
 local cmd = vim.cmd
 local opt = vim.o
@@ -47,6 +47,8 @@ opt.mouse = 'a'
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'
+
+opt.statusline = [[%{%v:lua.require('user.statusline').render()%}]]
 
 -- Configure Neovim diagnostic messages
 
