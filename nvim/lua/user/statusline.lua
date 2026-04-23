@@ -67,7 +67,7 @@ local git_component = function()
   return component
 end
 
-local file_component = function()
+local file_component = function(active)
   local devicons = require('nvim-web-devicons')
 
   local buftype = vim.bo.buftype
@@ -106,7 +106,9 @@ local file_component = function()
     end
   end
 
-  return ' ' .. sl_hl(icon_hl) .. icon .. ' ' .. sl_hl('StatusLineBold') .. display_name
+  local name_hl = active and 'StatusLineBold' or 'StatusLineDim'
+
+  return ' ' .. sl_hl(icon_hl) .. icon .. ' ' .. sl_hl(name_hl) .. display_name
 end
 
 local mode_component = function()
@@ -166,12 +168,12 @@ return {
     local status_win = tonumber(vim.g.actual_curwin)
 
     if status_win ~= active_win then
-      return 'Statusline for inactive windows'
+      return table.concat { file_component(false) }
     end
 
     return table.concat {
       mode_component(),
-      file_component(),
+      file_component(true),
       '%=',
       diagnostic_component(),
       git_component(),
