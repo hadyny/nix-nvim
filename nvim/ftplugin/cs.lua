@@ -52,7 +52,19 @@ easy_dotnet.setup {
   picker = 'fzf',
 }
 
-dap.configurations.cs = easy_dotnet.get_debug_config()
+dap.configurations.cs = {
+  {
+    type = 'coreclr',
+    name = 'Launch',
+    request = 'launch',
+    program = function()
+      return require('easy-dotnet').get_debug_dll().target_path
+    end,
+    cwd = function()
+      return require('easy-dotnet').get_debug_dll().project_path
+    end,
+  },
+}
 
 require('csharp-explorer').setup {}
 
