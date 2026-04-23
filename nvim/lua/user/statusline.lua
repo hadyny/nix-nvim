@@ -154,9 +154,9 @@ local mode_component = function()
   local mode = mode_settings[vim.fn.mode()] or {}
 
   return table.concat {
-    '%#StatuslineMode' .. mode.hl .. 'Inverted' .. '#',
-    '%#StatuslineMode' .. mode.hl .. '#' .. mode.name,
-    '%#StatuslineMode' .. mode.hl .. 'Inverted' .. '#',
+    '%#StatuslineMode' .. mode.hl .. 'Inverted' .. '#',
+    '%#StatuslineMode' .. mode.hl .. '# ' .. mode.name .. ' ',
+    '%#StatuslineMode' .. mode.hl .. 'Inverted' .. '#',
   }
 end
 
