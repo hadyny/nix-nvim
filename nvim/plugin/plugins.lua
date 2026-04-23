@@ -32,9 +32,6 @@ conform.setup {
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 
--- treesitter
-require('nvim-treesitter').setup {}
-
 -- render markdown
 require('render-markdown').setup {
   completions = { lsp = { enabled = true } },
