@@ -38,8 +38,6 @@ let
   all-plugins = with pkgs.vimPlugins; [
     # themes
     rose-pine
-    # lua
-    lazydev-nvim
     # nix
     # typescript
     # csharp
@@ -60,7 +58,6 @@ let
     # colours
     nvim-highlight-colors
     # general
-    quicker-nvim
     nvim-web-devicons
     which-key-nvim
     nvim-treesitter.withAllGrammars

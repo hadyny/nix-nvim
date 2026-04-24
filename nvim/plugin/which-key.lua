@@ -15,7 +15,6 @@ require('which-key').setup {
     { '<leader>l', group = 'LSP' },
     { '<leader>lp', group = 'Peek' },
     { '<leader>lw', group = 'Workspace' },
-    { '<leader>q', group = 'Quickfix' },
     { '<leader>t', group = 'Toggle' },
   },
 }
