@@ -73,6 +73,7 @@
           shellHook = ''
             ln -fs ${pkgs.nvim-luarc-json} .luarc.json
             ln -Tfns $PWD/nvim ~/.config/nvim-dev
+            git config --local core.hooksPath .githooks
           '';
         };
       in
