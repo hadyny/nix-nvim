@@ -188,12 +188,7 @@ let
       ;
     plugins = normalizedPlugins;
     luaRcContent = initLua;
-    wrapperArgs =
-      extraMakeWrapperArgs
-      + " "
-      + extraMakeWrapperLuaCArgs
-      + " "
-      + extraMakeWrapperLuaArgs;
+    wrapperArgs = extraMakeWrapperArgs + " " + extraMakeWrapperLuaCArgs + " " + extraMakeWrapperLuaArgs;
   };
 
   isCustomAppName = appName != null && appName != "nvim";
