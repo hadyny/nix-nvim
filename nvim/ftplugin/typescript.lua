@@ -33,6 +33,16 @@ vim.lsp.start {
   capabilities = require('user.lsp').make_client_capabilities(),
 }
 
+-- Filter out vtsls' "Convert named/default export" refactor: TypeScript 5.8 reports
+-- it as applicable but throws during codeAction/resolve (Expected applicable refactor info).
+vim.keymap.set({ 'n', 'x' }, 'gra', function()
+  vim.lsp.buf.code_action {
+    filter = function(action)
+      return not (action.title or ''):match('^Convert .* export to .* export$')
+    end,
+  }
+end, { buffer = 0, desc = 'Code action' })
+
 -- eslint
 
 local eslint_root_files = { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' }
