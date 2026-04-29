@@ -50,6 +50,57 @@ local diagnostic_component = function()
   return vim.diagnostic.status(0):gsub('%w+:', ' %0', 1):gsub('(:%d+)%%', '%1 %%')
 end
 
+local active_progress = {}
+
+vim.api.nvim_create_autocmd('LspProgress', {
+  group = vim.api.nvim_create_augroup('my_statusline_lsp', {}),
+  desc = 'Track LSP progress for the statusline',
+  callback = function(args)
+    local client_id = args.data and args.data.client_id
+    local params = args.data and args.data.params
+    if not (client_id and params and params.value) then
+      return
+    end
+
+    local key = client_id .. ':' .. tostring(params.token)
+    if params.value.kind == 'end' then
+      active_progress[key] = nil
+    else
+      active_progress[key] = {
+        client_id = client_id,
+        title = params.value.title,
+        message = params.value.message,
+        percentage = params.value.percentage,
+      }
+    end
+
+    vim.cmd.redrawstatus()
+  end,
+})
+
+local lsp_progress_component = function()
+  local _, progress = next(active_progress)
+  if not progress then
+    return
+  end
+
+  local client = vim.lsp.get_client_by_id(progress.client_id)
+  local parts = { client and client.name or '?' }
+  if progress.title and progress.title ~= '' then
+    table.insert(parts, progress.title)
+  end
+  if progress.message and progress.message ~= '' then
+    table.insert(parts, progress.message)
+  end
+
+  local text = table.concat(parts, ' ')
+  if progress.percentage then
+    text = text .. string.format(' (%d%%%%)', progress.percentage)
+  end
+
+  return highlight_icon(icons.misc.lsp) .. ' ' .. sl_hl('StatusLineDim') .. text
+end
+
 local git_component = function()
   local head = vim.b.gitsigns_head
   if not head or head == '' then
@@ -175,6 +226,8 @@ return {
       mode_component(),
       file_component(true),
       '%=',
+      lsp_progress_component() or '',
+      ' ',
       diagnostic_component(),
       git_component(),
     }
