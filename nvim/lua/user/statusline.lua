@@ -145,6 +145,13 @@ local file_component = function(active)
 
   local display_name = buf_name == '' and buf_path or buf_name
 
+  if buftype == '' and buf_name ~= '' then
+    local parent = vim.fn.fnamemodify(buf_path, ':h:t')
+    if parent ~= '' and parent ~= '.' then
+      display_name = parent .. '/' .. buf_name
+    end
+  end
+
   if buftype == 'terminal' then
     if display_name:match('^zsh') then
       icon = icons.misc.terminal.symbol
