@@ -56,7 +56,9 @@ let
     blink-cmp
     blink-compat
     # colours
-    nvim-highlight-colors
+    (nvim-highlight-colors.overrideAttrs (_: {
+      meta.license = licenses.mit;
+    }))
     # general
     nvim-web-devicons
     which-key-nvim
