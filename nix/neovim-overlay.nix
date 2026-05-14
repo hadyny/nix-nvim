@@ -93,6 +93,8 @@ let
     graphql-language-service-cli
     vscode-langservers-extracted
     vtsls
+    astro-language-server
+    typescript
     # csharp
     roslyn-ls
     netcoredbg
