@@ -97,7 +97,8 @@ vim.diagnostic.config {
   },
 }
 
-vim.cmd.colorscheme('rose-pine')
+require('catppuccin').setup {}
+vim.cmd.colorscheme('catppuccin')
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')

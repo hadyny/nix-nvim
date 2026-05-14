@@ -37,7 +37,7 @@ let
   # }
   all-plugins = with pkgs.vimPlugins; [
     # themes
-    rose-pine
+    catppuccin-nvim
     # nix
     # typescript
     # csharp
