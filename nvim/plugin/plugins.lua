@@ -24,13 +24,12 @@ conform.setup {
     nix = { 'nixfmt' },
   },
   format_on_save = {
-    timeout_ms = 500,
+    timeout_ms = 1500,
     lsp_format = 'fallback',
   },
 }
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-
 
 -- render markdown
 require('render-markdown').setup {
