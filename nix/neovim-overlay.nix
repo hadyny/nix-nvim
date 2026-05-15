@@ -60,6 +60,7 @@ let
       meta.license = licenses.mit;
     }))
     # general
+    bufferline-nvim
     nvim-web-devicons
     which-key-nvim
     nvim-treesitter.withAllGrammars
