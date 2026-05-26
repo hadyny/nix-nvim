@@ -52,9 +52,38 @@ require('nvim-dap-virtual-text').setup {
   virt_text_win_col = nil,
 }
 
+require('fidget').setup {}
+
 local easy_dotnet = require('easy-dotnet')
 easy_dotnet.setup {
   picker = 'fzf',
+  notifications = {
+    -- Route EasyDotnet job lifecycle (build/test/run/restore) through fidget:
+    -- a single progress handle per job that updates in place, instead of the
+    -- default spinner spamming vim.notify every 300ms.
+    handler = function(start_event)
+      local handle = require('fidget.progress.handle').create {
+        title = 'EasyDotnet',
+        message = start_event.job.name,
+        lsp_client = { name = 'easy-dotnet' },
+        cancellable = false,
+      }
+      return function(finished_event)
+        local result = finished_event.result
+        if finished_event.success == false then
+          handle:finish()
+          if result then
+            require('fidget').notify(result.msg, result.level)
+          end
+        else
+          if result then
+            handle.message = result.msg
+          end
+          handle:finish()
+        end
+      end
+    end,
+  },
 }
 
 dap.configurations.cs = {

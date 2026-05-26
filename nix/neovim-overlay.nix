@@ -42,6 +42,7 @@ let
     # typescript
     # csharp
     easy-dotnet-nvim
+    fidget-nvim # EasyDotnet job notifications
     (mkNvimPlugin inputs.csharp-explorer "csharp-explorer.nvim")
     sqlite-lua
     (mkNvimPluginNoCheck inputs.hopcsharp "hopcsharp.nvim")
