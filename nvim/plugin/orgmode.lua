@@ -13,10 +13,10 @@ require('orgmode').setup {
   org_agenda_files = { '~/org/*.org', '~/org/0-inbox/*.org' },
   org_default_notes_file = '~/org/notes.org',
 
-  -- Open the agenda (and capture) in a centred floating popup. 'float' is
-  -- relative='editor', sized to 70% and auto-centred; win_split_mode governs
-  -- both windows in 0.7.3 (no agenda-only option exists).
-  win_split_mode = 'float',
+  -- Open the agenda (and capture) in a centred floating popup. { 'float', scale }
+  -- is relative='editor', sized to 85% of the editor and auto-centred;
+  -- win_split_mode governs both windows in 0.7.3 (no agenda-only option exists).
+  win_split_mode = { 'float', 0.85 },
   win_border = 'rounded',
 
   org_startup_indented = true,
