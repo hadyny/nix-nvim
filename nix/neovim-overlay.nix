@@ -27,6 +27,24 @@ let
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix { };
 
+  # nvim-orgmode 0.7.x requires the `org` tree-sitter parser at version 2.0.2,
+  # which is not shipped by nvim-treesitter.withAllGrammars. Build it ourselves
+  # and expose it as a parser-only "plugin" so Neovim finds it on the runtimepath.
+  org-parser = pkgs.tree-sitter.buildGrammar {
+    language = "org";
+    version = "2.0.2";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-orgmode";
+      repo = "tree-sitter-org";
+      rev = "43bae3ce47cef48b7744f363a7766a795faa3550"; # 2.0.2
+      hash = "sha256-tChVcd4YDA9Sec2r/QLhsoNENOTS2Tjr6jsBR1VFHOc=";
+    };
+  };
+  org-parser-plugin = pkgs.runCommandLocal "tree-sitter-org-grammar" { } ''
+    mkdir -p $out/parser
+    ln -s ${org-parser}/parser $out/parser/org.so
+  '';
+
   # A plugin can either be a package or an attrset, such as
   # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp
   #   config = <config>; # String; a config that will be loaded with the plugin
@@ -53,6 +71,11 @@ let
     # docs
     render-markdown-nvim
     checkmate-nvim
+    # org
+    orgmode
+    org-parser-plugin
+    (mkNvimPluginNoCheck inputs.org-bullets "org-bullets.nvim")
+    (mkNvimPluginNoCheck inputs.org-modern "org-modern.nvim")
     # completion
     blink-cmp
     blink-compat

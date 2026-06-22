@@ -44,6 +44,7 @@ require('blink.cmp').setup {
     default = { 'lsp', 'path', 'snippets', 'buffer' },
     per_filetype = {
       cs = { 'lsp', 'path', 'snippets', 'buffer', 'easy-dotnet' },
+      org = { 'orgmode', 'path', 'snippets', 'buffer' },
     },
     providers = {
       ['easy-dotnet'] = {
@@ -52,6 +53,11 @@ require('blink.cmp').setup {
         module = 'easy-dotnet.completion.blink',
         score_offset = 10000,
         async = true,
+      },
+      ['orgmode'] = {
+        name = 'Orgmode',
+        module = 'orgmode.org.autocompletion.blink',
+        fallbacks = { 'buffer' },
       },
     },
   },

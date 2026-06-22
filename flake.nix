@@ -22,6 +22,16 @@
       url = "github:coder/claudecode.nvim";
       flake = false;
     };
+
+    org-bullets = {
+      url = "github:nvim-orgmode/org-bullets.nvim";
+      flake = false;
+    };
+
+    org-modern = {
+      url = "github:danilshvalov/org-modern.nvim";
+      flake = false;
+    };
   };
 
   outputs =

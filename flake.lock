@@ -259,6 +259,38 @@
         "type": "github"
       }
     },
+    "org-bullets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774343634,
+        "narHash": "sha256-Tgeqr/Zd1hJXXaln4XWGS5aZqypnpfNxgO/+pQVk7jg=",
+        "owner": "nvim-orgmode",
+        "repo": "org-bullets.nvim",
+        "rev": "503fe053550879cc202086a40454e46a87c41ddb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-orgmode",
+        "repo": "org-bullets.nvim",
+        "type": "github"
+      }
+    },
+    "org-modern": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1683841146,
+        "narHash": "sha256-TYs3g5CZDVXCFXuYaj3IriJ4qlIOxQgArVOzT7pqkqs=",
+        "owner": "danilshvalov",
+        "repo": "org-modern.nvim",
+        "rev": "c024900b7ee78a0274036025569b47001ef3e6aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "danilshvalov",
+        "repo": "org-modern.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "claudecode": "claudecode",
@@ -267,7 +299,9 @@
         "gen-luarc": "gen-luarc",
         "hopcsharp": "hopcsharp",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-neovim": "nixpkgs-neovim"
+        "nixpkgs-neovim": "nixpkgs-neovim",
+        "org-bullets": "org-bullets",
+        "org-modern": "org-modern"
       }
     },
     "systems": {
