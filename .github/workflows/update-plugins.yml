@@ -14,7 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@v14
-      - uses: DeterminateSystems/magic-nix-cache-action@v2
       - name: Update all inputs except nixpkgs
         # This updates every input that isn't one of the core nixpkgs ones
         run: |
