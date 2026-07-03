@@ -92,6 +92,7 @@ let
     fzf-lua
     diffview-nvim
     gitsigns-nvim
+    neogit # plenary.nvim is pulled in automatically as a declared dependency
     # ai
     opencode-nvim
     (mkNvimPlugin inputs.claudecode "claudecode.nvim")
