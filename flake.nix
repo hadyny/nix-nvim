@@ -8,6 +8,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
 
+    devenv.url = "github:cachix/devenv";
+    git-hooks.url = "github:cachix/git-hooks.nix";
+    git-hooks.inputs.nixpkgs.follows = "nixpkgs";
+
     csharp-explorer = {
       url = "github:dtrh95/csharp-explorer.nvim";
       flake = false;
@@ -52,7 +56,7 @@
 
       # This overlay ensures we use Neovim from the dedicated nixpkgs-neovim input
       neovim-version-overlay = final: prev: {
-        inherit (nixpkgs-neovim.legacyPackages.${prev.system}) neovim-unwrapped;
+        inherit (nixpkgs-neovim.legacyPackages.${prev.stdenv.hostPlatform.system}) neovim-unwrapped;
       };
 
       # This is where the Neovim derivation is built.
@@ -71,20 +75,41 @@
             inputs.gen-luarc.overlays.default
           ];
         };
-        shell = pkgs.mkShell {
-          name = "nvim-devShell";
-          buildInputs = with pkgs; [
-            lua-language-server
-            nil
-            stylua
-            luajitPackages.luacheck
-            nvim-dev
+        shell = inputs.devenv.lib.mkShell {
+          inherit inputs pkgs;
+          modules = [
+            {
+              packages = with pkgs; [
+                lua-language-server
+                nil
+                stylua
+                luajitPackages.luacheck
+                nvim-dev
+              ];
+
+              enterShell = ''
+                ln -fs ${pkgs.nvim-luarc-json} .luarc.json
+                ln -Tfns $PWD/nvim ~/.config/nvim-dev
+                # Hand git hooks over to devenv (drop the old .githooks path)
+                git config --local --unset-all core.hooksPath 2>/dev/null || true
+              '';
+
+              git-hooks.hooks = {
+                # Was: luacheck nvim/lua
+                luacheck.enable = true;
+                # Was: nix fmt -- --ci
+                nixfmt-rfc-style.enable = true;
+                # Was: .githooks/pre-push -> nix flake check
+                flake-check = {
+                  enable = true;
+                  name = "nix flake check";
+                  entry = "nix flake check --impure";
+                  pass_filenames = false;
+                  stages = [ "pre-push" ];
+                };
+              };
+            }
           ];
-          shellHook = ''
-            ln -fs ${pkgs.nvim-luarc-json} .luarc.json
-            ln -Tfns $PWD/nvim ~/.config/nvim-dev
-            git config --local core.hooksPath .githooks
-          '';
         };
       in
       {

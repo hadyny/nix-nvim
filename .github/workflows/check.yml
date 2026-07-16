@@ -10,11 +10,11 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@v14
     - uses: DeterminateSystems/flake-checker-action@v5
     - name: Check flake
-      run: nix flake check
+      run: nix flake check --impure
     - name: Build Neovim
       run: nix build .#packages.x86_64-linux.nvim
     - name: Lint Lua
-      run: nix develop .#devShells.x86_64-linux.default --command luacheck nvim/lua
+      run: nix develop --impure .#devShells.x86_64-linux.default --command luacheck nvim/lua
     - name: Headless Smoke Test
       run: nix run .#packages.x86_64-linux.nvim -- --headless +qa
     - name: Check formatting

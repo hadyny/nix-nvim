@@ -2,3 +2,5 @@ result
 .direnv
 .luarc.json
 .config/nvim-dev
+.devenv*
+.pre-commit-config.yaml
