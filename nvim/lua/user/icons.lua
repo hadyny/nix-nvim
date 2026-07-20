@@ -81,7 +81,6 @@ local compile_icons = function()
 	M.ft = {
 		DiffviewFileHistory = { symbol = M.misc.git.symbol,      group = "IconFtDiffviewFileHistory", hl = { fg = hl("Number").fg} },
 		DiffviewFiles       = { symbol = M.misc.git.symbol,      group = "IconFtDiffviewFiles",       hl = { fg = hl("Number").fg} },
-		NvimTree            = { symbol = "󱏒",                    group = "IconFtNvimTree",            hl = { fg = hl("Comment").fg} },
 		["grug-far"]        = { symbol = M.misc.search.symbol,   group = "IconFtGrugFar",             hl = { fg = hl("Constant").fg} },
 		fzf                 = { symbol = M.misc.terminal.symbol, group = "IconFtFzf",                 hl = { fg = hl("Special").fg} },
 		gitcommit           = { symbol = M.misc.git.symbol,      group = "IconFtGitCommit",           hl = { fg = hl("Number").fg} },

@@ -64,7 +64,7 @@ let
     (mkNvimPlugin inputs.csharp-explorer "csharp-explorer.nvim")
     sqlite-lua
     (mkNvimPluginNoCheck inputs.hopcsharp "hopcsharp.nvim")
-    nvim-tree-lua
+    yazi-nvim
     nvim-dap
     nvim-dap-ui
     nvim-dap-virtual-text
@@ -103,6 +103,8 @@ let
   ];
 
   extraPackages = with pkgs; [
+    # file manager (yazi.nvim runtime dependency)
+    yazi
     # git
     delta
     koji

@@ -81,7 +81,6 @@
             {
               packages = with pkgs; [
                 lua-language-server
-                nil
                 stylua
                 luajitPackages.luacheck
                 nvim-dev
