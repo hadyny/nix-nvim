@@ -50,6 +50,24 @@ opt.colorcolumn = '100'
 
 opt.statusline = [[%{%v:lua.require('user.statusline').render()%}]]
 
+vim.opt.grepprg = 'rg --vimgrep --smart-case --hidden '
+  .. "--glob '!node_modules' "
+  .. "--glob '!.git' "
+  .. "--glob '!dist' "
+  .. "--glob '!build'"
+
+-- Configure file search
+vim.opt.path:append('**')
+vim.opt.wildignore:append {
+  '*/node_modules/*',
+  '*/dist/*',
+  '*/build/*',
+  '*/target/*',
+  '*/.git/*',
+}
+vim.opt.wildmenu = true
+vim.opt.wildmode = 'longest:full,full'
+
 -- Configure Neovim diagnostic messages
 
 local function prefix_diagnostic(prefix, diagnostic)

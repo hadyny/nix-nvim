@@ -78,6 +78,12 @@ keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to right window' })
 keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Switch to normal mode' })
 keymap.set('t', '<C-Esc>', '<Esc>', { desc = 'Send Esc to terminal' })
 
+-- Manual grep
+keymap.set('n', '<leader>s', function()
+  vim.cmd('silent grep! ' .. vim.fn.input('Grep > '))
+  vim.cmd('copen')
+end, { desc = 'Search text' })
+
 -- Command mode: expand to current buffer's directory
 keymap.set('c', '%%', function()
   if vim.fn.getcmdtype() == ':' then
