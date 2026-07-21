@@ -6,12 +6,12 @@ vim.g.did_load_orgmode_plugin = true
 local Menu = require('org-modern.menu')
 
 require('orgmode').setup {
-  -- Top-level files plus the inbox: the agenda scans (and parses) every matched
-  -- file on first open. The notes subdirectories (1-notes, 2-maps, 3-sources)
-  -- hold no agenda items, so a recursive '~/org/**/*' glob parsed ~400 files
-  -- needlessly. This keeps the agenda fast while still capturing inbox tasks.
-  org_agenda_files = { '~/org/*.org', '~/org/0-inbox/*.org' },
-  org_default_notes_file = '~/org/notes.org',
+  -- Top-level files only: the agenda scans (and parses) every matched file on
+  -- first open. The notes subdirectories (1-notes, 2-maps, 3-sources) hold no
+  -- agenda items, so a recursive '~/notes/org/**/*' glob parsed ~400 files
+  -- needlessly. This keeps the agenda fast.
+  org_agenda_files = { '~/notes/org/*.org' },
+  org_default_notes_file = '~/notes/org/notes.org',
 
   -- Open the agenda (and capture) in a centred floating popup. { 'float', scale }
   -- is relative='editor', sized to 85% of the editor and auto-centred;
