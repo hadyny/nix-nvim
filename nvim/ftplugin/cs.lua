@@ -56,7 +56,7 @@ require('fidget').setup {}
 
 local easy_dotnet = require('easy-dotnet')
 easy_dotnet.setup {
-  picker = 'fzf',
+  picker = 'telescope',
   notifications = {
     -- Route EasyDotnet job lifecycle (build/test/run/restore) through fidget:
     -- a single progress handle per job that updates in place, instead of the

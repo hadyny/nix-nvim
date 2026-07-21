@@ -34,7 +34,7 @@ nvim-dev
 |---|---|
 | Colorscheme | catppuccin |
 | UI | which-key.nvim, bufferline.nvim, fidget.nvim |
-| Search | fzf-lua |
+| Search | telescope.nvim (+ fzf-native, frecency, ui-select) |
 | Files | nvim-tree |
 | Icons | nvim-web-devicons |
 | Completion | blink.cmp (+ blink-compat) |
@@ -189,7 +189,7 @@ Leader key: `<space>`
     │   ├── autocommands.lua
     │   ├── commands.lua        # Custom :LspInfo, :Q
     │   ├── plugins.lua         # conform, render-markdown, checkmate
-    │   ├── fzf-lua.lua         # Finder, grep, recent files
+    │   ├── telescope.lua       # Finder, grep, recent files
     │   ├── nvim-tree.lua       # File explorer
     │   ├── bufferline.lua      # Buffer tabline
     │   ├── blink-cmp.lua       # Completion

@@ -84,7 +84,12 @@ let
     which-key-nvim
     nvim-treesitter.withAllGrammars
     conform-nvim
-    fzf-lua
+    # fuzzy finder
+    telescope-nvim
+    plenary-nvim # telescope runtime dependency
+    telescope-fzf-native-nvim
+    telescope-frecency-nvim
+    telescope-ui-select-nvim
     gitsigns-nvim
 
     # bleeding-edge plugins from flake inputs
