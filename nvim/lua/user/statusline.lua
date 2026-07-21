@@ -156,7 +156,7 @@ local file_component = function(active)
     if display_name:match('^zsh') then
       icon = icons.misc.terminal.symbol
       icon_hl = icons.misc.terminal.group
-    elseif display_name:match('^claude') or display_name:match('^opencode') or display_name:match('^copilot') then
+    elseif display_name:match('^copilot') then
       icon = icons.misc.robot.symbol
       icon_hl = icons.misc.robot.group
     elseif display_name:match('^python ?') then

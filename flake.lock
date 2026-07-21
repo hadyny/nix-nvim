@@ -33,22 +33,6 @@
         "type": "github"
       }
     },
-    "claudecode": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1782149501,
-        "narHash": "sha256-zWIdeSn0t+bJfCLHQz4JCg7T5Tam70uWoqGvYl/yPqQ=",
-        "owner": "coder",
-        "repo": "claudecode.nvim",
-        "rev": "298a3e6cbe784ed9c0cc5ff85aab6be6d704d2cd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "coder",
-        "repo": "claudecode.nvim",
-        "type": "github"
-      }
-    },
     "crate2nix": {
       "flake": false,
       "locked": {
@@ -587,7 +571,6 @@
     },
     "root": {
       "inputs": {
-        "claudecode": "claudecode",
         "csharp-explorer": "csharp-explorer",
         "devenv": "devenv",
         "flake-utils": "flake-utils",

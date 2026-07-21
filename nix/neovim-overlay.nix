@@ -70,7 +70,6 @@ let
     nvim-dap-virtual-text
     # docs
     render-markdown-nvim
-    checkmate-nvim
     # org
     orgmode
     org-parser-plugin
@@ -79,10 +78,6 @@ let
     # completion
     blink-cmp
     blink-compat
-    # colours
-    (nvim-highlight-colors.overrideAttrs (_: {
-      meta.license = licenses.mit;
-    }))
     # general
     bufferline-nvim
     nvim-web-devicons
@@ -90,12 +85,7 @@ let
     nvim-treesitter.withAllGrammars
     conform-nvim
     fzf-lua
-    diffview-nvim
     gitsigns-nvim
-    neogit # plenary.nvim is pulled in automatically as a declared dependency
-    # ai
-    opencode-nvim
-    (mkNvimPlugin inputs.claudecode "claudecode.nvim")
 
     # bleeding-edge plugins from flake inputs
     # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
@@ -147,8 +137,6 @@ let
     # docs
     multimarkdown
     marksman
-    # ai
-    opencode
   ];
 in
 {
