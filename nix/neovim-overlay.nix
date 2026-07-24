@@ -92,6 +92,8 @@ let
     telescope-frecency-nvim
     telescope-ui-select-nvim
     gitsigns-nvim
+    # notes (zk-org)
+    zk-nvim
 
     # bleeding-edge plugins from flake inputs
     # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
@@ -145,6 +147,8 @@ let
     # docs
     multimarkdown
     marksman
+    # notes (zk-org cli, backs zk-nvim's `zk lsp` + commands)
+    zk
   ];
 in
 {

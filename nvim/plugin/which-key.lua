@@ -18,5 +18,6 @@ require('which-key').setup {
     { '<leader>lw', group = 'Workspace' },
     { '<leader>o', group = 'Org' },
     { '<leader>t', group = 'Toggle' },
+    { '<leader>z', group = 'Zk' },
   },
 }
