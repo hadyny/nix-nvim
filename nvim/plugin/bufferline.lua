@@ -56,15 +56,17 @@ map('n', '<S-l>', '<cmd>BufferLineCycleNext<CR>', { silent = true, desc = 'Next 
 map('n', '<A-S-h>', '<cmd>BufferLineMovePrev<CR>', { silent = true, desc = 'Move buffer left' })
 map('n', '<A-S-l>', '<cmd>BufferLineMoveNext<CR>', { silent = true, desc = 'Move buffer right' })
 
--- Go to buffer by position
-map('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<CR>', { silent = true, desc = 'Buffer 1' })
-map('n', '<leader>2', '<cmd>BufferLineGoToBuffer 2<CR>', { silent = true, desc = 'Buffer 2' })
-map('n', '<leader>3', '<cmd>BufferLineGoToBuffer 3<CR>', { silent = true, desc = 'Buffer 3' })
-map('n', '<leader>4', '<cmd>BufferLineGoToBuffer 4<CR>', { silent = true, desc = 'Buffer 4' })
-map('n', '<leader>5', '<cmd>BufferLineGoToBuffer 5<CR>', { silent = true, desc = 'Buffer 5' })
-map('n', '<leader>6', '<cmd>BufferLineGoToBuffer 6<CR>', { silent = true, desc = 'Buffer 6' })
-map('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<CR>', { silent = true, desc = 'Buffer 7' })
-map('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<CR>', { silent = true, desc = 'Buffer 8' })
+-- Go to buffer by position. desc = 'which_key_ignore' hides these from the
+-- which-key popup (they'd otherwise clutter the <leader> list) while the
+-- keymaps themselves keep working.
+map('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<CR>', { silent = true, desc = 'which_key_ignore' })
+map('n', '<leader>2', '<cmd>BufferLineGoToBuffer 2<CR>', { silent = true, desc = 'which_key_ignore' })
+map('n', '<leader>3', '<cmd>BufferLineGoToBuffer 3<CR>', { silent = true, desc = 'which_key_ignore' })
+map('n', '<leader>4', '<cmd>BufferLineGoToBuffer 4<CR>', { silent = true, desc = 'which_key_ignore' })
+map('n', '<leader>5', '<cmd>BufferLineGoToBuffer 5<CR>', { silent = true, desc = 'which_key_ignore' })
+map('n', '<leader>6', '<cmd>BufferLineGoToBuffer 6<CR>', { silent = true, desc = 'which_key_ignore' })
+map('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<CR>', { silent = true, desc = 'which_key_ignore' })
+map('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<CR>', { silent = true, desc = 'which_key_ignore' })
 
 -- Close buffers
 map('n', '<leader>bc', '<cmd>BufferLinePickClose<CR>', { silent = true, desc = 'Close picked buffer' })
