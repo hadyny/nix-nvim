@@ -4,19 +4,16 @@ end
 vim.g.did_load_telescope_plugin = true
 
 local telescope = require('telescope')
+local themes = require('telescope.themes')
 
 telescope.setup {
-  defaults = {
-    layout_strategy = 'horizontal',
-    layout_config = {
-      height = 0.85,
-      width = 0.80,
-      preview_width = 0.6,
-    },
-  },
+  -- ivy theme: a full-width pane docked at the bottom (with preview), applied
+  -- as the default so every picker (and frecency) uses it.
+  defaults = themes.get_ivy(),
   extensions = {
     fzf = {},
-    ['ui-select'] = {},
+    -- vim.ui.select popups appear at the cursor.
+    ['ui-select'] = { themes.get_cursor() },
     frecency = {
       show_scores = true,
     },
