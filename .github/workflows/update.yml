@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '0 0 * * *' # Every day at midnight
   workflow_dispatch: # Allow manual triggers
+# A caller of a reusable workflow must grant the token permissions the called
+# workflow requests; without this the repo's read-only default caps it.
+permissions:
+  contents: write
+  pull-requests: write
 concurrency:
   group: update-neovim
   cancel-in-progress: true
