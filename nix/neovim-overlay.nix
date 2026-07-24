@@ -116,6 +116,8 @@ let
     nixfmt
     # typescript
     prettierd
+    # markdown formatter (conform: markdown = { 'mdformat' })
+    mdformat
     tailwindcss-language-server
     rustywind
     graphql-language-service-cli

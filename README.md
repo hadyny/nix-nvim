@@ -30,38 +30,38 @@ nvim-dev
 
 ## Plugins
 
-| Category | Plugins |
-|---|---|
-| Colorscheme | catppuccin |
-| UI | which-key.nvim, bufferline.nvim, fidget.nvim |
-| Search | telescope.nvim (+ fzf-native, frecency, ui-select) |
-| Files | nvim-tree |
-| Icons | nvim-web-devicons |
-| Completion | blink.cmp (+ blink-compat) |
-| Git | gitsigns.nvim, diffview.nvim, neogit |
-| Syntax | nvim-treesitter (all grammars) |
-| Formatting | conform.nvim |
-| Debugging | nvim-dap, nvim-dap-ui, nvim-dap-virtual-text |
-| C# / .NET | easy-dotnet.nvim, csharp-explorer.nvim, hopcsharp.nvim |
-| Markdown | render-markdown.nvim, checkmate.nvim |
-| Org | orgmode, org-bullets.nvim, org-modern.nvim |
-| AI | opencode.nvim, claudecode.nvim |
-| Colours | nvim-highlight-colors |
+| Category    | Plugins                                                |
+| ----------- | ------------------------------------------------------ |
+| Colorscheme | catppuccin                                             |
+| UI          | which-key.nvim, bufferline.nvim, fidget.nvim           |
+| Search      | telescope.nvim (+ fzf-native, frecency, ui-select)     |
+| Files       | nvim-tree                                              |
+| Icons       | nvim-web-devicons                                      |
+| Completion  | blink.cmp (+ blink-compat)                             |
+| Git         | gitsigns.nvim, diffview.nvim, neogit                   |
+| Syntax      | nvim-treesitter (all grammars)                         |
+| Formatting  | conform.nvim                                           |
+| Debugging   | nvim-dap, nvim-dap-ui, nvim-dap-virtual-text           |
+| C# / .NET   | easy-dotnet.nvim, csharp-explorer.nvim, hopcsharp.nvim |
+| Markdown    | render-markdown.nvim, checkmate.nvim                   |
+| Org         | orgmode, org-bullets.nvim, org-modern.nvim             |
+| AI          | opencode.nvim, claudecode.nvim                         |
+| Colours     | nvim-highlight-colors                                  |
 
 ## Language support
 
 Managed by Nix — no manual installation needed.
 
-| Language | LSP | Formatter | Other |
-|---|---|---|---|
-| TypeScript / JS | vtsls, ESLint, Tailwind CSS | prettierd, rustywind | graphql-language-service |
-| Astro | astro-language-server | — | ESLint, Tailwind CSS |
-| C# / F# | roslyn-ls, fsautocomplete | csharpier | netcoredbg (DAP), EasyDotnet |
-| Go | gopls | gofmt, goimports | staticcheck |
-| Lua | lua-language-server | stylua | — |
-| Nix | nixd | nixfmt | — |
-| Markdown | marksman | prettierd | multimarkdown |
-| HTML / CSS / JSON | vscode-langservers-extracted | prettierd | — |
+| Language          | LSP                          | Formatter            | Other                        |
+| ----------------- | ---------------------------- | -------------------- | ---------------------------- |
+| TypeScript / JS   | vtsls, ESLint, Tailwind CSS  | prettierd, rustywind | graphql-language-service     |
+| Astro             | astro-language-server        | —                    | ESLint, Tailwind CSS         |
+| C# / F#           | roslyn-ls, fsautocomplete    | csharpier            | netcoredbg (DAP), EasyDotnet |
+| Go                | gopls                        | gofmt, goimports     | staticcheck                  |
+| Lua               | lua-language-server          | stylua               | —                            |
+| Nix               | nixd                         | nixfmt               | —                            |
+| Markdown          | marksman                     | prettierd            | multimarkdown                |
+| HTML / CSS / JSON | vscode-langservers-extracted | prettierd            | —                            |
 
 ## Key bindings
 
@@ -69,111 +69,111 @@ Leader key: `<space>`
 
 ### Navigation & search
 
-| Keys | Action |
-|---|---|
-| `<leader><leader>` | Commands |
-| `<leader>ff` | Find files |
-| `<leader>fr` | Recent files |
-| `<leader>fb` | Find buffers |
-| `<leader>/` | Live grep |
-| `<leader>s` | Grep (prompt) |
-| `<leader>e` | Explorer (nvim-tree) |
-| `<leader>u` | Toggle undotree |
-| `<C-h/j/k/l>` | Window navigation |
+| Keys               | Action               |
+| ------------------ | -------------------- |
+| `<leader><leader>` | Commands             |
+| `<leader>ff`       | Find files           |
+| `<leader>fr`       | Recent files         |
+| `<leader>fb`       | Find buffers         |
+| `<leader>/`        | Live grep            |
+| `<leader>s`        | Grep (prompt)        |
+| `<leader>e`        | Explorer (nvim-tree) |
+| `<leader>u`        | Toggle undotree      |
+| `<C-h/j/k/l>`      | Window navigation    |
 
 ### Buffers
 
-| Keys | Action |
-|---|---|
-| `[b` / `]b` | Previous / next buffer |
-| `<S-h>` / `<S-l>` | Cycle previous / next (bufferline) |
-| `<A-S-h>` / `<A-S-l>` | Move buffer left / right |
-| `<leader>1`–`<leader>8` | Go to buffer by position |
-| `<leader>bp` | Pick buffer |
-| `<leader>bx` | Close other buffers |
-| `<leader>x` | Close buffer |
+| Keys                    | Action                             |
+| ----------------------- | ---------------------------------- |
+| `[b` / `]b`             | Previous / next buffer             |
+| `<S-h>` / `<S-l>`       | Cycle previous / next (bufferline) |
+| `<A-S-h>` / `<A-S-l>`   | Move buffer left / right           |
+| `<leader>1`–`<leader>8` | Go to buffer by position           |
+| `<leader>bp`            | Pick buffer                        |
+| `<leader>bx`            | Close other buffers                |
+| `<leader>x`             | Close buffer                       |
 
 ### Diagnostics
 
-| Keys | Action |
-|---|---|
-| `[d` / `]d` | Previous / next diagnostic |
-| `[e` / `]e` | Previous / next error |
-| `<leader>dk` | Diagnostics float |
-| `<leader>ds` | Diagnostics to quickfix |
-| `<leader>tD` | Toggle buffer diagnostics |
+| Keys         | Action                     |
+| ------------ | -------------------------- |
+| `[d` / `]d`  | Previous / next diagnostic |
+| `[e` / `]e`  | Previous / next error      |
+| `<leader>dk` | Diagnostics float          |
+| `<leader>ds` | Diagnostics to quickfix    |
+| `<leader>tD` | Toggle buffer diagnostics  |
 
 ### Git
 
-| Keys | Action |
-|---|---|
-| `<leader>gg` | Neogit status |
-| `<leader>gc` | Neogit commit |
-| `<leader>gp` / `<leader>gP` | Neogit pull / push |
-| `<leader>gC` | Commit with koji |
-| `<leader>gb` | Git blame line |
-| `<leader>gd` | Diffview open |
-| `<leader>gh` | Diffview file history |
-| `<leader>gH` | Diffview branch history |
+| Keys                        | Action                  |
+| --------------------------- | ----------------------- |
+| `<leader>gg`                | Neogit status           |
+| `<leader>gc`                | Neogit commit           |
+| `<leader>gp` / `<leader>gP` | Neogit pull / push      |
+| `<leader>gC`                | Commit with koji        |
+| `<leader>gb`                | Git blame line          |
+| `<leader>gd`                | Diffview open           |
+| `<leader>gh`                | Diffview file history   |
+| `<leader>gH`                | Diffview branch history |
 
 ### Hunks (gitsigns)
 
-| Keys | Action |
-|---|---|
-| `[h` / `]h` | Previous / next hunk |
-| `<leader>hp` | Preview hunk |
-| `<leader>hs` | Stage hunk |
-| `<leader>hS` | Stage buffer |
-| `<leader>hr` | Reset hunk |
-| `<leader>hR` | Reset buffer |
-| `<leader>hu` | Undo stage hunk |
-| `<leader>hd` | Diff this |
-| `<leader>htd` | Toggle deleted |
+| Keys          | Action               |
+| ------------- | -------------------- |
+| `[h` / `]h`   | Previous / next hunk |
+| `<leader>hp`  | Preview hunk         |
+| `<leader>hs`  | Stage hunk           |
+| `<leader>hS`  | Stage buffer         |
+| `<leader>hr`  | Reset hunk           |
+| `<leader>hR`  | Reset buffer         |
+| `<leader>hu`  | Undo stage hunk      |
+| `<leader>hd`  | Diff this            |
+| `<leader>htd` | Toggle deleted       |
 
 ### C# / .NET (buffer-local to C# files)
 
-| Keys | Action |
-|---|---|
-| `<F5>` | Debug: start / continue |
-| `<F10>` / `<F11>` / `<F12>` | Step over / into / out |
-| `<F7>` | Toggle debug UI |
-| `<leader>dB` | Toggle breakpoint |
-| `<leader>dq` | Terminate & clear breakpoints |
-| `<leader>dr` / `<leader>db` / `<leader>dt` | Dotnet run / build / test |
-| `<leader>dn` | Dotnet command menu |
-| `<leader>cse` | C# explorer |
-| `<leader>csd` | Hop to definition |
+| Keys                                       | Action                        |
+| ------------------------------------------ | ----------------------------- |
+| `<F5>`                                     | Debug: start / continue       |
+| `<F10>` / `<F11>` / `<F12>`                | Step over / into / out        |
+| `<F7>`                                     | Toggle debug UI               |
+| `<leader>dB`                               | Toggle breakpoint             |
+| `<leader>dq`                               | Terminate & clear breakpoints |
+| `<leader>dr` / `<leader>db` / `<leader>dt` | Dotnet run / build / test     |
+| `<leader>dn`                               | Dotnet command menu           |
+| `<leader>cse`                              | C# explorer                   |
+| `<leader>csd`                              | Hop to definition             |
 
 ### Org
 
-| Keys | Action |
-|---|---|
-| `<leader>oa` | Agenda |
+| Keys         | Action  |
+| ------------ | ------- |
+| `<leader>oa` | Agenda  |
 | `<leader>oc` | Capture |
 
 ### AI
 
-| Keys | Action |
-|---|---|
-| `<C-a>` | OpenCode: ask with context |
-| `<C-.>` | OpenCode: toggle |
-| `<C-x>` | OpenCode: action menu |
-| `<leader>cc` | Claude Code: toggle |
-| `<leader>cf` | Claude Code: focus |
+| Keys         | Action                               |
+| ------------ | ------------------------------------ |
+| `<C-a>`      | OpenCode: ask with context           |
+| `<C-.>`      | OpenCode: toggle                     |
+| `<C-x>`      | OpenCode: action menu                |
+| `<leader>cc` | Claude Code: toggle                  |
+| `<leader>cf` | Claude Code: focus                   |
 | `<leader>cS` | Claude Code: send selection (visual) |
-| `<leader>cm` | Claude Code: select model |
+| `<leader>cm` | Claude Code: select model            |
 
 ### Toggles & misc
 
-| Keys | Action |
-|---|---|
-| `<leader>ts` | Toggle spellcheck |
-| `<leader>tf` | Toggle treesitter folding |
-| `<leader>w` | Save file |
-| `<leader>fq` | Close floating windows |
-| `<A-j>` / `<A-k>` | Move line down / up |
+| Keys                      | Action                             |
+| ------------------------- | ---------------------------------- |
+| `<leader>ts`              | Toggle spellcheck                  |
+| `<leader>tf`              | Toggle treesitter folding          |
+| `<leader>w`               | Save file                          |
+| `<leader>fq`              | Close floating windows             |
+| `<A-j>` / `<A-k>`         | Move line down / up                |
 | `<leader>y` / `<leader>Y` | Yank selection / line to clipboard |
-| `<leader>p` | Paste from clipboard |
+| `<leader>p`               | Paste from clipboard               |
 
 ## Directory structure
 

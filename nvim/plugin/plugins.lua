@@ -18,7 +18,7 @@ conform.setup {
     html = { 'prettierd' },
     json = { 'prettierd' },
     yaml = { 'prettierd' },
-    markdown = { 'prettierd' },
+    markdown = { 'mdformat' },
     graphql = { 'prettierd' },
     go = { 'goimports', 'gofmt' },
     nix = { 'nixfmt' },
