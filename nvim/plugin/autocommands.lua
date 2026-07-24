@@ -58,16 +58,20 @@ local function peek_type_definition()
   return vim.lsp.buf_request(0, 'textDocument/typeDefinition', params, preview_location_callback)
 end
 
---- Don't create a comment string when hitting <Enter> on a comment line
-vim.api.nvim_create_autocmd('BufEnter', {
+--- Don't create a comment string when hitting <Enter> on a comment line.
+--- FileType (not BufEnter) so it runs once per buffer after ftplugins have set
+--- their own formatoptions, and opt_local so it doesn't clobber the global.
+vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('DisableNewLineAutoCommentString', {}),
   callback = function()
-    vim.opt.formatoptions = vim.opt.formatoptions - { 'c', 'r', 'o' }
+    vim.opt_local.formatoptions:remove { 'c', 'r', 'o' }
   end,
 })
 
--- Enable treesitter highlighting and indenting when a file is opened
-vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter' }, {
+-- Enable treesitter highlighting and indenting when a file is opened.
+-- FileType alone is sufficient (treesitter.start is idempotent); BufEnter would
+-- re-run this on every buffer switch for no benefit.
+vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('TreesitterStart', { clear = true }),
   callback = function(args)
     local buf = args.buf

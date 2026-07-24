@@ -136,6 +136,23 @@ map('n', '<leader>cst', function()
   require('hopcsharp').get_type_hierarchy()
 end, { desc = 'Hopcsharp type hierarchy' })
 
+-- C# hopcsharp fzf pickers (browse the hopcsharp database via fzf-lua)
+local function hop_picker(name)
+  return function()
+    require('hopcsharp.pickers.fzf')[name]()
+  end
+end
+
+map('n', '<leader>cspf', hop_picker('source_files'), { desc = 'Hopcsharp pick: source files' })
+map('n', '<leader>cspa', hop_picker('all_definitions'), { desc = 'Hopcsharp pick: all definitions' })
+map('n', '<leader>cspc', hop_picker('class_definitions'), { desc = 'Hopcsharp pick: classes' })
+map('n', '<leader>cspi', hop_picker('interface_definitions'), { desc = 'Hopcsharp pick: interfaces' })
+map('n', '<leader>cspm', hop_picker('method_definitions'), { desc = 'Hopcsharp pick: methods' })
+map('n', '<leader>csps', hop_picker('struct_definitions'), { desc = 'Hopcsharp pick: structs' })
+map('n', '<leader>cspe', hop_picker('enum_definitions'), { desc = 'Hopcsharp pick: enums' })
+map('n', '<leader>cspr', hop_picker('record_definitions'), { desc = 'Hopcsharp pick: records' })
+map('n', '<leader>cspA', hop_picker('attribute_definitions'), { desc = 'Hopcsharp pick: attributes' })
+
 -- C# explorer
 map('n', '<leader>cse', '<cmd>CSharpExplorer<CR>', { desc = 'C# explorer toggle' })
 map('n', '<leader>csf', '<cmd>CSharpExplorerFindFile<CR>', { desc = 'C# explorer find file' })

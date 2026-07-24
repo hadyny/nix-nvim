@@ -1,27 +1,17 @@
-name: Update Neovim Source
+name: "Update Neovim Source"
 on:
   schedule:
     - cron: '0 0 * * *' # Every day at midnight
   workflow_dispatch: # Allow manual triggers
-
-permissions:
-  contents: write
-  pull-requests: write
-
+concurrency:
+  group: update-neovim
+  cancel-in-progress: true
 jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@v14
-      - name: Update Neovim Source
-        run: nix flake lock --update-input nixpkgs-neovim
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: update neovim-version"
-          title: "chore: update neovim-version"
-          body: "This PR updates the `nixpkgs-neovim` input in `flake.lock` to the latest version on the nixos-unstable channel, providing the latest stable release of Neovim."
-          branch: "update-neovim-src"
-          delete-branch: true
+  neovim:
+    uses: ./.github/workflows/flake-update.yml
+    with:
+      update-args: nixpkgs-neovim
+      branch: update-neovim-src
+      title: "chore: update neovim-version"
+      body: "Updates the `nixpkgs-neovim` input in `flake.lock` to the latest on the stable channel, providing the latest stable release of Neovim."
+    secrets: inherit

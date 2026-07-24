@@ -49,5 +49,7 @@ vim.lsp.start {
   capabilities = require('user.lsp').make_client_capabilities(),
 }
 
-require('user.web_servers').start_eslint()
-require('user.web_servers').start_tailwind()
+-- eslint + tailwindcss also attach here: they list 'astro' in their filetypes
+-- (nvim/lsp/{eslint,tailwindcss}.lua) and are enabled in nvim/plugin/lsp.lua.
+-- astro-ls itself stays a bespoke start because its NODE_PATH/tsdk are computed
+-- per project above, which the static vim.lsp.config model can't express.

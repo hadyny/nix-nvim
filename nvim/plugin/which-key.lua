@@ -7,6 +7,7 @@ require('which-key').setup {
   spec = {
     { '<leader>c', group = 'Claude' },
     { '<leader>cs', group = 'C#' },
+    { '<leader>csp', group = 'Pickers' },
     { '<leader>d', group = 'Diagnostics' },
     { '<leader>f', group = 'Find' },
     { '<leader>g', group = 'Git' },

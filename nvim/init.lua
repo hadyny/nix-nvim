@@ -1,7 +1,11 @@
 vim.loader.enable()
 
--- Enable experimental UI2 (Neovim 0.12+)
-require('vim._core.ui2').enable {}
+-- Enable experimental UI2 (Neovim 0.12+). `vim._core` is a private, unstable
+-- namespace, so guard it: a rename in a future 0.12.x should degrade quietly
+-- rather than abort init this early.
+pcall(function()
+  require('vim._core.ui2').enable {}
+end)
 
 local cmd = vim.cmd
 local opt = vim.o
@@ -12,14 +16,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- See :h <option> to see what the options do
-
--- Search down into subfolders
-opt.path = vim.o.path .. '**'
+-- (`path` gets '**' appended once under "Configure file search" below.)
 
 opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
-opt.lazyredraw = true
 opt.showmatch = true -- Highlight matching parentheses, etc
 opt.incsearch = true
 opt.hlsearch = true

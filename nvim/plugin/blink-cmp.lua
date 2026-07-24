@@ -3,7 +3,8 @@ if vim.g.did_load_blink_cmp_plugin then
 end
 vim.g.did_load_blink_cmp_plugin = true
 
-vim.o.completeopt = 'menu,menuone,noselect'
+-- blink.cmp manages 'completeopt' itself; setting it manually here can fight
+-- blink's menu behaviour, so leave it to the plugin.
 
 require('blink.cmp').setup {
   keymap = { preset = 'super-tab' },

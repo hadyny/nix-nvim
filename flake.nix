@@ -3,14 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # Dedicated input for Neovim to allow independent, stable updates
-    nixpkgs-neovim.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Dedicated input for Neovim, pinned to the current stable release channel.
+    # nixos-26.05 ships Neovim 0.12.x (matches nixos-unstable), so the config's
+    # 0.12-only APIs keep working while updates track stable rather than unstable.
+    nixpkgs-neovim.url = "github:NixOS/nixpkgs/nixos-26.05";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
 
     devenv.url = "github:cachix/devenv";
-    git-hooks.url = "github:cachix/git-hooks.nix";
-    git-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     csharp-explorer = {
       url = "github:dtrh95/csharp-explorer.nvim";

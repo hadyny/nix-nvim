@@ -64,6 +64,7 @@ let
     (mkNvimPlugin inputs.csharp-explorer "csharp-explorer.nvim")
     sqlite-lua
     (mkNvimPluginNoCheck inputs.hopcsharp "hopcsharp.nvim")
+    fzf-lua # hopcsharp fzf pickers: require('hopcsharp.pickers.fzf')
     yazi-nvim
     nvim-dap
     nvim-dap-ui
@@ -98,6 +99,8 @@ let
   ];
 
   extraPackages = with pkgs; [
+    # fuzzy finder binary (fzf-lua backend, used by hopcsharp fzf pickers)
+    fzf
     # file manager (yazi.nvim runtime dependency)
     yazi
     # git
