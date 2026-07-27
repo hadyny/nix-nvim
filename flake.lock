@@ -80,11 +80,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1784142617,
-        "narHash": "sha256-mN/bY/kthTv86mIVH4trz6NJAfRglO2x4wImvTGkFZ8=",
+        "lastModified": 1785001160,
+        "narHash": "sha256-iyjX3d/q7lqYP9wkJR4k9xI2J01BJGGyfVamP0v2LXU=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "4ed83c00354d5a6b4cece8aa8c55028b4e4421e4",
+        "rev": "126fa142775d8a6d89c97d69297f7095b6585e4e",
         "type": "github"
       },
       "original": {
@@ -206,11 +206,11 @@
     "ghostty": {
       "flake": false,
       "locked": {
-        "lastModified": 1782866021,
-        "narHash": "sha256-BOLtzL5iAHmtCOg9/DXtcfw+K86QWol088K72chJB04=",
+        "lastModified": 1784602798,
+        "narHash": "sha256-298x90knBUWX5GHGXh2SKsAKvStjU2ri9UgOGoF79/8=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "e1d31deaaed21aa9225afca78d778fb373c95852",
+        "rev": "88b4cd047fa627cdca6781bc7e7dc8b75a2cecb9",
         "type": "github"
       },
       "original": {
@@ -293,11 +293,11 @@
     "hopcsharp": {
       "flake": false,
       "locked": {
-        "lastModified": 1781720216,
-        "narHash": "sha256-ztGdAYs6f+TEpmbuSEX/BS2BCrKevJM4ObYrMixTOUY=",
+        "lastModified": 1785070665,
+        "narHash": "sha256-9q3U8GSbaqOsH32c5tMnGPvECtvyaoemrcofidF+COQ=",
         "owner": "leblocks",
         "repo": "hopcsharp.nvim",
-        "rev": "065ee52f9a645d4d7d85823a375b44efe505a1a6",
+        "rev": "5f90fcd95b02d99ed73cd2ee2cb3dbb97862b80d",
         "type": "github"
       },
       "original": {
