@@ -116,8 +116,7 @@ vim.diagnostic.config {
   },
 }
 
-require('catppuccin').setup {}
-vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('tokyonight')
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')

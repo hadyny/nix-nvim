@@ -55,7 +55,7 @@ let
   # }
   all-plugins = with pkgs.vimPlugins; [
     # themes
-    catppuccin-nvim
+    tokyonight-nvim
     # nix
     # typescript
     # csharp
