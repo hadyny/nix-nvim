@@ -32,21 +32,20 @@ nvim-dev
 
 | Category    | Plugins                                                |
 | ----------- | ------------------------------------------------------ |
-| Colorscheme | catppuccin                                             |
+| Colorscheme | tokyonight-nvim                                        |
 | UI          | which-key.nvim, bufferline.nvim, fidget.nvim           |
 | Search      | telescope.nvim (+ fzf-native, frecency, ui-select)     |
-| Files       | nvim-tree                                              |
+| Files       | yazi.nvim                                              |
 | Icons       | nvim-web-devicons                                      |
 | Completion  | blink.cmp (+ blink-compat)                             |
-| Git         | gitsigns.nvim, diffview.nvim, neogit                   |
+| Git         | gitsigns.nvim                                          |
 | Syntax      | nvim-treesitter (all grammars)                         |
 | Formatting  | conform.nvim                                           |
 | Debugging   | nvim-dap, nvim-dap-ui, nvim-dap-virtual-text           |
 | C# / .NET   | easy-dotnet.nvim, csharp-explorer.nvim, hopcsharp.nvim |
-| Markdown    | render-markdown.nvim, checkmate.nvim                   |
+| Markdown    | render-markdown.nvim                                   |
 | Org         | orgmode, org-bullets.nvim, org-modern.nvim             |
-| AI          | opencode.nvim, claudecode.nvim                         |
-| Colours     | nvim-highlight-colors                                  |
+| Notes       | zk-nvim                                                |
 
 ## Language support
 
@@ -60,7 +59,7 @@ Managed by Nix — no manual installation needed.
 | Go                | gopls                        | gofmt, goimports     | staticcheck                  |
 | Lua               | lua-language-server          | stylua               | —                            |
 | Nix               | nixd                         | nixfmt               | —                            |
-| Markdown          | marksman                     | prettierd            | multimarkdown                |
+| Markdown          | marksman, zk (zk-nvim)       | mdformat             | multimarkdown                |
 | HTML / CSS / JSON | vscode-langservers-extracted | prettierd            | —                            |
 
 ## Key bindings
@@ -77,7 +76,7 @@ Leader key: `<space>`
 | `<leader>fb`       | Find buffers         |
 | `<leader>/`        | Live grep            |
 | `<leader>s`        | Grep (prompt)        |
-| `<leader>e`        | Explorer (nvim-tree) |
+| `<leader>e`        | Explorer (yazi)      |
 | `<leader>u`        | Toggle undotree      |
 | `<C-h/j/k/l>`      | Window navigation    |
 
@@ -90,7 +89,12 @@ Leader key: `<space>`
 | `<A-S-h>` / `<A-S-l>`   | Move buffer left / right           |
 | `<leader>1`–`<leader>8` | Go to buffer by position           |
 | `<leader>bp`            | Pick buffer                        |
+| `<leader>bc`            | Close picked buffer                |
+| `<leader>bl`            | Close buffers left                 |
+| `<leader>br`            | Close buffers right                |
 | `<leader>bx`            | Close other buffers                |
+| `<leader>bd`            | Sort by directory                  |
+| `<leader>bs`            | Sort by extension                  |
 | `<leader>x`             | Close buffer                       |
 
 ### Diagnostics
@@ -105,16 +109,10 @@ Leader key: `<space>`
 
 ### Git
 
-| Keys                        | Action                  |
-| --------------------------- | ----------------------- |
-| `<leader>gg`                | Neogit status           |
-| `<leader>gc`                | Neogit commit           |
-| `<leader>gp` / `<leader>gP` | Neogit pull / push      |
-| `<leader>gC`                | Commit with koji        |
-| `<leader>gb`                | Git blame line          |
-| `<leader>gd`                | Diffview open           |
-| `<leader>gh`                | Diffview file history   |
-| `<leader>gH`                | Diffview branch history |
+| Keys         | Action              |
+| ------------ | ------------------- |
+| `<leader>gC` | Commit with koji    |
+| `<leader>gb` | Git blame line      |
 
 ### Hunks (gitsigns)
 
@@ -132,17 +130,33 @@ Leader key: `<space>`
 
 ### C# / .NET (buffer-local to C# files)
 
-| Keys                                       | Action                        |
-| ------------------------------------------ | ----------------------------- |
-| `<F5>`                                     | Debug: start / continue       |
-| `<F10>` / `<F11>` / `<F12>`                | Step over / into / out        |
-| `<F7>`                                     | Toggle debug UI               |
-| `<leader>dB`                               | Toggle breakpoint             |
-| `<leader>dq`                               | Terminate & clear breakpoints |
-| `<leader>dr` / `<leader>db` / `<leader>dt` | Dotnet run / build / test     |
-| `<leader>dn`                               | Dotnet command menu           |
-| `<leader>cse`                              | C# explorer                   |
-| `<leader>csd`                              | Hop to definition             |
+| Keys                                       | Action                             |
+| ------------------------------------------ | ---------------------------------- |
+| `<F5>`                                     | Debug: start / continue            |
+| `<F10>` / `<F11>` / `<F12>`                | Step over / into / out             |
+| `<F7>`                                     | Toggle debug UI                    |
+| `<leader>dB`                               | Toggle breakpoint                  |
+| `<leader>dq`                               | Terminate & clear breakpoints      |
+| `<leader>dr` / `<leader>db` / `<leader>dt` | Dotnet run / build / test          |
+| `<leader>dw`                               | Dotnet watch                       |
+| `<leader>dp`                               | Dotnet project view                |
+| `<leader>do`                               | Dotnet outdated packages           |
+| `<leader>dT`                               | Dotnet test runner                 |
+| `<leader>dn`                               | Dotnet command menu                |
+| `<leader>cse`                              | C# explorer toggle                 |
+| `<leader>csf`                              | C# explorer find file              |
+| `<leader>csR`                              | C# explorer refresh                |
+| `<leader>csd`                              | Hop to definition                  |
+| `<leader>csi`                              | Hop to implementation              |
+| `<leader>csr`                              | Hop to reference                   |
+| `<leader>cst`                              | Type hierarchy                     |
+| `<leader>csD`                              | Init hopcsharp database            |
+| `<leader>cspf`                             | Pick: source files                 |
+| `<leader>cspa`                             | Pick: all definitions              |
+| `<leader>cspc` / `<leader>cspi`            | Pick: classes / interfaces         |
+| `<leader>cspm` / `<leader>csps`            | Pick: methods / structs            |
+| `<leader>cspe` / `<leader>cspr`            | Pick: enums / records              |
+| `<leader>cspA`                             | Pick: attributes                   |
 
 ### Org
 
@@ -151,17 +165,17 @@ Leader key: `<space>`
 | `<leader>oa` | Agenda  |
 | `<leader>oc` | Capture |
 
-### AI
+### Notes (zk)
 
-| Keys         | Action                               |
-| ------------ | ------------------------------------ |
-| `<C-a>`      | OpenCode: ask with context           |
-| `<C-.>`      | OpenCode: toggle                     |
-| `<C-x>`      | OpenCode: action menu                |
-| `<leader>cc` | Claude Code: toggle                  |
-| `<leader>cf` | Claude Code: focus                   |
-| `<leader>cS` | Claude Code: send selection (visual) |
-| `<leader>cm` | Claude Code: select model            |
+| Keys         | Action                    |
+| ------------ | ------------------------- |
+| `<leader>zn` | New note                  |
+| `<leader>zo` | Open notes (by modified)  |
+| `<leader>zt` | Tags                      |
+| `<leader>zf` | Find notes (content)      |
+| `<leader>zb` | Backlinks                 |
+| `<leader>zl` | Outgoing links            |
+| `<leader>zi` | Insert link               |
 
 ### Toggles & misc
 
@@ -188,32 +202,37 @@ Leader key: `<space>`
     │   ├── keymaps.lua
     │   ├── autocommands.lua
     │   ├── commands.lua        # Custom :LspInfo, :Q
-    │   ├── plugins.lua         # conform, render-markdown, checkmate
+    │   ├── lsp.lua             # vim.lsp.enable() for all servers
+    │   ├── plugins.lua         # conform, render-markdown
     │   ├── telescope.lua       # Finder, grep, recent files
-    │   ├── nvim-tree.lua       # File explorer
+    │   ├── yazi.lua            # File manager
     │   ├── bufferline.lua      # Buffer tabline
     │   ├── blink-cmp.lua       # Completion
     │   ├── gitsigns.lua
-    │   ├── diffview.lua        # Diff viewer
-    │   ├── neogit.lua          # Git UI
     │   ├── treesitter.lua
     │   ├── which-key.lua
-    │   ├── highlight-colors.lua
+    │   ├── document-color.lua  # Inline colour swatches (built-in LSP)
     │   ├── orgmode.lua         # Org mode, agenda, capture
-    │   ├── opencode.lua        # AI: OpenCode
-    │   └── claudecode.lua      # AI: Claude Code
-    ├── ftplugin/              # Filetype-specific (LSP startup)
+    │   └── zk.lua              # Zettelkasten notes
+    ├── lsp/                   # Per-server vim.lsp.config specs
+    │   ├── eslint.lua
+    │   ├── gopls.lua
+    │   ├── graphql.lua
+    │   ├── luals.lua
+    │   ├── marksman.lua
+    │   ├── nixd.lua
+    │   ├── tailwindcss.lua
+    │   └── vtsls.lua
+    ├── ftplugin/              # Filetype-specific config
     │   ├── typescript.lua
-    │   ├── typescriptreact.lua
-    │   ├── astro.lua
-    │   ├── cs.lua              # LSP, DAP, EasyDotnet, C# tools
+    │   ├── astro.lua           # Bespoke LSP start (needs per-project tsdk)
+    │   ├── cs.lua              # DAP, EasyDotnet, C# tools
     │   ├── go.lua
     │   ├── lua.lua
     │   ├── markdown.lua
     │   └── nix.lua
     └── lua/user/
         ├── lsp.lua            # Shared LSP capabilities (blink.cmp)
-        ├── web_servers.lua    # Shared ESLint / Tailwind starters
         ├── statusline.lua     # Custom statusline
         └── icons.lua          # Shared icon set
 ```
