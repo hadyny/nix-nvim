@@ -47,7 +47,6 @@ opt.sidescrolloff = 8
 opt.mouse = 'a'
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-opt.colorcolumn = '100'
 
 opt.statusline = [[%{%v:lua.require('user.statusline').render()%}]]
 
@@ -116,22 +115,21 @@ vim.diagnostic.config {
   },
 }
 
-require('tokyonight').setup {
-  style = 'night',
-  light_style = 'day',
+require('modus-themes').setup {
+  style = 'modus_vivendi',
   transparent = true,
   on_highlights = function(hl, c)
-    local prompt = c.bg_highlight
-    hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg }
-    hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
+    local prompt = c.bg_active
+    hl.TelescopeNormal = { bg = c.bg_dim, fg = c.fg_main }
+    hl.TelescopeBorder = { bg = c.bg_dim, fg = c.bg_dim }
     hl.TelescopePromptNormal = { bg = prompt }
     hl.TelescopePromptBorder = { bg = prompt, fg = prompt }
     hl.TelescopePromptTitle = { bg = prompt, fg = prompt }
-    hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
-    hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
+    hl.TelescopePreviewTitle = { bg = c.bg_dim, fg = c.bg_dim }
+    hl.TelescopeResultsTitle = { bg = c.bg_dim, fg = c.bg_dim }
   end,
 }
-vim.cmd.colorscheme('tokyonight')
+vim.cmd.colorscheme('modus')
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')

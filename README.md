@@ -32,7 +32,7 @@ nvim-dev
 
 | Category    | Plugins                                                |
 | ----------- | ------------------------------------------------------ |
-| Colorscheme | tokyonight-nvim                                        |
+| Colorscheme | modus-themes.nvim                                      |
 | UI          | which-key.nvim, bufferline.nvim, fidget.nvim           |
 | Search      | telescope.nvim (+ fzf-native, frecency, ui-select)     |
 | Files       | yazi.nvim                                              |
