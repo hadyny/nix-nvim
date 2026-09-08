@@ -31,6 +31,11 @@
       url = "github:danilshvalov/org-modern.nvim";
       flake = false;
     };
+
+    xeno-nvim = {
+      url = "github:kyzabuilds/xeno.nvim";
+      flake = false;
+    };
   };
 
   outputs =

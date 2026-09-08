@@ -55,7 +55,7 @@ let
   # }
   all-plugins = with pkgs.vimPlugins; [
     # themes
-    modus-themes-nvim
+    (mkNvimPlugin inputs.xeno-nvim "xeno.nvim")
     # nix
     # typescript
     # csharp

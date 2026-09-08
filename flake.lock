@@ -542,7 +542,8 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-neovim": "nixpkgs-neovim",
         "org-bullets": "org-bullets",
-        "org-modern": "org-modern"
+        "org-modern": "org-modern",
+        "xeno-nvim": "xeno-nvim"
       }
     },
     "rust-overlay": {
@@ -600,6 +601,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "xeno-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786137503,
+        "narHash": "sha256-Grz0tWYJAQUwR/jE1IKIfrv5N9rHpNP7MTXXxo2pxuU=",
+        "owner": "kyzabuilds",
+        "repo": "xeno.nvim",
+        "rev": "f0b5a9299c18d9a8e3cf915b7aea257520e6028e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kyzabuilds",
+        "repo": "xeno.nvim",
         "type": "github"
       }
     }
