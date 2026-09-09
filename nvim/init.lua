@@ -128,9 +128,12 @@ xeno.theme('nocturnal', {
   accent = '#5b7ca8',
   foreground = '#bcc6d4',
   properties = { contrast = 0.10, chroma = -0.30, variation = 0.15, lightness = -0.30 },
-  -- Don't let xeno rewrite ~/.config/ghostty/config: it's a read-only
-  -- home-manager symlink into the Nix store here, so the write always fails.
-  integrations = { ghostty = { update_config = false } },
+  -- Ghostty's colours are managed declaratively by nix-darwin, so leave its
+  -- integration off entirely: xeno's OSC 10/11 live-recolour has no exit-time
+  -- reset (reset_ghostty_colors() exists but is never called), so it would
+  -- otherwise leak nocturnal's background/foreground into the shell after
+  -- quitting nvim.
+  integrations = { ghostty = { enabled = false } },
   highlights = {
     editor = {
       CursorLineNr = { fg = '@amber.100', bold = true },
