@@ -152,7 +152,7 @@ api.nvim_create_user_command('LspInfo', function()
     title_pos = 'center',
   }
 
-  local win = api.nvim_open_win(info_buf, true, win_opts)
+  api.nvim_open_win(info_buf, true, win_opts)
 
   -- Close with q or ESC
   api.nvim_buf_set_keymap(info_buf, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })

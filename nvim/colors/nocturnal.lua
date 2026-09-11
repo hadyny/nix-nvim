@@ -12,59 +12,80 @@ require("xeno").setup({
   foreground = "#bcc6d4",
   _custom_colors = {
     amber = "#c9a15c",
-    violet = "#9483bf",
+    periwinkle = "#7d94c2",
     phantom = "#A0DAA9",
-    periwinkle = "#7d94c2"
+    violet = "#9483bf"
   },
   highlights = {
-    editor = {
-      MatchParen = {
-        fg = "@amber.100",
-        bold = true
-      },
-      CursorLineNr = {
-        fg = "@amber.100",
-        bold = true
-      }
-    },
     syntax = {
+      ["@property"] = {
+        link = "Property"
+      },
+      ["@constructor"] = {
+        fg = "@foreground.400"
+      },
+      ["@operator"] = {
+        link = "Operator"
+      },
+      ["@punctuation"] = {
+        link = "Punctuation"
+      },
+      ["@punctuation.bracket"] = {
+        link = "Punctuation"
+      },
+      ["@punctuation.delimiter"] = {
+        link = "Punctuation"
+      },
+      ["@tag"] = {
+        link = "Tag"
+      },
+      ["@tag.builtin"] = {
+        bold = true,
+        fg = "@phantom.100"
+      },
       ["@tag.attribute"] = {
         fg = "@phantom.400"
       },
-      Comment = {
-        fg = "@foreground.400",
-        italic = true
+      ["@tag.delimiter"] = {
+        link = "Punctuation"
       },
       ["@attribute"] = {
         link = "Attribute"
       },
       ["@attribute.builtin"] = {
-        fg = "@phantom.100",
-        bold = true
+        bold = true,
+        fg = "@phantom.100"
       },
-      Keyword = {
-        fg = "@violet.300"
+      ["@lsp.type.variable"] = {
+        link = "@variable"
       },
       ["@lsp.type.property"] = {
         link = "@property"
       },
-      Conditional = {
-        fg = "@violet.200"
+      Comment = {
+        italic = true,
+        fg = "@foreground.400"
       },
       ["@lsp.type.function"] = {
         link = "@function"
       },
+      ["@lsp.type.type"] = {
+        link = "@type"
+      },
+      Keyword = {
+        fg = "@violet.300"
+      },
+      ["@lsp.mod.declaration"] = {
+        clear = true
+      },
+      Conditional = {
+        fg = "@violet.200"
+      },
       Function = {
         fg = "@accent.300"
       },
-      ["@lsp.type.decorator"] = {
-        link = "@attribute"
-      },
       Type = {
         fg = "@accent.200"
-      },
-      ["@lsp.typemod.property.declaration"] = {
-        link = "@property"
       },
       String = {
         fg = "@amber.100"
@@ -99,6 +120,9 @@ require("xeno").setup({
       ["@keyword"] = {
         link = "Keyword"
       },
+      ["@lsp.typemod.property.declaration"] = {
+        link = "@property"
+      },
       ["@keyword.return"] = {
         link = "Keyword"
       },
@@ -117,12 +141,18 @@ require("xeno").setup({
       ["@keyword.import"] = {
         fg = "@periwinkle.400"
       },
+      ["@lsp.type.decorator"] = {
+        link = "@attribute"
+      },
       ["@function"] = {
         link = "Function"
       },
       ["@function.builtin"] = {
-        fg = "@accent.100",
-        bold = true
+        bold = true,
+        fg = "@accent.100"
+      },
+      ["@lsp.type.parameter"] = {
+        link = "@variable.parameter"
       },
       ["@type"] = {
         link = "Type"
@@ -143,8 +173,8 @@ require("xeno").setup({
         fg = "@amber.100"
       },
       ["@constant.builtin"] = {
-        fg = "@amber.100",
-        bold = true
+        bold = true,
+        fg = "@amber.100"
       },
       ["@variable"] = {
         link = "Variable"
@@ -157,52 +187,22 @@ require("xeno").setup({
       },
       ["@variable.member"] = {
         link = "Property"
+      }
+    },
+    editor = {
+      CursorLineNr = {
+        bold = true,
+        fg = "@amber.100"
       },
-      ["@property"] = {
-        link = "Property"
-      },
-      ["@lsp.mod.declaration"] = {
-        clear = true
-      },
-      ["@lsp.type.type"] = {
-        link = "@type"
-      },
-      ["@lsp.type.parameter"] = {
-        link = "@variable.parameter"
-      },
-      ["@lsp.type.variable"] = {
-        link = "@variable"
-      },
-      ["@tag.delimiter"] = {
-        link = "Punctuation"
-      },
-      ["@constructor"] = {
-        fg = "@foreground.400"
-      },
-      ["@operator"] = {
-        link = "Operator"
-      },
-      ["@punctuation"] = {
-        link = "Punctuation"
-      },
-      ["@punctuation.bracket"] = {
-        link = "Punctuation"
-      },
-      ["@punctuation.delimiter"] = {
-        link = "Punctuation"
-      },
-      ["@tag"] = {
-        link = "Tag"
-      },
-      ["@tag.builtin"] = {
-        fg = "@phantom.100",
-        bold = true
+      MatchParen = {
+        bold = true,
+        fg = "@amber.100"
       }
     }
   },
   integrations = {
     ghostty = {
-      update_config = false
+      enabled = false
     }
   },
 })
