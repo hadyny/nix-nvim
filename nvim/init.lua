@@ -115,91 +115,16 @@ vim.diagnostic.config {
   },
 }
 
-local xeno = require('xeno')
-
-xeno.color('amber', '#c9a15c')
-xeno.color('violet', '#9483bf')
-xeno.color('periwinkle', '#7d94c2')
-xeno.color('phantom', '#A0DAA9')
-
-xeno.theme('nocturnal', {
-  min_contrast = 7.0,
-  background = '#171a21',
-  accent = '#5b7ca8',
-  foreground = '#bcc6d4',
-  properties = { contrast = 0.10, chroma = -0.30, variation = 0.15, lightness = -0.30 },
-  -- Ghostty's colours are managed declaratively by nix-darwin, so leave its
-  -- integration off entirely: xeno's OSC 10/11 live-recolour has no exit-time
-  -- reset (reset_ghostty_colors() exists but is never called), so it would
-  -- otherwise leak nocturnal's background/foreground into the shell after
-  -- quitting nvim.
-  integrations = { ghostty = { enabled = false } },
-  highlights = {
-    editor = {
-      CursorLineNr = { fg = '@amber.100', bold = true },
-      MatchParen = { fg = '@amber.100', bold = true },
-    },
-    syntax = {
-      Comment = { fg = '@foreground.400', italic = true },
-      Keyword = { fg = '@violet.300' },
-      Conditional = { fg = '@violet.200' },
-      Function = { fg = '@accent.300' },
-      Type = { fg = '@accent.200' },
-      String = { fg = '@amber.100' },
-      Number = { fg = '@amber.100' },
-      Boolean = { fg = '@amber.100' },
-      Variable = { fg = '@foreground.300' },
-      Property = { fg = '@phantom.50' },
-      Parameter = { fg = '@phantom.300' },
-      Operator = { fg = '@periwinkle.300' },
-      Punctuation = { fg = '@foreground.400' },
-      Tag = { fg = '@phantom.50' },
-      Attribute = { fg = '@phantom.50' },
-      ['@keyword'] = { link = 'Keyword' },
-      ['@keyword.return'] = { link = 'Keyword' },
-      ['@keyword.function'] = { link = 'Conditional' },
-      ['@keyword.conditional'] = { link = 'Conditional' },
-      ['@keyword.repeat'] = { link = 'Conditional' },
-      ['@keyword.operator'] = { fg = '@periwinkle.300' },
-      ['@keyword.import'] = { fg = '@periwinkle.400' },
-      ['@function'] = { link = 'Function' },
-      ['@function.builtin'] = { fg = '@accent.100', bold = true },
-      ['@type'] = { link = 'Type' },
-      ['@string'] = { link = 'String' },
-      ['@string.escape'] = { fg = '@accent.100' },
-      ['@number'] = { link = 'Number' },
-      ['@boolean'] = { link = 'Boolean' },
-      ['@constant'] = { fg = '@amber.100' },
-      ['@constant.builtin'] = { fg = '@amber.100', bold = true },
-      ['@variable'] = { link = 'Variable' },
-      ['@variable.builtin'] = { fg = '@violet.200' },
-      ['@variable.parameter'] = { link = 'Parameter' },
-      ['@variable.member'] = { link = 'Property' },
-      ['@property'] = { link = 'Property' },
-      ['@constructor'] = { fg = '@foreground.400' },
-      ['@operator'] = { link = 'Operator' },
-      ['@punctuation'] = { link = 'Punctuation' },
-      ['@punctuation.bracket'] = { link = 'Punctuation' },
-      ['@punctuation.delimiter'] = { link = 'Punctuation' },
-      ['@tag'] = { link = 'Tag' },
-      ['@tag.builtin'] = { fg = '@phantom.100', bold = true },
-      ['@tag.attribute'] = { fg = '@phantom.400' },
-      ['@tag.delimiter'] = { link = 'Punctuation' },
-      ['@attribute'] = { link = 'Attribute' },
-      ['@attribute.builtin'] = { fg = '@phantom.100', bold = true },
-      ['@lsp.type.variable'] = { link = '@variable' },
-      ['@lsp.type.property'] = { link = '@property' },
-      ['@lsp.type.parameter'] = { link = '@variable.parameter' },
-      ['@lsp.type.function'] = { link = '@function' },
-      ['@lsp.type.type'] = { link = '@type' },
-      ['@lsp.type.decorator'] = { link = '@attribute' },
-      ['@lsp.mod.declaration'] = { clear = true },
-      ['@lsp.typemod.property.declaration'] = { link = '@property' },
-    },
-  },
-})
-
-vim.cmd.colorscheme('nocturnal')
+require('auto-dark-mode').setup {
+  set_dark_mode = function()
+    vim.o.background = 'dark'
+    vim.cmd.colorscheme('dracula')
+  end,
+  set_light_mode = function()
+    vim.o.background = 'light'
+    vim.cmd.colorscheme('solarized')
+  end,
+}
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')

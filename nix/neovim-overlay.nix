@@ -55,7 +55,9 @@ let
   # }
   all-plugins = with pkgs.vimPlugins; [
     # themes
-    (mkNvimPlugin inputs.xeno-nvim "xeno.nvim")
+    dracula-nvim
+    solarized-nvim
+    auto-dark-mode-nvim
     # nix
     # typescript
     # csharp
