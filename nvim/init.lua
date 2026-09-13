@@ -115,16 +115,30 @@ vim.diagnostic.config {
   },
 }
 
+vim.api.nvim_create_autocmd('ColorScheme', {
+  group = vim.api.nvim_create_augroup('theme_sync', {}),
+  callback = function()
+    vim.schedule(function()
+      local wanted = vim.o.background == 'dark' and 'dracula' or 'solarized'
+      if vim.g.colors_name ~= wanted then
+        vim.cmd.colorscheme(wanted)
+      end
+    end)
+  end,
+})
+
 require('auto-dark-mode').setup {
   set_dark_mode = function()
-    vim.o.background = 'dark'
+    vim.cmd('noautocmd set background=dark')
     vim.cmd.colorscheme('dracula')
   end,
   set_light_mode = function()
-    vim.o.background = 'light'
+    vim.cmd('noautocmd set background=light')
     vim.cmd.colorscheme('solarized')
   end,
 }
+
+vim.cmd.colorscheme(vim.o.background == 'dark' and 'dracula' or 'solarized')
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
