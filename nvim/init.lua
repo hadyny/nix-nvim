@@ -115,30 +115,15 @@ vim.diagnostic.config {
   },
 }
 
-vim.api.nvim_create_autocmd('ColorScheme', {
-  group = vim.api.nvim_create_augroup('theme_sync', {}),
-  callback = function()
-    vim.schedule(function()
-      local wanted = vim.o.background == 'dark' and 'dracula' or 'solarized'
-      if vim.g.colors_name ~= wanted then
-        vim.cmd.colorscheme(wanted)
-      end
-    end)
-  end,
-})
-
-require('auto-dark-mode').setup {
-  set_dark_mode = function()
-    vim.cmd('noautocmd set background=dark')
-    vim.cmd.colorscheme('dracula')
-  end,
-  set_light_mode = function()
-    vim.cmd('noautocmd set background=light')
-    vim.cmd.colorscheme('solarized')
-  end,
+require('catppuccin').setup {
+  flavour = 'auto',
+  background = {
+    light = 'latte',
+    dark = 'mocha',
+  },
 }
 
-vim.cmd.colorscheme(vim.o.background == 'dark' and 'dracula' or 'solarized')
+vim.cmd.colorscheme('catppuccin')
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
