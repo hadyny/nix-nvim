@@ -92,7 +92,7 @@
                 # Was: luacheck nvim/lua
                 luacheck.enable = true;
                 # Was: nix fmt -- --ci
-                nixfmt-rfc-style.enable = true;
+                nixfmt.enable = true;
                 # Was: .githooks/pre-push -> nix flake check
                 flake-check = {
                   enable = true;

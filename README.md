@@ -28,6 +28,16 @@ nvim-dev
 > [!NOTE]
 > New files must be staged with `git add` before Nix will pick them up.
 
+### Git hooks
+
+The dev shell installs these git hooks through devenv:
+
+| Hook        | Stage      | Check                           |
+| ----------- | ---------- | ------------------------------- |
+| luacheck    | pre-commit | Lints the Lua configuration     |
+| nixfmt      | pre-commit | Formats Nix files with nixfmt   |
+| flake-check | pre-push   | Runs `nix flake check --impure` |
+
 ## Plugins
 
 | Category    | Plugins                                                |
