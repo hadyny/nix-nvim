@@ -6,6 +6,9 @@
     # Dedicated input for Neovim, pinned to the current stable release channel.
     # nixos-26.05 ships Neovim 0.12.x (matches nixos-unstable), so the config's
     # 0.12-only APIs keep working while updates track stable rather than unstable.
+    # Plugins, tree-sitter parsers and sqlite also come from this input (see
+    # nix/neovim-overlay.nix), so everything loaded into the Neovim process
+    # links the same glibc.
     nixpkgs-neovim.url = "github:NixOS/nixpkgs/nixos-26.05";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";

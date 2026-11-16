@@ -5,10 +5,18 @@ with final.pkgs.lib;
 let
   pkgs = final;
 
+  # Package set for Neovim itself and for everything that Neovim loads into its
+  # own process: plugins, tree-sitter parsers and libsqlite3 (loaded through
+  # LuaJIT FFI). These must come from the same nixpkgs as neovim-unwrapped,
+  # because on Linux a process that links an older glibc cannot load a shared
+  # library that is built against a newer glibc.
+  # Tools in `extraPackages` run as separate processes, so they stay on `pkgs`.
+  nvimPkgs = inputs.nixpkgs-neovim.legacyPackages.${final.stdenv.hostPlatform.system};
+
   # Use this to create a plugin from a flake input
   mkNvimPlugin =
     src: pname:
-    pkgs.vimUtils.buildVimPlugin {
+    nvimPkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
     };
@@ -17,7 +25,7 @@ let
   # Useful for plugins with complex dependencies
   mkNvimPluginNoCheck =
     src: pname:
-    pkgs.vimUtils.buildVimPlugin {
+    nvimPkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
       doCheck = false;
@@ -25,12 +33,12 @@ let
     };
 
   # This is the helper function that builds the Neovim derivation.
-  mkNeovim = pkgs.callPackage ./mkNeovim.nix { };
+  mkNeovim = nvimPkgs.callPackage ./mkNeovim.nix { };
 
   # nvim-orgmode 0.7.x requires the `org` tree-sitter parser at version 2.0.2,
   # which is not shipped by nvim-treesitter.withAllGrammars. Build it ourselves
   # and expose it as a parser-only "plugin" so Neovim finds it on the runtimepath.
-  org-parser = pkgs.tree-sitter.buildGrammar {
+  org-parser = nvimPkgs.tree-sitter.buildGrammar {
     language = "org";
     version = "2.0.2";
     src = pkgs.fetchFromGitHub {
@@ -53,7 +61,7 @@ let
   #   optional = <true|false>; # Default: false
   #   ...
   # }
-  all-plugins = with pkgs.vimPlugins; [
+  all-plugins = with nvimPkgs.vimPlugins; [
     # themes
     catppuccin-nvim
     # nix
