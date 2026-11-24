@@ -32,45 +32,45 @@ nvim-dev
 
 The dev shell installs these git hooks through devenv:
 
-| Hook        | Stage      | Check                           |
+| Hook | Stage | Check |
 | ----------- | ---------- | ------------------------------- |
-| luacheck    | pre-commit | Lints the Lua configuration     |
-| nixfmt      | pre-commit | Formats Nix files with nixfmt   |
-| flake-check | pre-push   | Runs `nix flake check --impure` |
+| luacheck | pre-commit | Lints the Lua configuration |
+| nixfmt | pre-commit | Formats Nix files with nixfmt |
+| flake-check | pre-push | Runs `nix flake check --impure` |
 
 ## Plugins
 
-| Category    | Plugins                                                |
+| Category | Plugins |
 | ----------- | ------------------------------------------------------ |
-| Colorscheme | modus-themes.nvim                                      |
-| UI          | which-key.nvim, bufferline.nvim, fidget.nvim           |
-| Search      | telescope.nvim (+ fzf-native, frecency, ui-select)     |
-| Files       | yazi.nvim                                              |
-| Icons       | nvim-web-devicons                                      |
-| Completion  | blink.cmp (+ blink-compat)                             |
-| Git         | gitsigns.nvim                                          |
-| Syntax      | nvim-treesitter (all grammars)                         |
-| Formatting  | conform.nvim                                           |
-| Debugging   | nvim-dap, nvim-dap-ui, nvim-dap-virtual-text           |
-| C# / .NET   | easy-dotnet.nvim, csharp-explorer.nvim, hopcsharp.nvim |
-| Markdown    | render-markdown.nvim                                   |
-| Org         | orgmode, org-bullets.nvim, org-modern.nvim             |
-| Notes       | zk-nvim                                                |
+| Colorscheme | modus-themes.nvim |
+| UI | which-key.nvim, bufferline.nvim, fidget.nvim |
+| Search | telescope.nvim (+ fzf-native, frecency, ui-select) |
+| Files | yazi.nvim |
+| Icons | nvim-web-devicons |
+| Completion | blink.cmp (+ blink-compat) |
+| Git | gitsigns.nvim |
+| Syntax | nvim-treesitter (all grammars) |
+| Formatting | conform.nvim |
+| Debugging | nvim-dap, nvim-dap-ui, nvim-dap-virtual-text |
+| C# / .NET | easy-dotnet.nvim, csharp-explorer.nvim, hopcsharp.nvim |
+| Markdown | render-markdown.nvim |
+| Org | orgmode, org-bullets.nvim, org-modern.nvim |
+| Notes | zk-nvim |
 
 ## Language support
 
 Managed by Nix — no manual installation needed.
 
-| Language          | LSP                          | Formatter            | Other                        |
+| Language | LSP | Formatter | Other |
 | ----------------- | ---------------------------- | -------------------- | ---------------------------- |
-| TypeScript / JS   | vtsls, ESLint, Tailwind CSS  | prettierd, rustywind | graphql-language-service     |
-| Astro             | astro-language-server        | —                    | ESLint, Tailwind CSS         |
-| C# / F#           | roslyn-ls, fsautocomplete    | csharpier            | netcoredbg (DAP), EasyDotnet |
-| Go                | gopls                        | gofmt, goimports     | staticcheck                  |
-| Lua               | lua-language-server          | stylua               | —                            |
-| Nix               | nixd                         | nixfmt               | —                            |
-| Markdown          | marksman, zk (zk-nvim)       | mdformat             | multimarkdown                |
-| HTML / CSS / JSON | vscode-langservers-extracted | prettierd            | —                            |
+| TypeScript / JS | vtsls, ESLint, Tailwind CSS | prettierd, rustywind | graphql-language-service |
+| Astro | astro-language-server | — | ESLint, Tailwind CSS |
+| C# / F# | roslyn-ls, fsautocomplete | csharpier | netcoredbg (DAP), EasyDotnet |
+| Go | gopls | gofmt, goimports | staticcheck |
+| Lua | lua-language-server | stylua | — |
+| Nix | nixd | nixfmt | — |
+| Markdown | marksman, zk (zk-nvim) | mdformat | multimarkdown |
+| HTML / CSS / JSON | vscode-langservers-extracted | prettierd | — |
 
 ## Key bindings
 
@@ -78,126 +78,125 @@ Leader key: `<space>`
 
 ### Navigation & search
 
-| Keys               | Action               |
+| Keys | Action |
 | ------------------ | -------------------- |
-| `<leader><leader>` | Commands             |
-| `<leader>ff`       | Find files           |
-| `<leader>fr`       | Recent files         |
-| `<leader>fb`       | Find buffers         |
-| `<leader>/`        | Live grep            |
-| `<leader>s`        | Grep (prompt)        |
-| `<leader>e`        | Explorer (yazi)      |
-| `<leader>u`        | Toggle undotree      |
-| `<C-h/j/k/l>`      | Window navigation    |
+| `<leader><leader>` | Commands |
+| `<leader>ff` | Find files |
+| `<leader>fr` | Recent files |
+| `<leader>fb` | Find buffers |
+| `<leader>/` | Live grep |
+| `<leader>e` | Explorer (yazi) |
+| `<leader>u` | Toggle undotree |
+| `<C-h/j/k/l>` | Window navigation |
 
 ### Buffers
 
-| Keys                    | Action                             |
+| Keys | Action |
 | ----------------------- | ---------------------------------- |
-| `[b` / `]b`             | Previous / next buffer             |
-| `<S-h>` / `<S-l>`       | Cycle previous / next (bufferline) |
-| `<A-S-h>` / `<A-S-l>`   | Move buffer left / right           |
-| `<leader>1`–`<leader>8` | Go to buffer by position           |
-| `<leader>bp`            | Pick buffer                        |
-| `<leader>bc`            | Close picked buffer                |
-| `<leader>bl`            | Close buffers left                 |
-| `<leader>br`            | Close buffers right                |
-| `<leader>bx`            | Close other buffers                |
-| `<leader>bd`            | Sort by directory                  |
-| `<leader>bs`            | Sort by extension                  |
-| `<leader>x`             | Close buffer                       |
+| `[b` / `]b` | Previous / next buffer |
+| `<S-h>` / `<S-l>` | Cycle previous / next (bufferline) |
+| `<A-S-h>` / `<A-S-l>` | Move buffer left / right |
+| `<leader>1`–`<leader>8` | Go to buffer by position |
+| `<leader>bp` | Pick buffer |
+| `<leader>bc` | Close picked buffer |
+| `<leader>bl` | Close buffers left |
+| `<leader>br` | Close buffers right |
+| `<leader>bx` | Close other buffers |
+| `<leader>bd` | Sort by directory |
+| `<leader>bs` | Sort by extension |
+| `<leader>x` | Close buffer |
 
 ### Diagnostics
 
-| Keys         | Action                     |
+| Keys | Action |
 | ------------ | -------------------------- |
-| `[d` / `]d`  | Previous / next diagnostic |
-| `[e` / `]e`  | Previous / next error      |
-| `<leader>dk` | Diagnostics float          |
-| `<leader>ds` | Diagnostics to quickfix    |
-| `<leader>tD` | Toggle buffer diagnostics  |
+| `[d` / `]d` | Previous / next diagnostic |
+| `[e` / `]e` | Previous / next error |
+| `<leader>dk` | Diagnostics float |
+| `<leader>ds` | Diagnostics to quickfix |
+| `<leader>tD` | Toggle buffer diagnostics |
 
 ### Git
 
-| Keys         | Action              |
+| Keys | Action |
 | ------------ | ------------------- |
-| `<leader>gC` | Commit with koji    |
-| `<leader>gb` | Git blame line      |
+| `<leader>gC` | Commit with koji |
+| `<leader>gb` | Git blame line |
 
 ### Hunks (gitsigns)
 
-| Keys          | Action               |
+| Keys | Action |
 | ------------- | -------------------- |
-| `[h` / `]h`   | Previous / next hunk |
-| `<leader>hp`  | Preview hunk         |
-| `<leader>hs`  | Stage hunk           |
-| `<leader>hS`  | Stage buffer         |
-| `<leader>hr`  | Reset hunk           |
-| `<leader>hR`  | Reset buffer         |
-| `<leader>hu`  | Undo stage hunk      |
-| `<leader>hd`  | Diff this            |
-| `<leader>htd` | Toggle deleted       |
+| `[h` / `]h` | Previous / next hunk |
+| `<leader>hp` | Preview hunk |
+| `<leader>hs` | Stage hunk |
+| `<leader>hS` | Stage buffer |
+| `<leader>hr` | Reset hunk |
+| `<leader>hR` | Reset buffer |
+| `<leader>hu` | Undo stage hunk |
+| `<leader>hd` | Diff this |
+| `<leader>htd` | Toggle deleted |
 
 ### C# / .NET (buffer-local to C# files)
 
-| Keys                                       | Action                             |
+| Keys | Action |
 | ------------------------------------------ | ---------------------------------- |
-| `<F5>`                                     | Debug: start / continue            |
-| `<F10>` / `<F11>` / `<F12>`                | Step over / into / out             |
-| `<F7>`                                     | Toggle debug UI                    |
-| `<leader>dB`                               | Toggle breakpoint                  |
-| `<leader>dq`                               | Terminate & clear breakpoints      |
-| `<leader>dr` / `<leader>db` / `<leader>dt` | Dotnet run / build / test          |
-| `<leader>dw`                               | Dotnet watch                       |
-| `<leader>dp`                               | Dotnet project view                |
-| `<leader>do`                               | Dotnet outdated packages           |
-| `<leader>dT`                               | Dotnet test runner                 |
-| `<leader>dn`                               | Dotnet command menu                |
-| `<leader>cse`                              | C# explorer toggle                 |
-| `<leader>csf`                              | C# explorer find file              |
-| `<leader>csR`                              | C# explorer refresh                |
-| `<leader>csd`                              | Hop to definition                  |
-| `<leader>csi`                              | Hop to implementation              |
-| `<leader>csr`                              | Hop to reference                   |
-| `<leader>cst`                              | Type hierarchy                     |
-| `<leader>csD`                              | Init hopcsharp database            |
-| `<leader>cspf`                             | Pick: source files                 |
-| `<leader>cspa`                             | Pick: all definitions              |
-| `<leader>cspc` / `<leader>cspi`            | Pick: classes / interfaces         |
-| `<leader>cspm` / `<leader>csps`            | Pick: methods / structs            |
-| `<leader>cspe` / `<leader>cspr`            | Pick: enums / records              |
-| `<leader>cspA`                             | Pick: attributes                   |
+| `<F5>` | Debug: start / continue |
+| `<F10>` / `<F11>` / `<F12>` | Step over / into / out |
+| `<F7>` | Toggle debug UI |
+| `<leader>dB` | Toggle breakpoint |
+| `<leader>dq` | Terminate & clear breakpoints |
+| `<leader>dr` / `<leader>db` / `<leader>dt` | Dotnet run / build / test |
+| `<leader>dw` | Dotnet watch |
+| `<leader>dp` | Dotnet project view |
+| `<leader>do` | Dotnet outdated packages |
+| `<leader>dT` | Dotnet test runner |
+| `<leader>dn` | Dotnet command menu |
+| `<leader>cse` | C# explorer toggle |
+| `<leader>csf` | C# explorer find file |
+| `<leader>csR` | C# explorer refresh |
+| `<leader>csd` | Hop to definition |
+| `<leader>csi` | Hop to implementation |
+| `<leader>csr` | Hop to reference |
+| `<leader>cst` | Type hierarchy |
+| `<leader>csD` | Init hopcsharp database |
+| `<leader>cspf` | Pick: source files |
+| `<leader>cspa` | Pick: all definitions |
+| `<leader>cspc` / `<leader>cspi` | Pick: classes / interfaces |
+| `<leader>cspm` / `<leader>csps` | Pick: methods / structs |
+| `<leader>cspe` / `<leader>cspr` | Pick: enums / records |
+| `<leader>cspA` | Pick: attributes |
 
 ### Org
 
-| Keys         | Action  |
+| Keys | Action |
 | ------------ | ------- |
-| `<leader>oa` | Agenda  |
+| `<leader>oa` | Agenda |
 | `<leader>oc` | Capture |
 
 ### Notes (zk)
 
-| Keys         | Action                    |
+| Keys | Action |
 | ------------ | ------------------------- |
-| `<leader>zn` | New note                  |
-| `<leader>zo` | Open notes (by modified)  |
-| `<leader>zt` | Tags                      |
-| `<leader>zf` | Find notes (content)      |
-| `<leader>zb` | Backlinks                 |
-| `<leader>zl` | Outgoing links            |
-| `<leader>zi` | Insert link               |
+| `<leader>zn` | New note |
+| `<leader>zo` | Open notes (by modified) |
+| `<leader>zt` | Tags |
+| `<leader>zf` | Find notes (content) |
+| `<leader>zb` | Backlinks |
+| `<leader>zl` | Outgoing links |
+| `<leader>zi` | Insert link |
 
 ### Toggles & misc
 
-| Keys                      | Action                             |
+| Keys | Action |
 | ------------------------- | ---------------------------------- |
-| `<leader>ts`              | Toggle spellcheck                  |
-| `<leader>tf`              | Toggle treesitter folding          |
-| `<leader>w`               | Save file                          |
-| `<leader>fq`              | Close floating windows             |
-| `<A-j>` / `<A-k>`         | Move line down / up                |
+| `<leader>ts` | Toggle spellcheck |
+| `<leader>tf` | Toggle treesitter folding |
+| `<leader>w` | Save file |
+| `<leader>fq` | Close floating windows |
+| `<A-j>` / `<A-k>` | Move line down / up |
 | `<leader>y` / `<leader>Y` | Yank selection / line to clipboard |
-| `<leader>p`               | Paste from clipboard               |
+| `<leader>p` | Paste from clipboard |
 
 ## Directory structure
 
